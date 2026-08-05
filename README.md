@@ -1,0 +1,1 @@
+# LAMASIAcd "/Users/ahmedakhrouf/Desktop/PANEL DE CONTROL/blue-level-panel" && git remote add origin https://github.com/TU-USUARIO/blue-level-panel.git && git branch -M main && git push -u origin main
