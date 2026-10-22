@@ -1,0 +1,11 @@
+MÓDULO ARMARIO para tu Centro de Mando
+=====================================
+1. Copia armario.js y la carpeta img/ dentro de la carpeta donde está el index.html de tu Centro de Mando (PANEL DE CONTROL).
+2. Abre index.html con un editor de texto y, justo antes de </body>, añade esta línea:
+   <script src="armario.js"></script>
+   (debe ir DESPUÉS de los scripts del núcleo y de la asistenta).
+3. Abre el panel. En el mundo Personal aparece la tarjeta "Armario" con sus pestañas:
+   Resumen · Compras · Old Money · Urbano · Gym · Interior · Zara y Temu · Madrid · Paleta · Outfits · Notas.
+4. Marca una prenda como comprada y el importe se apunta solo en Gastos (categoría Compras) de la tarjeta Personal.
+   Deshacer la compra quita ese gasto.
+5. La tarjeta entra en la copia de seguridad (botón ⤓) como todo lo demás.
