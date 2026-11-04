@@ -1,0 +1,79 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hub · Costa Clean</title><link rel="stylesheet" href="/common.css">
+<style> .queue .ticket { font-size: 14px; } .big-btn { width:100%; padding:12px; font-size:15px; margin-top:6px; } </style></head>
+<body>
+<main>
+  <div class="row" style="justify-content:space-between"><h1 style="margin:0">Hub de lavandería</h1>
+    <div class="field" style="min-width:220px;margin:0"><select id="washerSel" onchange="render()"></select></div></div>
+  <p class="small muted">Cada lavandera ve su cola. Las bolsas sin asignar las puede coger cualquiera con «Me lo quedo». El panel y el mapa se actualizan solos.</p>
+  <div class="grid" style="grid-template-columns: 1fr 1fr; gap:14px" id="layout">
+    <section class="card"><h2>Máquinas</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr))" id="machines"></div></section>
+    <section class="card"><h2>Mi cola de trabajo</h2><div class="queue" id="queue"></div></section>
+  </div>
+</main>
+<div class="modal-bg" id="modal"><div class="modal" id="modalBody"></div></div>
+<script src="/common.js"></script>
+<script>
+CC.nav('hub');
+let orders = [], machines = [], washers = [], meta;
+const HUB_STATUSES = ['en_hub','lavando','secando','planchando','envasando','listo'];
+const NEXT = { en_hub: 'lavando', lavando: 'secando', secando: 'planchando', planchando: 'envasando', envasando: 'listo' };
+const NEXT_TXT = { en_hub: 'Meter en lavadora', lavando: 'Pasar a secadora', secando: 'Sacar y planchar', planchando: 'Planchado · envasar al vacío', envasando: 'Envasado · marcar LISTO' };
+
+async function load() {
+  [meta, orders, machines, washers] = await Promise.all([CC.loadMeta(), CC.api('/api/orders'), CC.api('/api/machines'), CC.api('/api/washers')]);
+  const sel = document.getElementById('washerSel');
+  const cur = Number(localStorage.getItem('cc_washer') || washers[0]?.id);
+  sel.innerHTML = washers.map(w => `<option value="${w.id}" ${w.id===cur?'selected':''}>👩 ${CC.esc(w.name)}</option>`).join('');
+  render();
+}
+function me() { const id = Number(document.getElementById('washerSel').value); localStorage.setItem('cc_washer', id); return id; }
+
+function render() {
+  const wid = me(); const now = Date.now();
+  document.getElementById('machines').innerHTML = machines.map(m => {
+    let left = '', pct = 0;
+    if (m.status === 'ocupada' && m.ends_at) { const total = new Date(m.ends_at)-new Date(m.started_at); pct = Math.min(100, Math.max(0,(now-new Date(m.started_at))/total*100)); const mins = Math.round((new Date(m.ends_at)-now)/60000); left = mins>0 ? `⏱ ${mins} min` : '<b style="color:var(--bad)">TERMINADA</b>'; }
+    return `<div class="machine ${m.status}"><b>${m.name}</b>
+      <div class="small">${m.status==='ocupada' ? `${m.order_code} · ${CC.esc(m.customer_name||'')}<br>${left}` : m.status==='averiada' ? '⚠️ Averiada' : '✅ Libre'}</div>
+      ${m.status==='ocupada' ? `<div class="bar"><i style="width:${pct}%"></i></div><button class="ghost small" onclick="freeMachine(${m.id})">Vaciar</button>` : m.status==='libre' ? `<button class="ghost small" onclick="setMachine(${m.id},'averiada')">Marcar avería</button>` : `<button class="ghost small" onclick="setMachine(${m.id},'libre')">Reparada</button>`}
+    </div>`; }).join('');
+
+  const mine = orders.filter(o => HUB_STATUSES.includes(o.status) && o.washer_id === wid);
+  const free = orders.filter(o => ['en_hub','recogido'].includes(o.status) && !o.washer_id);
+  const html = [];
+  if (free.length) html.push(`<h3 class="small muted" style="margin:4px 0">Sin asignar (${free.length})</h3>` + free.map(o => ticket(o, true)).join(''));
+  html.push(`<h3 class="small muted" style="margin:10px 0 4px">Mis pedidos (${mine.length})</h3>` + (mine.length ? mine.map(o => ticket(o, false)).join('') : '<p class="muted small">Nada en tu cola.</p>'));
+  document.getElementById('queue').innerHTML = html.join('');
+}
+function ticket(o, unassigned) {
+  return `<div class="ticket" style="cursor:default">
+    <div class="row" style="justify-content:space-between"><span class="code">${o.code} · ${o.kg} kg</span><span class="chip ${o.status==='en_hub'?'bad':''}">${CC.STATUS_LABEL[o.status]}</span></div>
+    <div>${CC.esc(o.customer_name)}</div>
+    <div style="margin:4px 0"><span class="chip">🌸 ${CC.scentLabel(o.scent)}</span><span class="chip ${o.ironing==='completo'?'warn':''}">${CC.IRONING_LABEL[o.ironing]}</span>${o.vacuum?'<span class="chip ok">Envasar al vacío</span>':''}</div>
+    ${o.notes ? `<div class="small muted">📝 ${CC.esc(o.notes)}</div>` : ''}
+    ${unassigned ? `<button class="big-btn secondary" onclick="claim(${o.id})">Me lo quedo</button>` :
+      (o.status==='en_hub' || o.status==='lavando') ? `<button class="big-btn" onclick="pickMachine(${o.id}, '${o.status==='en_hub'?'lavadora':'secadora'}')">${NEXT_TXT[o.status]} →</button>` :
+      NEXT[o.status] ? `<button class="big-btn" onclick="advance(${o.id}, '${NEXT[o.status]}')">${NEXT_TXT[o.status]} →</button>` : ''}
+  </div>`;
+}
+async function claim(id) { await CC.api(`/api/orders/${id}`, { method:'PATCH', body:{ washer_id: me(), status: 'en_hub', actor:`hub:${me()}` } }); CC.toast('Asignado'); load(); }
+async function advance(id, status) { try { await CC.api(`/api/orders/${id}`, { method:'PATCH', body:{ status, actor:`hub:${me()}` } }); CC.toast(CC.STATUS_LABEL[status]); load(); } catch(e){ CC.toast('Error: '+e.message); } }
+function pickMachine(orderId, kind) {
+  const o = orders.find(x => x.id === orderId);
+  const libres = machines.filter(m => m.kind === kind && m.status === 'libre' && m.capacity_kg >= o.kg);
+  document.getElementById('modalBody').innerHTML = `<h2>${o.code} · ${o.kg} kg → ${kind}</h2>
+    ${libres.length ? libres.map(m => `<button class="big-btn secondary" onclick="start(${m.id}, ${orderId})">${m.name} · ${kind==='lavadora'?'45':'40'} min</button>`).join('') : `<p class="muted">No hay ninguna ${kind} libre con capacidad para ${o.kg} kg. Espera a que termine una.</p>`}
+    <div class="field" style="margin-top:10px"><label>Duración del ciclo (min)</label><input id="mins" type="number" value="${kind==='lavadora'?45:40}"></div>
+    <button class="ghost" onclick="closeModal()">Cancelar</button>`;
+  document.getElementById('modal').classList.add('open');
+}
+async function start(machineId, orderId) {
+  try { await CC.api(`/api/machines/${machineId}/start`, { method:'POST', body:{ order_id: orderId, minutes: Number(document.getElementById('mins').value), actor:`hub:${me()}` } }); CC.toast('Ciclo iniciado'); closeModal(); load(); } catch(e){ CC.toast('Error: '+e.message); }
+}
+async function freeMachine(id) { await CC.api(`/api/machines/${id}/free`, { method:'POST', body:{} }); load(); }
+async function setMachine(id, status) { await CC.api(`/api/machines/${id}`, { method:'PATCH', body:{ status } }); load(); }
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id==='modal') closeModal(); });
+load(); CC.live({ order: () => load(), machine: () => load() }); setInterval(render, 30000);
+</script>
+</body></html>
