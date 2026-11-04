@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 120" width="560" height="120">
+  <rect width="120" height="120" rx="30" fill="#0B7A8A"/>
+  <circle cx="78" cy="42" r="13" fill="#F6C66B"/>
+  <path d="M14 70 C 26 58, 38 58, 50 70 S 74 82, 86 70 S 110 58, 122 70" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M14 90 C 26 78, 38 78, 50 90 S 74 102, 86 90 S 110 78, 122 90" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 26 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#FFFFFF"/>
+  <text x="142" y="72" font-family="Outfit, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="56" fill="#0B7A8A" letter-spacing="-1">Costa<tspan fill="#1D2A30"> Clean</tspan></text>
+  <text x="145" y="100" font-family="Outfit, Poppins, 'Segoe UI', Arial, sans-serif" font-weight="500" font-size="17" fill="#6B7A82" letter-spacing="2.4">LAVANDERÍA A DOMICILIO · MÁLAGA</text>
+</svg>

@@ -1,0 +1,65 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pide tu recogida · Costa Clean</title><link rel="stylesheet" href="common.css">
+<style> main { max-width: 640px; } .hero { background: linear-gradient(135deg, var(--sea), #19a3b5); color:#fff; border-radius:16px; padding:22px; margin-bottom:14px; } .hero h1 { color:#fff; font-size:26px; } .hero p { margin:0; opacity:.95 }
+.opt { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap:8px; } .opt label { border:2px solid var(--line); border-radius:10px; padding:10px; cursor:pointer; color:var(--ink); background:#fff; }
+.opt input { display:none } .opt input:checked + span { font-weight:700; color: var(--sea-dark) } .opt label:has(input:checked) { border-color: var(--sea); background:#eef8fa } .price { font-size:28px; font-weight:800; color:var(--sea-dark) } </style></head>
+<body>
+<div style="background:#F6C66B;color:#1D2A30;font-size:12px;text-align:center;padding:4px 10px;font-family:system-ui,sans-serif">BETA de demostración · los datos se guardan solo en este navegador · <a href="index.html" style="color:#075B67">inicio</a></div>
+
+<main>
+  <div class="hero"><h1>Tu ropa limpia, planchada y envasada al vacío. Sin salir de casa.</h1><p>Recogemos en bici por Málaga, la lavamos con el aroma que elijas y te la devolvemos en 24-48 h. Desde 22,90 €.</p></div>
+  <form class="card" id="f" onsubmit="return send(event)">
+    <h2>1. ¿Cuánta ropa tienes?</h2>
+    <div class="opt" id="bags"></div>
+    <h2 style="margin-top:16px">2. Elige el aroma</h2>
+    <div class="opt" id="scents"></div>
+    <h2 style="margin-top:16px">3. Planchado</h2>
+    <div class="opt" id="iron">
+      <label><input type="radio" name="iron" value="basico" checked><span>Plancha básica <small class="muted">(incluida: camisas, pantalones y prendas que lo necesiten)</small></span></label>
+      <label><input type="radio" name="iron" value="completo"><span>Planchado completo <small class="muted">(todas las prendas, +12/20/28 € según bolsa)</small></span></label>
+      <label><input type="radio" name="iron" value="ninguno"><span>Sin plancha <small class="muted">(solo lavado, secado y doblado)</small></span></label>
+    </div>
+    <h2 style="margin-top:16px">4. ¿Dónde y cuándo recogemos?</h2>
+    <div class="grid" style="grid-template-columns:1fr 1fr">
+      <div class="field"><label>Nombre</label><input id="name" required></div>
+      <div class="field"><label>Teléfono (WhatsApp)</label><input id="phone" required></div>
+      <div class="field" style="grid-column:1/-1"><label>Dirección completa</label><input id="address" required placeholder="Calle, número, piso, puerta"></div>
+      <div class="field"><label>Barrio</label><select id="zone"><option>Zona 1 · Centro</option><option>Zona 1 · Soho</option><option>Zona 1 · Malagueta</option><option>Zona 1 · Huelin</option><option>Zona 1 · Carretera de Cádiz</option><option>Zona 1 · Cruz de Humilladero</option><option>Zona 1 · Ciudad Jardín</option><option>Zona 1 · Pedregalejo</option><option>Zona 2 · El Palo (+2,90 €)</option><option>Zona 2 · Teatinos (+2,90 €)</option></select></div>
+      <div class="field"><label>Franja de recogida</label><select id="slot"><option>Mañana 09:00-11:00</option><option>Mediodía 13:00-15:00</option><option selected>Tarde 17:00-19:00</option><option>Noche 19:00-21:00</option></select></div>
+      <div class="field" style="grid-column:1/-1"><label>Notas (portero, alergias, prendas delicadas…)</label><textarea id="notes" rows="2"></textarea></div>
+    </div>
+    <div class="row" style="justify-content:space-between;margin-top:8px"><div><div class="small muted">Total (IVA incluido, recogida y entrega incluidas)</div><div class="price" id="price">—</div></div><button type="submit" style="padding:12px 22px;font-size:16px">Pedir recogida</button></div>
+    <p class="small muted" style="margin-top:10px">Al entregar pesamos la bolsa delante de ti. Si pesa más de lo indicado, pasa a la bolsa siguiente; si pesa menos, te cobramos la menor. Pago con tarjeta o Bizum a la entrega.</p>
+  </form>
+  <div class="card" id="done" style="display:none"></div>
+</main>
+<script src="mock-api.js"></script><script src="common.js"></script>
+<script>
+let meta;
+async function init() {
+  meta = await CC.loadMeta();
+  document.getElementById('bags').innerHTML = Object.entries(meta.pricing.bags).map(([k,b],i) => `<label><input type="radio" name="bag" value="${k}" ${k==='M'?'checked':''}><span>Bolsa ${k} · hasta ${b.kg} kg<br><b>${CC.eur(b.price)}</b><br><small class="muted">${k==='S'?'1 persona, 1 semana':k==='M'?'pareja / 1 semana':'familia / ropa de cama'}</small></span></label>`).join('');
+  document.getElementById('scents').innerHTML = meta.scents.map(s => `<label><input type="radio" name="scent" value="${s.id}" ${s.id==='fresco'?'checked':''}><span>${s.label}</span></label>`).join('');
+  document.getElementById('f').addEventListener('change', calc); calc();
+}
+const v = (n) => document.querySelector(`input[name=${n}]:checked`).value;
+function calc() {
+  const bag = v('bag'); let p = meta.pricing.bags[bag].price;
+  if (v('iron') === 'completo') p += meta.pricing.ironingFull[bag];
+  if (/Zona 2/.test(document.getElementById('zone').value)) p += meta.pricing.zone2Fee;
+  document.getElementById('price').textContent = CC.eur(p);
+}
+async function send(e) {
+  e.preventDefault();
+  const g = (i) => document.getElementById(i).value;
+  const bag = v('bag'); const today = new Date(); const d1 = new Date(today.getTime()+86400000), d2 = new Date(today.getTime()+2*86400000);
+  const f = (d) => d.toISOString().slice(0,10);
+  try {
+    const o = await CC.api('/api/orders', { method:'POST', body:{ name:g('name'), phone:g('phone'), address:g('address'), zone:g('zone').replace(/ \(.*\)/,''), kg: meta.pricing.bags[bag].kg, scent:v('scent'), ironing:v('iron'), pickup_slot:`${f(d1)} ${g('slot').split(' ')[1]}`, delivery_slot:`${f(d2)} ${g('slot').split(' ')[1]}`, notes:g('notes'), actor:'web' } });
+    document.getElementById('f').style.display='none';
+    const d = document.getElementById('done'); d.style.display='block';
+    d.innerHTML = `<h2>¡Recogida confirmada! 🎉</h2><p>Tu pedido es el <b>${o.code}</b>. Pasaremos el <b>${CC.esc(o.pickup_slot)}</b> por <b>${CC.esc(o.address)}</b>.</p><p>Te escribiremos por WhatsApp al ${CC.esc(o.phone)} cuando el rider esté cerca. Total estimado: <b>${CC.eur(o.price_eur)}</b>.</p><p class="small muted">Deja la ropa en una bolsa cerrada. No hace falta separar colores: lo hacemos nosotros.</p>`;
+  } catch(err) { alert('No se pudo enviar el pedido: ' + err.message); }
+}
+init();
+</script>
+</body></html>
