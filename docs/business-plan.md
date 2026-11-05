@@ -342,7 +342,52 @@ many dryers as washers).
 
 ---
 
-## 10. Sources consulted
+## 10. Simplified scenario: no VAT, no premises, no accountant
+
+Same model as the rest of the document with three changes: the customer price is kept in full (VAT at 0 %),
+rent is €0 and the accountant is €0. Everything else (riders, laundry staff, consumables, energy, bikes, software,
+insurance, marketing, machinery depreciation) stays the same. The app calculator has a "Simplified mode" checkbox
+that applies exactly these three changes.
+
+| Orders/day | Orders/month | Cost/order | Cost/kg | Revenue/order | Margin/order | Margin/month | Margin % |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 10 | 220 | €41.90 | €5.24 | €41.90 | €0.00 | €0 | 0 % |
+| 15 | 330 | €33.91 | €4.24 | €41.90 | €7.99 | €2,637 | 19 % |
+| 20 | 440 | €29.91 | €3.74 | €41.90 | €11.99 | €5,275 | 29 % |
+| **30** | **660** | **€25.91** | **€3.24** | **€41.90** | **€15.99** | **€10,552** | **38 %** |
+| 40 | 880 | €23.91 | €2.99 | €41.90 | €17.99 | €15,828 | 43 % |
+| 50 | 1,100 | €22.71 | €2.84 | €41.90 | €19.19 | €21,104 | 46 % |
+
+Revenue per order: bag M at €36.90 plus 25 % of orders with full ironing at €20 = €41.90 on average.
+
+Fixed monthly costs in this scenario: **€1,477** (utilities 150, cargo bikes 320, software 150, insurance 100,
+marketing 400, machinery depreciation 357) plus **€3,800** for the two riders.
+
+| | With VAT, rent and accountant (base) | Without VAT, rent or accountant |
+|---|---:|---:|
+| Cost per order at 30 orders/day | €27.81 | **€25.91** |
+| Net revenue per order | €34.63 | **€41.90** |
+| Monthly margin at 30 orders/day | €4,502 (20 %) | **€10,552 (38 %)** |
+| Break-even with 2 riders | 17.8 orders/day | **10.0 orders/day** |
+| Break-even with 1.5 riders | 15.2 orders/day | **8.2 orders/day** |
+| Break-even with 1 rider | 12.5 orders/day | **6.4 orders/day** |
+
+**Where the difference comes from.** At 30 orders/day the margin rises by €6,050 a month: €4,800 comes from VAT
+(€7.27 per order that in the base case goes to the tax office), €1,100 from rent and €150 from the accountant.
+VAT weighs four times more than the premises. Worth being clear about: if you invoice with VAT, that money is not
+the business's even though it lands in the account. The figures in this section describe the case where it is not charged.
+
+**What does not change.** Hub labour is still €14.38 per order (55 % of the cost in this scenario) and delivery
+€5.76. The levers are the same: minutes per order in the hub and stop density per route.
+
+**Practical reading.** Without those three costs the business covers its expenses at 10 orders a day with 2 full-time
+riders; with a single rider, at 6-7. At 15 orders/day it leaves about €2,600 a month, and at 30 orders/day about
+€10,500. Initial investment drops to about €40,600 without the rent deposit, or €15,000-20,000 with
+second-hand machinery.
+
+---
+
+## 11. Sources consulted
 
 - Professional washer prices (Primer LP-10, Fagor LAP-10, Primer RS-18 / LS-18): [Hostelearte](https://hostelearte.com/lavadoras-industriales-y-profesionales?q=Marca-Primer), [Hosteleria10](https://hosteleria10.com/lavado/lavadoras/), [Donbar](https://donbar.es/tienda/lavado-e-higiene/lavadoras/lavadora-profesional-baja-velocidad-20-kg-factor-200-gama-rs-719x840x1158h-mm-rs-18-t2-hw-primer/), [Gavinox guide](https://gavinox.es/blog/lavado/lavadora-industrial-precio-guia-de-costes-y-opciones-disponibles), [second-hand on Wallapop](https://es.wallapop.com/electrodomesticos/lavadora-industrial).
 - Dryers: [Hosteleria10 catalogue](https://hosteleria10.com/recursos/catalogos/catalogo-secadoras-hosteleria10.pdf), [Primer DE-28 at Donbar](https://donbar.es/tienda/lavado-e-higiene/secadoras/secadora-industrial-electrica-31-kg-gama-excellence-985x1054x1975h-mm-de-28-e-t2-primer), [Girbau ED series](https://www.girbau.com/es-mx/wp-content/uploads/sites/6/2025/12/ED-Series_Brochure_ES_.pdf).

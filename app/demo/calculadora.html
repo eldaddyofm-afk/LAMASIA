@@ -7,7 +7,7 @@
   <h1>Calculadora de costes, precios y punto de equilibrio</h1>
   <p class="small muted">Mueve los controles y todo se recalcula. Los valores por defecto son los del plan de negocio (<code>docs/plan-negocio.md</code>). Importes sin IVA salvo que se indique.</p>
   <div class="two">
-    <aside class="card inputs" id="inputs"></aside>
+    <aside class="card inputs"><label style="display:flex;gap:8px;align-items:center;background:#fff4d6;border-radius:9px;padding:8px 10px;margin-bottom:10px;cursor:pointer;color:var(--ink)"><input type="checkbox" id="simpl" onchange="simplificado(this.checked)" style="width:auto"><span><b>Modo simplificado</b>: sin IVA, sin alquiler de local y sin gestoría</span></label><div id="inputs"></div></aside>
     <div class="grid">
       <div class="kpis" id="kpis"></div>
       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
@@ -36,6 +36,7 @@ const FIELDS = [
     ['kgPedido', 'Kg medios por pedido', 4, 15, 0.5, ' kg'],
     ['pctPlanchadoCompleto', '% con planchado completo', 0, 1, 0.05, '%'],
     ['ticketMedioIva', 'Ticket medio bolsa (IVA inc.)', 15, 60, 0.1, ' €'],
+    ['iva', 'IVA aplicado', 0, 0.21, 0.21, '%'],
     ['extraPlanchadoIva', 'Extra planchado completo (IVA inc.)', 0, 40, 1, ' €'],
   ]],
   ['Personal', [
@@ -58,6 +59,7 @@ const FIELDS = [
   ]],
   ['Fijos mensuales', [
     ['alquilerLocal', 'Alquiler local', 0, 3000, 50, ' €'],
+    ['gestoria', 'Gestoría', 0, 400, 10, ' €'],
     ['marketing', 'Marketing', 0, 2000, 50, ' €'],
     ['bicisMes', 'Cargo-bikes (amort.+mant.)', 0, 800, 10, ' €'],
     ['inversionMaquinaria', 'Inversión maquinaria', 5000, 80000, 1000, ' €'],
@@ -66,6 +68,12 @@ const FIELDS = [
 const p = { ...Modelo.DEFAULTS };
 const fmt = (k, v, suf) => suf === '%' ? Math.round(v*100) + ' %' : (k.startsWith('precio') ? v.toFixed(2) : CC.num(v, Number.isInteger(v) ? 0 : 1)) + suf;
 document.getElementById('inputs').innerHTML = FIELDS.map(([g, fs]) => `<h2>${g}</h2>` + fs.map(([k, l, min, max, step, suf]) => `<div class="field"><label>${l}<b id="v_${k}">${fmt(k, p[k], suf)}</b></label><input type="range" min="${min}" max="${max}" step="${step}" value="${p[k]}" oninput="upd('${k}', this.value, '${suf}')"></div>`).join('')).join('');
+function simplificado(on) {
+  const vals = on ? { iva: 0, alquilerLocal: 0, gestoria: 0 } : { iva: Modelo.DEFAULTS.iva, alquilerLocal: Modelo.DEFAULTS.alquilerLocal, gestoria: Modelo.DEFAULTS.gestoria };
+  Object.assign(p, vals);
+  document.querySelectorAll('#inputs input[type=range]').forEach((el) => { const k = el.getAttribute('oninput').match(/upd\('(\w+)'/)[1]; if (k in vals) { el.value = p[k]; document.getElementById('v_' + k).textContent = fmt(k, p[k], el.getAttribute('oninput').match(/, '([^']*)'\)/)[1]); } });
+  render();
+}
 function upd(k, v, suf) { p[k] = Number(v); document.getElementById('v_'+k).textContent = fmt(k, p[k], suf); render(); }
 
 const CAPEX = [

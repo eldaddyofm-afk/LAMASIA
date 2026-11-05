@@ -756,7 +756,139 @@ jornada y 1 rider; comprar/alquilar maquinaria; instalar.</li>
 para llenar las máquinas por la mañana.</li>
 <li><strong>Mes 4-6:</strong> Segundo rider, suscripciones, abrir Zona 2, optimizar tiempos del hub por debajo de 50 min.</li>
 </ol>
-<h2 class="sec brk">10. Fuentes consultadas</h2>
+<h2 class="sec brk">10. Escenario simplificado: sin IVA, sin local y sin gestoría</h2>
+<p>Mismo modelo que el resto del documento, con tres cambios: el precio al cliente se queda íntegro (IVA al 0 %),
+el alquiler del local es 0 € y la gestoría es 0 €. Todo lo demás (riders, lavanderas, consumibles, energía,
+bicis, software, seguro, marketing, amortización de maquinaria) se mantiene. La calculadora de la app tiene
+una casilla «Modo simplificado» que aplica exactamente estos tres cambios.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Pedidos/día</th>
+<th align="right">Pedidos/mes</th>
+<th align="right">Coste/pedido</th>
+<th align="right">Coste/kg</th>
+<th align="right">Ingreso/pedido</th>
+<th align="right">Margen/pedido</th>
+<th align="right">Margen/mes</th>
+<th align="right">Margen %</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">10</td>
+<td align="right">220</td>
+<td align="right">41,90 €</td>
+<td align="right">5,24 €</td>
+<td align="right">41,90 €</td>
+<td align="right">0,00 €</td>
+<td align="right">0 €</td>
+<td align="right">0 %</td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td align="right">330</td>
+<td align="right">33,91 €</td>
+<td align="right">4,24 €</td>
+<td align="right">41,90 €</td>
+<td align="right">7,99 €</td>
+<td align="right">2.637 €</td>
+<td align="right">19 %</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="right">440</td>
+<td align="right">29,91 €</td>
+<td align="right">3,74 €</td>
+<td align="right">41,90 €</td>
+<td align="right">11,99 €</td>
+<td align="right">5.275 €</td>
+<td align="right">29 %</td>
+</tr>
+<tr>
+<td align="right"><strong>30</strong></td>
+<td align="right"><strong>660</strong></td>
+<td align="right"><strong>25,91 €</strong></td>
+<td align="right"><strong>3,24 €</strong></td>
+<td align="right"><strong>41,90 €</strong></td>
+<td align="right"><strong>15,99 €</strong></td>
+<td align="right"><strong>10.552 €</strong></td>
+<td align="right"><strong>38 %</strong></td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td align="right">880</td>
+<td align="right">23,91 €</td>
+<td align="right">2,99 €</td>
+<td align="right">41,90 €</td>
+<td align="right">17,99 €</td>
+<td align="right">15.828 €</td>
+<td align="right">43 %</td>
+</tr>
+<tr>
+<td align="right">50</td>
+<td align="right">1.100</td>
+<td align="right">22,71 €</td>
+<td align="right">2,84 €</td>
+<td align="right">41,90 €</td>
+<td align="right">19,19 €</td>
+<td align="right">21.104 €</td>
+<td align="right">46 %</td>
+</tr>
+</tbody></table>
+<p>Ingreso por pedido: bolsa M a 36,90 € más el 25 % de pedidos con planchado completo a 20 € = 41,90 € de media.</p>
+<p>Costes fijos mensuales en este escenario: <strong>1.477 €</strong> (suministros 150, cargo-bikes 320, software 150, seguro 100,
+marketing 400, amortización de maquinaria 357) más <strong>3.800 €</strong> de los dos riders.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">Con IVA, local y gestoría (base)</th>
+<th align="right">Sin IVA, local ni gestoría</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Coste por pedido a 30 pedidos/día</td>
+<td align="right">27,81 €</td>
+<td align="right"><strong>25,91 €</strong></td>
+</tr>
+<tr>
+<td>Ingreso neto por pedido</td>
+<td align="right">34,63 €</td>
+<td align="right"><strong>41,90 €</strong></td>
+</tr>
+<tr>
+<td>Margen mensual a 30 pedidos/día</td>
+<td align="right">4.502 € (20 %)</td>
+<td align="right"><strong>10.552 € (38 %)</strong></td>
+</tr>
+<tr>
+<td>Punto de equilibrio con 2 riders</td>
+<td align="right">17,8 pedidos/día</td>
+<td align="right"><strong>10,0 pedidos/día</strong></td>
+</tr>
+<tr>
+<td>Punto de equilibrio con 1,5 riders</td>
+<td align="right">15,2 pedidos/día</td>
+<td align="right"><strong>8,2 pedidos/día</strong></td>
+</tr>
+<tr>
+<td>Punto de equilibrio con 1 rider</td>
+<td align="right">12,5 pedidos/día</td>
+<td align="right"><strong>6,4 pedidos/día</strong></td>
+</tr>
+</tbody></table>
+<p><strong>De dónde sale la diferencia.</strong> A 30 pedidos/día el margen sube 6.050 € al mes: 4.800 € vienen del IVA
+(7,27 € por pedido que en el escenario base se entregan a Hacienda), 1.100 € del alquiler y 150 € de la gestoría.
+Es decir, el IVA pesa cuatro veces más que el local. Conviene tenerlo claro: si se factura con IVA, ese dinero no es
+del negocio aunque entre en la cuenta. Las cifras de esta sección describen el caso en que no se repercute.</p>
+<p><strong>Lo que no cambia.</strong> La mano de obra del hub sigue siendo 14,38 € por pedido (el 55 % del coste en este
+escenario) y el reparto 5,76 €. Las palancas siguen siendo las mismas: minutos por pedido en el hub y densidad de
+paradas por ruta.</p>
+<p><strong>Lectura práctica.</strong> Sin esos tres costes el negocio cubre gastos con 10 pedidos al día y con 2 riders a jornada
+completa; con un solo rider, con 6-7. A 15 pedidos/día ya deja unos 2.600 € al mes, y a 30 pedidos/día unos
+10.500 €. La inversión inicial baja a unos 40.600 € sin la fianza del local, o a 15.000-20.000 € con
+maquinaria de segunda mano.</p>
+<h2 class="sec brk">11. Fuentes consultadas</h2>
 <ul>
 <li>Precios de lavadoras profesionales (Primer LP-10, Fagor LAP-10, Primer RS-18 / LS-18): <a href="https://hostelearte.com/lavadoras-industriales-y-profesionales?q=Marca-Primer">Hostelearte</a>, <a href="https://hosteleria10.com/lavado/lavadoras/">Hosteleria10</a>, <a href="https://donbar.es/tienda/lavado-e-higiene/lavadoras/lavadora-profesional-baja-velocidad-20-kg-factor-200-gama-rs-719x840x1158h-mm-rs-18-t2-hw-primer/">Donbar</a>, <a href="https://gavinox.es/blog/lavado/lavadora-industrial-precio-guia-de-costes-y-opciones-disponibles">guía Gavinox</a>, <a href="https://es.wallapop.com/electrodomesticos/lavadora-industrial">segunda mano en Wallapop</a>.</li>
 <li>Secadoras: <a href="https://hosteleria10.com/recursos/catalogos/catalogo-secadoras-hosteleria10.pdf">catálogo Hosteleria10</a>, <a href="https://donbar.es/tienda/lavado-e-higiene/secadoras/secadora-industrial-electrica-31-kg-gama-excellence-985x1054x1975h-mm-de-28-e-t2-primer">Primer DE-28 en Donbar</a>, <a href="https://www.girbau.com/es-mx/wp-content/uploads/sites/6/2025/12/ED-Series_Brochure_ES_.pdf">Girbau serie ED</a>.</li>

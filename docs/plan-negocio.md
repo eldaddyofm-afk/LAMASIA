@@ -341,7 +341,53 @@ tener al menos tantas como lavadoras).
 
 ---
 
-## 10. Fuentes consultadas
+## 10. Escenario simplificado: sin IVA, sin local y sin gestoría
+
+Mismo modelo que el resto del documento, con tres cambios: el precio al cliente se queda íntegro (IVA al 0 %),
+el alquiler del local es 0 € y la gestoría es 0 €. Todo lo demás (riders, lavanderas, consumibles, energía,
+bicis, software, seguro, marketing, amortización de maquinaria) se mantiene. La calculadora de la app tiene
+una casilla «Modo simplificado» que aplica exactamente estos tres cambios.
+
+| Pedidos/día | Pedidos/mes | Coste/pedido | Coste/kg | Ingreso/pedido | Margen/pedido | Margen/mes | Margen % |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 10 | 220 | 41,90 € | 5,24 € | 41,90 € | 0,00 € | 0 € | 0 % |
+| 15 | 330 | 33,91 € | 4,24 € | 41,90 € | 7,99 € | 2.637 € | 19 % |
+| 20 | 440 | 29,91 € | 3,74 € | 41,90 € | 11,99 € | 5.275 € | 29 % |
+| **30** | **660** | **25,91 €** | **3,24 €** | **41,90 €** | **15,99 €** | **10.552 €** | **38 %** |
+| 40 | 880 | 23,91 € | 2,99 € | 41,90 € | 17,99 € | 15.828 € | 43 % |
+| 50 | 1.100 | 22,71 € | 2,84 € | 41,90 € | 19,19 € | 21.104 € | 46 % |
+
+Ingreso por pedido: bolsa M a 36,90 € más el 25 % de pedidos con planchado completo a 20 € = 41,90 € de media.
+
+Costes fijos mensuales en este escenario: **1.477 €** (suministros 150, cargo-bikes 320, software 150, seguro 100,
+marketing 400, amortización de maquinaria 357) más **3.800 €** de los dos riders.
+
+| | Con IVA, local y gestoría (base) | Sin IVA, local ni gestoría |
+|---|---:|---:|
+| Coste por pedido a 30 pedidos/día | 27,81 € | **25,91 €** |
+| Ingreso neto por pedido | 34,63 € | **41,90 €** |
+| Margen mensual a 30 pedidos/día | 4.502 € (20 %) | **10.552 € (38 %)** |
+| Punto de equilibrio con 2 riders | 17,8 pedidos/día | **10,0 pedidos/día** |
+| Punto de equilibrio con 1,5 riders | 15,2 pedidos/día | **8,2 pedidos/día** |
+| Punto de equilibrio con 1 rider | 12,5 pedidos/día | **6,4 pedidos/día** |
+
+**De dónde sale la diferencia.** A 30 pedidos/día el margen sube 6.050 € al mes: 4.800 € vienen del IVA
+(7,27 € por pedido que en el escenario base se entregan a Hacienda), 1.100 € del alquiler y 150 € de la gestoría.
+Es decir, el IVA pesa cuatro veces más que el local. Conviene tenerlo claro: si se factura con IVA, ese dinero no es
+del negocio aunque entre en la cuenta. Las cifras de esta sección describen el caso en que no se repercute.
+
+**Lo que no cambia.** La mano de obra del hub sigue siendo 14,38 € por pedido (el 55 % del coste en este
+escenario) y el reparto 5,76 €. Las palancas siguen siendo las mismas: minutos por pedido en el hub y densidad de
+paradas por ruta.
+
+**Lectura práctica.** Sin esos tres costes el negocio cubre gastos con 10 pedidos al día y con 2 riders a jornada
+completa; con un solo rider, con 6-7. A 15 pedidos/día ya deja unos 2.600 € al mes, y a 30 pedidos/día unos
+10.500 €. La inversión inicial baja a unos 40.600 € sin la fianza del local, o a 15.000-20.000 € con
+maquinaria de segunda mano.
+
+---
+
+## 11. Fuentes consultadas
 
 - Precios de lavadoras profesionales (Primer LP-10, Fagor LAP-10, Primer RS-18 / LS-18): [Hostelearte](https://hostelearte.com/lavadoras-industriales-y-profesionales?q=Marca-Primer), [Hosteleria10](https://hosteleria10.com/lavado/lavadoras/), [Donbar](https://donbar.es/tienda/lavado-e-higiene/lavadoras/lavadora-profesional-baja-velocidad-20-kg-factor-200-gama-rs-719x840x1158h-mm-rs-18-t2-hw-primer/), [guía Gavinox](https://gavinox.es/blog/lavado/lavadora-industrial-precio-guia-de-costes-y-opciones-disponibles), [segunda mano en Wallapop](https://es.wallapop.com/electrodomesticos/lavadora-industrial).
 - Secadoras: [catálogo Hosteleria10](https://hosteleria10.com/recursos/catalogos/catalogo-secadoras-hosteleria10.pdf), [Primer DE-28 en Donbar](https://donbar.es/tienda/lavado-e-higiene/secadoras/secadora-industrial-electrica-31-kg-gama-excellence-985x1054x1975h-mm-de-28-e-t2-primer), [Girbau serie ED](https://www.girbau.com/es-mx/wp-content/uploads/sites/6/2025/12/ED-Series_Brochure_ES_.pdf).
