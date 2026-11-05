@@ -38,7 +38,7 @@ img { max-width:100%; display:block; }
 /* tarjetas a tamaño real 85x55 mm */
 .tarjeta { width:85mm; height:55mm; border-radius:3mm; overflow:hidden; position:relative; box-shadow:0 3mm 8mm rgba(0,0,0,.12); }
 .tarjeta.front { background:var(--mar); color:#fff; padding:7mm; }
-.tarjeta.front .logo { width:38mm; }
+.tarjeta.front .logo { width:46mm; }
 .tarjeta.front .claim { position:absolute; left:7mm; bottom:7mm; font-family:Outfit; font-size:9pt; line-height:1.25; width:60mm; }
 .tarjeta.front .mark { position:absolute; right:-6mm; bottom:-6mm; width:30mm; opacity:.18; }
 .tarjeta.back { background:var(--arena); color:var(--tinta); padding:6mm 7mm; display:grid; grid-template-columns:1fr 30mm; gap:4mm; align-items:center; }
@@ -75,7 +75,7 @@ img { max-width:100%; display:block; }
     <tr><td>Beta de la app de operaciones</td><td class="url">https://claude.ai/artifact/4mTka28BJN6Zn84yWCDgqv</td><td>Publicada. Demo sin servidor; los datos se guardan en el navegador de cada uno.</td></tr>
     <tr><td>App completa (con servidor, GPS real)</td><td class="mono">repositorio LAMASIA · carpeta app/</td><td>Lista para desplegar en un VPS con HTTPS.</td></tr>
     <tr><td>Plan de negocio</td><td class="mono">docs/plan-negocio.md</td><td>Completo, con fuentes.</td></tr>
-    <tr><td>Logos (SVG y PNG)</td><td class="mono">brand/logo-mark · logo-horizontal · logo-horizontal-blanco</td><td>Vectorial, listos para imprenta.</td></tr>
+    <tr><td>Logos (SVG y PNG)</td><td class="mono">brand/logo-horizontal · logo-vertical · logo-mark · versiones blanco y negro · avatar · favicon</td><td>Vectorial con texto en trazados, listos para imprenta.</td></tr>
     <tr><td>QR a la landing</td><td class="mono">brand/qr-landing.svg · .png</td><td>Apunta a la landing. Si cambiáis de dominio, hay que regenerarlo.</td></tr>
     <tr><td>Tarjetas de visita</td><td class="mono">brand/tarjetas-visita.pdf (A4, 10 por hoja, anverso y reverso)</td><td>Falta poner el teléfono real.</td></tr>
     <tr><td>Este documento</td><td class="mono">brand/kit-marca.pdf</td><td></td></tr>
@@ -113,18 +113,18 @@ img { max-width:100%; display:block; }
 <!-- 4 LOGO -->
 <div class="page">
   <div class="eyebrow">Logotipo</div>
-  <h2>El símbolo: sol, olas y un destello de limpio</h2>
+  <h2>La percha y la ola: una sola línea, dos ideas</h2>
   <div class="grid g2" style="align-items:center">
     <div class="card" style="padding:10mm"><img src="logo-horizontal.png"></div>
     <div class="card" style="background:var(--mar);padding:10mm"><img src="logo-horizontal-blanco.png"></div>
-    <div class="card"><div style="display:flex;gap:8mm;align-items:center;margin-bottom:4mm"><img src="logo-mark.png" style="width:26mm"><img src="logo-mark.png" style="width:16mm"><img src="logo-mark.png" style="width:9mm"></div><div style="font-size:9.5pt;color:var(--bruma)">Símbolo solo: avatar de WhatsApp e Instagram, favicon, pegatinas pequeñas. Tamaño mínimo 9 mm / 32 px.</div></div>
-    <div class="card"><h3 style="margin-top:0">Reglas</h3><p style="font-size:10pt">Área de respeto alrededor del logo: la altura del símbolo dividida entre 4.<br>Sobre fotos, usar la versión blanca sobre una capa de color Mar al 70 %.<br>El símbolo lleva siempre las esquinas redondeadas; nunca en círculo.<br>"Costa" va en Mar y "Clean" en Tinta; en la versión blanca todo en blanco.</p></div>
+    <div class="card"><div style="display:flex;gap:8mm;align-items:center;margin-bottom:4mm"><img src="logo-mark.png" style="width:26mm"><img src="logo-mark.png" style="width:16mm"><img src="logo-mark.png" style="width:9mm"></div><div style="font-size:9.5pt;color:var(--bruma)">Símbolo solo: avatar de WhatsApp e Instagram (brand/avatar.svg), favicon, pegatinas pequeñas. Tamaño mínimo 8 mm / 24 px.</div></div>
+    <div class="card"><h3 style="margin-top:0">Reglas</h3><p style="font-size:10pt">El símbolo es una percha cuya barra es una ola: ropa cuidada y costa en un trazo. Grosor de línea único, nunca relleno.<br>Área de respeto: la altura del gancho por cada lado.<br>Símbolo en Mar y texto en Tinta sobre claros; todo en blanco sobre Mar o sobre foto con capa Mar al 70 %.<br>Versiones: horizontal (preferida), vertical (cuadrados y redes), símbolo solo (avatar, favicon, etiquetas pequeñas). Texto en trazados: la imprenta no necesita la fuente.</p></div>
   </div>
   <h3>Usos incorrectos</h3>
   <div class="grid g4" style="font-size:9pt;color:var(--bruma)">
     <div class="card"><img src="logo-mark.png" style="width:16mm;transform:rotate(-12deg);margin-bottom:3mm">No girar ni inclinar.</div>
     <div class="card"><img src="logo-mark.png" style="width:22mm;height:12mm;object-fit:fill;margin-bottom:3mm">No deformar.</div>
-    <div class="card"><img src="logo-mark.png" style="width:16mm;filter:hue-rotate(120deg);margin-bottom:3mm">No cambiar los colores.</div>
+    <div class="card"><img src="logo-mark.png" style="width:16mm;filter:hue-rotate(120deg);margin-bottom:3mm">No cambiar los colores ni rellenar la percha.</div>
     <div class="card" style="background:#f0a">
       <img src="logo-mark.png" style="width:16mm;margin-bottom:3mm"><span style="color:#fff">No ponerlo sobre colores fuera de la paleta.</span></div>
   </div>
@@ -139,9 +139,9 @@ img { max-width:100%; display:block; }
     <div class="sw" style="background:#0B7A8A;color:#fff"><b>Mar</b><span>#0B7A8A · RGB 11 122 138 · CMYK 92 12 36 2<br>Color principal. Logo, titulares, fondos.</span></div>
     <div class="sw" style="background:#075B67;color:#fff"><b>Mar profundo</b><span>#075B67 · RGB 7 91 103<br>Texto sobre arena, QR, hover.</span></div>
     <div class="sw" style="background:#F6EFE4;color:#1D2A30;border:1px solid #E3DACB"><b>Arena</b><span>#F6EFE4 · RGB 246 239 228<br>Fondo de página y reversos. Nunca para texto.</span></div>
-    <div class="sw" style="background:#F6C66B;color:#1D2A30"><b>Sol</b><span>#F6C66B · RGB 246 198 107<br>Solo en el símbolo y detalles pequeños.</span></div>
+    <div class="sw" style="background:#F6C66B;color:#1D2A30"><b>Sol</b><span>#F6C66B · RGB 246 198 107<br>Acentos pequeños: etiquetas, iconos, detalles.</span></div>
     <div class="sw" style="background:#F26B4E;color:#fff"><b>Coral</b><span>#F26B4E · RGB 242 107 78 · CMYK 0 70 65 0<br>Un solo uso: el botón de pedir. Nada más.</span></div>
-    <div class="sw" style="background:#1D2A30;color:#fff"><b>Tinta</b><span>#1D2A30 · RGB 29 42 48<br>Texto. "Clean" en el logo.</span></div>
+    <div class="sw" style="background:#1D2A30;color:#fff"><b>Tinta</b><span>#1D2A30 · RGB 29 42 48<br>Texto y el nombre en el logo.</span></div>
   </div>
   <h3>Proporción</h3>
   <div style="display:flex;height:12mm;border-radius:3mm;overflow:hidden;font-family:Outfit;font-size:8.5pt;color:#fff">
