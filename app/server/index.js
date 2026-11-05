@@ -6,6 +6,11 @@ const { optimize, HUB } = require('./routing');
 const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
+// Recursos de marca y documentación (PDF, logos, Instagram, planes) servidos desde la propia app.
+app.use('/brand', express.static(path.join(__dirname, '..', '..', 'brand')));
+app.use('/docs', express.static(path.join(__dirname, '..', '..', 'docs')));
+app.get('/landing', (_req, res) => res.sendFile(path.join(__dirname, '..', '..', 'brand', 'landing.html')));
+app.get('/en', (_req, res) => res.sendFile(path.join(__dirname, '..', '..', 'brand', 'en', 'landing.html')));
 
 // ---------- Server-Sent Events: posiciones de riders y cambios de pedidos en vivo ----------
 const sseClients = new Set();
@@ -222,7 +227,7 @@ app.get('/api/summary', (_req, res) => {
 });
 
 // Páginas limpias (sin .html)
-for (const p of ['panel', 'mapa', 'rider', 'hub', 'calculadora', 'pedido']) {
+for (const p of ['panel', 'mapa', 'rider', 'hub', 'calculadora', 'pedido', 'recursos']) {
   app.get(`/${p}`, (_req, res) => res.sendFile(path.join(__dirname, '..', 'public', `${p}.html`)));
 }
 

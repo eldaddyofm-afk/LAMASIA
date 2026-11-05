@@ -6,7 +6,8 @@ Servicio de lavandería a domicilio: recogida y entrega en bicicleta de carga, l
 | Carpeta | Qué hay |
 |---|---|
 | `docs/plan-negocio.md` | Plan operativo y económico: cómo funciona el sistema, costes, precio de venta, rutas, maquinaria industrial, punto de equilibrio, riesgos y siguientes pasos. |
-| `app/` | Aplicación web interna **Costa Clean OPS** (Node.js + Express + SQLite, sin frameworks de frontend). |
+| `app/` | Aplicación web interna **Costa Clean OPS** (Node.js + Express + SQLite, sin frameworks de frontend). `app/demo/` es la beta sin servidor. |
+| `brand/` | Marca: logos, kit de marca (PDF), tarjetas, QR, landings, pack de Instagram y PDF de costes. `brand/en/` es la versión en inglés. |
 
 ## La aplicación
 
@@ -17,7 +18,8 @@ Servicio de lavandería a domicilio: recogida y entrega en bicicleta de carga, l
 | Hub lavandería | `/hub` | Lavanderas | Cola de trabajo por persona, meter pedidos en lavadora/secadora con temporizador, aroma y tipo de planchado de cada bolsa, envasado, marcar listo. |
 | App rider | `/rider` | Repartidores (móvil) | Ruta del día en orden óptimo, navegación, marcar recogido/entregado, **envío automático del GPS** del móvil cada 5 s. |
 | Web cliente | `/pedido` | Clientes | Formulario de pedido: bolsa (5/10/15 kg), aroma, planchado, barrio, franja horaria y precio. |
-| Calculadora | `/calculadora` | Vosotros | Modelo económico interactivo (mismos números que el plan): costes, margen, punto de equilibrio, inversión en maquinaria. |
+| Calculadora | `/calculadora` | Vosotros | Modelo económico interactivo (mismos números que el plan): costes, margen, punto de equilibrio, inversión en maquinaria. Modo simplificado sin IVA, local ni gestoría. |
+| Recursos | `/recursos` | Vosotros | Plan de negocio (ES/EN), kit de marca, logos, tarjetas, QR, pack de Instagram y landings, servidos desde la app (`/brand`, `/docs`, `/landing`, `/en`). |
 
 ### Arrancar
 

@@ -21,7 +21,7 @@ const CC = (() => {
   }
 
   function nav(active) {
-    const links = [['panel', 'Panel'], ['mapa', 'Mapa y GPS'], ['hub', 'Hub lavandería'], ['rider', 'App rider'], ['pedido', 'Web cliente'], ['calculadora', 'Calculadora']];
+    const links = [['panel', 'Panel'], ['mapa', 'Mapa y GPS'], ['hub', 'Hub lavandería'], ['rider', 'App rider'], ['pedido', 'Web cliente'], ['calculadora', 'Calculadora'], ['recursos', 'Recursos']];
     const el = document.createElement('header');
     el.className = 'top';
     el.innerHTML = `<div class="brand">Costa Clean <span>OPS · Málaga</span></div>
