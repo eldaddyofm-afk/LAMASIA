@@ -1,0 +1,902 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Costa Clean · Plan operativo y económico</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+@page { size: A4; margin: 20mm 18mm 22mm; }
+:root { --mar:#0B7A8A; --maro:#075B67; --arena:#F6EFE4; --tinta:#1D2A30; --bruma:#5F6E76; --linea:#E3DACB; }
+* { box-sizing:border-box } body { margin:0; font-family:"Nunito Sans",sans-serif; color:var(--tinta); font-size:10.5pt; line-height:1.5; }
+.cover { height:257mm; background:var(--mar); color:#fff; margin:-20mm -18mm 0; padding:28mm 22mm; page-break-after:always; position:relative; }
+.cover svg { width:40mm; } .cover h1 { font-family:Outfit; font-size:36pt; font-weight:800; line-height:1.05; margin:70mm 0 8mm; max-width:150mm; letter-spacing:-.01em; }
+.cover p { font-size:13pt; max-width:140mm; opacity:.92 } .cover .wm { position:absolute; left:22mm; bottom:24mm; font-family:Outfit; font-weight:600; letter-spacing:.2em; font-size:11pt; }
+h2 { font-family:Outfit; font-size:20pt; font-weight:700; color:var(--maro); margin:0 0 5mm; line-height:1.15; letter-spacing:-.01em; }
+h2.brk { page-break-before:always; }
+h3 { font-family:Outfit; font-size:13pt; font-weight:600; margin:7mm 0 2.5mm; color:var(--tinta); }
+p { margin:0 0 3mm; } ul, ol { margin:0 0 3mm; padding-left:5mm; } li { margin-bottom:1mm; }
+strong { font-weight:700 } blockquote { margin:0 0 4mm; padding:3mm 5mm; border-left:1.2mm solid var(--mar); background:var(--arena); border-radius:0 3mm 3mm 0; font-size:10pt; }
+table { width:100%; border-collapse:collapse; font-size:9.3pt; margin:2mm 0 5mm; page-break-inside:auto; }
+th, td { text-align:left; padding:1.8mm 2.2mm; border-bottom:1px solid var(--linea); vertical-align:top; }
+th { font-family:Outfit; font-size:8pt; letter-spacing:.08em; text-transform:uppercase; color:var(--bruma); font-weight:600; background:var(--arena); }
+td[align=right], th[align=right] { text-align:right; font-variant-numeric:tabular-nums; }
+tr { page-break-inside:avoid } tbody tr:nth-child(even) td { background:#FBF8F2 }
+pre { background:var(--arena); border-radius:3mm; padding:4mm; font-size:9pt; line-height:1.4; overflow:hidden; white-space:pre-wrap; }
+code { font-family:"Nunito Sans"; font-size:9.5pt; background:var(--arena); padding:0 1mm; border-radius:1mm; }
+a { color:var(--mar); text-decoration:none; word-break:break-all; }
+hr { border:0; border-top:1px solid var(--linea); margin:6mm 0; }
+h2#10-fuentes-consultadas + ul, h2[id^="10-"] + ul { font-size:8.5pt; color:var(--bruma); }
+</style></head><body>
+<div class="cover"><svg viewBox="0 0 200 200"><g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M100 80 V68 A13 13 0 1 1 113 60"/><path d="M100 80 L26 134 C45 134 45 118 63 118 S82 134 100 134 S118 150 137 150 S156 134 174 134 Z"/></g></svg><h1>Plan operativo y económico</h1><p>Cómo funciona el sistema, cuánto cuesta, a qué precio vender, cómo ahorrar en rutas, qué maquinaria comprar y cuándo empieza a ganar dinero. Málaga, noviembre de 2026.</p><div class="wm">COSTA CLEAN · DOCUMENTO DE TRABAJO</div></div>
+<h2 class="sec brk">1. Resumen ejecutivo</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Propuesta</strong></td>
+<td>El cliente deja una bolsa, la recogemos en bici, la devolvemos en 24-48 h lavada, secada, planchada, doblada, envasada al vacío y con el aroma que eligió.</td>
+</tr>
+<tr>
+<td><strong>Dónde</strong></td>
+<td>Málaga capital, empezando por Centro, Soho, Malagueta, Huelin, Carretera de Cádiz, Cruz de Humilladero, Ciudad Jardín y Pedregalejo (Zona 1). El Palo y Teatinos como Zona 2 con suplemento.</td>
+</tr>
+<tr>
+<td><strong>Equipo inicial</strong></td>
+<td>2 riders en cargo-bike eléctrica + 3-5 lavanderas a media jornada en un micro-hub + vosotros (operaciones, atención al cliente, ventas B2B).</td>
+</tr>
+<tr>
+<td><strong>Inversión inicial</strong></td>
+<td><strong>≈ 45.000 € sin IVA</strong> (≈ 54.500 € con IVA) montando el hub con maquinaria nueva. <strong>≈ 20.000-25.000 €</strong> si se arranca con maquinaria de segunda mano y una sola cargo-bike nueva.</td>
+</tr>
+<tr>
+<td><strong>Precio de venta</strong></td>
+<td>Bolsa 5 kg 22,90 € · 10 kg 36,90 € · 15 kg 49,90 € (IVA incluido, recogida y entrega incluidas). Planchado completo +12/20/28 €.</td>
+</tr>
+<tr>
+<td><strong>Coste por pedido</strong></td>
+<td>37,70 € a 15 pedidos/día · <strong>27,80 € a 30 pedidos/día</strong> · 23,85 € a 50 pedidos/día (pedido medio 8 kg).</td>
+</tr>
+<tr>
+<td><strong>Punto de equilibrio</strong></td>
+<td><strong>≈ 18 pedidos/día (≈ 390/mes)</strong> con 2 riders a jornada completa.</td>
+</tr>
+<tr>
+<td><strong>Margen</strong></td>
+<td>20 % a 30 pedidos/día (≈ 4.500 €/mes) · 31 % a 50 pedidos/día (≈ 11.900 €/mes).</td>
+</tr>
+<tr>
+<td><strong>Riesgo principal</strong></td>
+<td>La mano de obra del hub es la mitad del coste. Si el planchado se descontrola o las lavanderas no se contratan en regla, el negocio no cuadra.</td>
+</tr>
+</tbody></table>
+<h2 class="sec brk">2. Cómo funciona el sistema (operativa)</h2>
+<h3>2.1 Flujo de un pedido</h3>
+<pre><code> Cliente pide (web/WhatsApp)  →  Pendiente de recoger
+        ↓ rider recoge en franja de 2 h, pesa la bolsa delante del cliente
+ Recogido (en bici)  →  En el hub (pesada, clasificada, etiquetada con QR, aroma anotado)
+        ↓ lavandera la asigna a una lavadora libre (app /hub)
+ Lavando (45 min)  →  Secando (40 min)  →  Planchando  →  Envasando al vacío  →  Listo
+        ↓ el optimizador agrupa las entregas listas por zona y las asigna a un rider
+ En reparto  →  Entregado (foto + confirmación en la app del rider)
+</code></pre>
+<p>Cada estado se registra con hora y persona en la app, así sabéis en cualquier momento <strong>qué se está
+lavando, qué está parado esperando máquina, qué está listo y dónde hay que entregarlo</strong>, y el cliente
+puede recibir un WhatsApp automático en cada paso.</p>
+<h3>2.2 Dónde se lava: ¿en casa de las lavanderas o en un hub?</h3>
+<p>Vuestra idea de partida es que varias mujeres de la zona hagan las lavadoras y empaqueten. Hay dos formas
+de hacerlo y conviene decidirlo antes de comprar nada:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>A. Red doméstica</strong> (cada una lava en su casa)</th>
+<th><strong>B. Micro-hub</strong> (local con máquinas, trabajan por turnos)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Inversión</td>
+<td>Mínima (bolsas, envasadoras pequeñas, aromas)</td>
+<td>25.000-45.000 € en máquinas e instalación</td>
+</tr>
+<tr>
+<td>Capacidad</td>
+<td>Lavadora doméstica 8 kg, ciclo + secado ≈ 2,5-3 h → 2-3 pedidos/día por persona</td>
+<td>Lavadora profesional 11-20 kg, ciclo 45 min → 8-10 pedidos/día por máquina</td>
+</tr>
+<tr>
+<td>Coste energético</td>
+<td>Secadora doméstica: muy ineficiente, la paga la trabajadora (problema legal y de motivación)</td>
+<td>Secadoras profesionales, tarifa industrial</td>
+</tr>
+<tr>
+<td>Calidad y trazabilidad</td>
+<td>Difícil de estandarizar (olores de la casa, mascotas, mezclas de coladas de clientes)</td>
+<td>Proceso uniforme, control de aroma, básculas, etiquetas</td>
+</tr>
+<tr>
+<td>Envasado al vacío y plancha</td>
+<td>Envasadora doméstica lenta; plancha doméstica</td>
+<td>Envasadora de campana, mesa de planchado con caldera (3x más rápido)</td>
+</tr>
+<tr>
+<td>Legal</td>
+<td><strong>Trabajo a domicilio = relación laboral</strong>. Pagar &quot;por lavadora&quot; a alguien sin contrato es un falso autónomo: multa + cuotas atrasadas.</td>
+<td>Contratos a tiempo parcial normales (convenio de tintorerías y lavanderías)</td>
+</tr>
+<tr>
+<td>Rutas</td>
+<td>El rider tiene que pasar por N casas además de por los clientes: más km</td>
+<td>Un solo punto de carga y descarga</td>
+</tr>
+</tbody></table>
+<p><strong>Recomendación: micro-hub (B), con las mismas mujeres como empleadas a tiempo parcial.</strong> Es más
+inversión, pero es lo único que permite ofrecer planchado y envasado al vacío uniformes y escalar a
+30-50 pedidos/día. La red doméstica (A) solo tiene sentido como prueba de concepto de 1-2 meses con
+10-15 clientes de confianza para validar demanda antes de firmar un local; en ese caso hay que dar de alta
+a las personas aunque sea por pocas horas.</p>
+<h3>2.3 El hub</h3>
+<ul>
+<li>Local de <strong>100-120 m²</strong> con trifásica (o posibilidad de instalarla), desagües y salida de aire para las
+secadoras. Ubicación ideal: <strong>Perchel / Cruz de Humilladero / entorno de la estación María Zambrano</strong>:
+está a 10-15 minutos en bici de todas las zonas de la Zona 1 y los alquileres son más bajos que en el
+Centro. Alternativa: polígono San Rafael o Guadalhorce (más barato, pero 20-25 min de bici al Centro).
+Alquiler orientativo: <strong>900-1.500 €/mes + IVA</strong> (anuncios 2025-26 en Fotocasa / CompanySpace).</li>
+<li>Zonas: recepción y pesaje · 3 lavadoras · 3 secadoras · 2 puestos de plancha · mesa de doblado y
+envasado · estantería de pedidos listos ordenados por ruta.</li>
+<li>Turnos: 7:00-15:00 y 15:00-21:00. Las recogidas de la tarde se lavan a primera hora del día siguiente;
+las de la mañana se entregan por la tarde (24 h) o al día siguiente (48 h).</li>
+</ul>
+<h3>2.4 El reparto en bici</h3>
+<ul>
+<li><strong>2 cargo-bikes eléctricas con caja</strong> (capacidad 80-100 kg / 4-6 bolsas de 10 kg). Málaga capital es
+llana en toda la franja costera; solo Ciudad Jardín y Teatinos tienen cuestas suaves.</li>
+<li>Cada rider hace <strong>≈ 7 paradas/hora</strong> en zona densa (4 min por parada + 3-4 min de pedaleo). Con 7 horas
+en ruta: <strong>≈ 50 paradas/día por rider = 25 pedidos</strong> (cada pedido es una recogida + una entrega).
+Capacidad de la pareja: <strong>≈ 50 pedidos/día</strong>. Por encima hay que contratar un tercer rider.</li>
+<li>El GPS del móvil del rider se envía a la app cada 5 s: vosotros lo veis en el mapa y el cliente puede
+recibir el aviso &quot;tu rider está a 5 minutos&quot;.</li>
+</ul>
+<h3>2.5 Aromas y envasado al vacío (el diferencial)</h3>
+<ul>
+<li>6 aromas: brisa marina, lavanda, algodón limpio, cítrico mediterráneo, jazmín de Málaga y sin perfume
+(hipoalergénico). Se aplican con <strong>perfumante textil profesional en el último aclarado</strong> (≈ 0,03 €/kg) y
+un spray final antes de envasar. Hay que lavar por aroma o usar lavadoras con dosificación automática.</li>
+<li>Envasado al vacío: bolsas de 60-70 litros de PA/PE (0,50-0,70 € la unidad), 2 por pedido de 8 kg.
+Una <strong>envasadora de campana</strong> (1.500-3.500 €) tarda 30-40 s por bolsa; las envasadoras externas
+(300-600 €) funcionan pero tardan 2-3 min y las bolsas gofradas cuestan el doble. El vacío comprime la
+ropa ≈ 60 %: caben más pedidos en la caja de la bici y el cliente percibe &quot;ropa nueva&quot;.</li>
+<li>Ojo con la plancha: un paquete al vacío arruga la ropa planchada si se aprieta al máximo. Hacer
+<strong>vacío parcial</strong> (dejar 20-30 % de aire) y doblar con cartón o papel de seda entre camisas. Probadlo con
+vuestras propias prendas antes de venderlo.</li>
+</ul>
+<h2 class="sec brk">3. Supuestos del modelo económico</h2>
+<table>
+<thead>
+<tr>
+<th>Supuesto</th>
+<th>Valor</th>
+<th>De dónde sale</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pedido medio</td>
+<td>8 kg → bolsa M (10 kg) a 36,90 € IVA inc.</td>
+<td>Mix esperado 30 % S, 50 % M, 20 % L</td>
+</tr>
+<tr>
+<td>Pedidos con planchado completo</td>
+<td>25 % (+20 € de media)</td>
+<td>Estimación</td>
+</tr>
+<tr>
+<td>Días operativos</td>
+<td>22/mes (lunes-sábado son 26; prudencia)</td>
+<td></td>
+</tr>
+<tr>
+<td>Coste empresa lavandera</td>
+<td><strong>12,5 €/h</strong></td>
+<td>SMI 2026: 1.221 €/mes × 14 pagas = 17.094 €/año; con ≈ 31,5 % de Seguridad Social a cargo de la empresa ≈ 22.500 €/año ≈ 1.875 €/mes ≈ 11,6 €/h; 12,5 €/h deja margen para plus de convenio</td>
+</tr>
+<tr>
+<td>Coste empresa rider (jornada completa)</td>
+<td><strong>1.900 €/mes</strong></td>
+<td>Mismo cálculo SMI 2026</td>
+</tr>
+<tr>
+<td>Tiempo de mano de obra por pedido de 8 kg</td>
+<td><strong>54 min</strong> (plancha básica) / <strong>114 min</strong> (planchado completo)</td>
+<td>Clasificar y cargar 8 · pasar a secadora 5 · doblar 18 (≈ 35 prendas × 30 s) · plancha básica 15 (6-8 prendas) · envasar 8 · planchado completo +60</td>
+</tr>
+<tr>
+<td>Consumibles por pedido</td>
+<td><strong>3,54 €</strong></td>
+<td>Detergente+suavizante+perfume 0,12 €/kg → 0,96 · 2 bolsas de vacío 1,20 · 6,7 kWh × 0,18 €/kWh = 1,21 · 80 L de agua × 2,2 €/m³ = 0,18</td>
+</tr>
+<tr>
+<td>Electricidad</td>
+<td>0,18 €/kWh</td>
+<td>Pymes con tarifa indexada en 2025-26 pagan entre 0,13 y 0,20 €/kWh según potencia</td>
+</tr>
+<tr>
+<td>Alquiler</td>
+<td>1.100 €/mes</td>
+<td>Ver 2.3</td>
+</tr>
+<tr>
+<td>Cargo-bikes</td>
+<td>320 €/mes las dos</td>
+<td>4.000 € cada una amortizadas a 36 meses (≈ 110 €) + mantenimiento 35 € + seguro 15 €</td>
+</tr>
+<tr>
+<td>Software, seguros, gestoría, suministros fijos, marketing</td>
+<td>150 + 100 + 150 + 150 + 400 = <strong>950 €/mes</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Amortización maquinaria</td>
+<td>30.000 € a 7 años = <strong>357 €/mes</strong></td>
+<td>Ver sección 7</td>
+</tr>
+</tbody></table>
+<h2 class="sec brk">4. ¿Cuánto nos cuesta? Costes mensuales y por pedido</h2>
+<table>
+<thead>
+<tr>
+<th>Pedidos/día</th>
+<th align="right">15</th>
+<th align="right"><strong>30</strong></th>
+<th align="right">50</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pedidos/mes · kg/mes</td>
+<td align="right">330 · 2.640</td>
+<td align="right"><strong>660 · 5.280</strong></td>
+<td align="right">1.100 · 8.800</td>
+</tr>
+<tr>
+<td>Mano de obra hub</td>
+<td align="right">4.744 €</td>
+<td align="right"><strong>9.488 €</strong></td>
+<td align="right">15.813 €</td>
+</tr>
+<tr>
+<td>Riders (2 a jornada completa)</td>
+<td align="right">3.800 €</td>
+<td align="right"><strong>3.800 €</strong></td>
+<td align="right">3.800 €</td>
+</tr>
+<tr>
+<td>Consumibles y energía</td>
+<td align="right">1.169 €</td>
+<td align="right"><strong>2.338 €</strong></td>
+<td align="right">3.896 €</td>
+</tr>
+<tr>
+<td>Fijos (alquiler, bicis, amortización, software, seguros, gestoría, marketing)</td>
+<td align="right">2.727 €</td>
+<td align="right"><strong>2.727 €</strong></td>
+<td align="right">2.727 €</td>
+</tr>
+<tr>
+<td><strong>Coste total/mes</strong></td>
+<td align="right"><strong>12.440 €</strong></td>
+<td align="right"><strong>18.352 €</strong></td>
+<td align="right"><strong>26.236 €</strong></td>
+</tr>
+<tr>
+<td><strong>Coste por pedido (8 kg)</strong></td>
+<td align="right"><strong>37,70 €</strong></td>
+<td align="right"><strong>27,81 €</strong></td>
+<td align="right"><strong>23,85 €</strong></td>
+</tr>
+<tr>
+<td>Coste por kg</td>
+<td align="right">4,71 €</td>
+<td align="right"><strong>3,48 €</strong></td>
+<td align="right">2,98 €</td>
+</tr>
+<tr>
+<td>Ocupación de los riders</td>
+<td align="right">31 %</td>
+<td align="right"><strong>61 %</strong></td>
+<td align="right">102 %</td>
+</tr>
+<tr>
+<td>Lavanderas a media jornada necesarias</td>
+<td align="right">4,3</td>
+<td align="right"><strong>8,6</strong></td>
+<td align="right">14,4</td>
+</tr>
+</tbody></table>
+<p>Desglose del coste por pedido a 30 pedidos/día:</p>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th align="right">€/pedido</th>
+<th align="right">%</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mano de obra del hub (69 min de media)</td>
+<td align="right">14,38</td>
+<td align="right">52 %</td>
+</tr>
+<tr>
+<td>Reparto (recogida + entrega)</td>
+<td align="right">5,76</td>
+<td align="right">21 %</td>
+</tr>
+<tr>
+<td>Consumibles, energía y agua</td>
+<td align="right">3,54</td>
+<td align="right">13 %</td>
+</tr>
+<tr>
+<td>Fijos repercutidos</td>
+<td align="right">4,13</td>
+<td align="right">15 %</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td align="right"><strong>27,81</strong></td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<p><strong>Lecturas importantes:</strong></p>
+<ol>
+<li><strong>La mano de obra del hub manda.</strong> 14,4 € de cada pedido son horas de lavandera. Cada 5 minutos que se
+recorten del proceso (plegado estandarizado, plancha con caldera, envasadora de campana) ahorran
+≈ 1 €/pedido = 660 €/mes a 30 pedidos/día. Por eso la red doméstica con máquinas lentas no cuadra.</li>
+<li><strong>Los riders son un coste casi fijo.</strong> A 15 pedidos/día están ocupados un 31 %: arrancar con <strong>1 rider a
+jornada completa + 1 a media jornada</strong> ahorra 950 €/mes hasta superar los 25 pedidos/día.</li>
+<li><strong>El mix de kg importa poco en coste, mucho en ingreso.</strong> Lavar 15 kg cuesta solo 2-3 € más que lavar
+8 kg (misma mano de obra casi), pero se cobran 13 € más. Empujad la bolsa L y los packs de ropa de cama.</li>
+</ol>
+<h2 class="sec brk">5. ¿A qué precio vendemos?</h2>
+<h3>5.1 Lo que cobra la competencia</h3>
+<table>
+<thead>
+<tr>
+<th>Servicio</th>
+<th>Qué incluye</th>
+<th>Precio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mr Jeff (nacional, también en Málaga)</td>
+<td>Lavado 30º, secado y doblado. Recogida y entrega gratis. Sin plancha.</td>
+<td>5 kg 13 € · 8 kg 17 € · 15 kg 24 € · suscripción 4 bolsas/mes 60-64 €</td>
+</tr>
+<tr>
+<td>Washrocks (nacional)</td>
+<td>Lavado y doblado</td>
+<td>5 kg 20,95 €</td>
+</tr>
+<tr>
+<td>Lavandería Industrial Málaga / Bago</td>
+<td>Por kilo, orientado a empresas, con reparto</td>
+<td>1,50-1,80 €/kg</td>
+</tr>
+<tr>
+<td>Autoservicio en Málaga</td>
+<td>Solo la máquina</td>
+<td>3-5,50 € por lavado de 8-10 kg</td>
+</tr>
+</tbody></table>
+<p>Conclusión: <strong>no se puede competir en €/kg con el lavado básico</strong> (Mr Jeff vende 8 kg a 17 €, y nuestro
+coste a 30 pedidos/día es 27,8 €). Costa Clean es otro producto: plancha, vacío, aroma, entrega
+en bici en franja de 2 h. El cliente objetivo es el que hoy paga 20-25 € a una plancha por horas o lleva
+las camisas a la tintorería (3-4 € por camisa).</p>
+<h3>5.2 Tarifa recomendada (IVA incluido)</h3>
+<table>
+<thead>
+<tr>
+<th>Producto</th>
+<th align="right">Precio</th>
+<th align="right">€/kg</th>
+<th>Qué incluye</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bolsa S · hasta 5 kg</strong></td>
+<td align="right"><strong>22,90 €</strong></td>
+<td align="right">4,58</td>
+<td>Recogida y entrega Zona 1, aroma, plancha básica, envasado al vacío</td>
+</tr>
+<tr>
+<td><strong>Bolsa M · hasta 10 kg</strong></td>
+<td align="right"><strong>36,90 €</strong></td>
+<td align="right">3,69</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td><strong>Bolsa L · hasta 15 kg</strong></td>
+<td align="right"><strong>49,90 €</strong></td>
+<td align="right">3,33</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td>Planchado completo</td>
+<td align="right">+12 / +20 / +28 €</td>
+<td align="right"></td>
+<td>Todas las prendas planchadas (S/M/L)</td>
+</tr>
+<tr>
+<td>Suplemento Zona 2 (El Palo, Teatinos)</td>
+<td align="right">+2,90 €</td>
+<td align="right"></td>
+<td></td>
+</tr>
+<tr>
+<td>Suscripción &quot;Siempre limpio&quot;</td>
+<td align="right">129 €/mes</td>
+<td align="right"></td>
+<td>4 bolsas M al mes (32,25 €/bolsa, -13 %), día fijo, recogida y entrega simultáneas</td>
+</tr>
+<tr>
+<td>Edredón / nórdico</td>
+<td align="right">19,90 €</td>
+<td align="right"></td>
+<td>Lavado, secado, envasado al vacío (se vende solo, el vacío aquí es un valor enorme)</td>
+</tr>
+<tr>
+<td><strong>B2B apartamento turístico</strong></td>
+<td align="right"><strong>desde 14,90 € + IVA</strong></td>
+<td align="right"></td>
+<td>Kit cama + baño (≈ 4 kg: juego de sábanas, 2 toallas, 2 de mano), planchado en calandra o doblado, entrega al check-out</td>
+</tr>
+</tbody></table>
+<p>Con estos precios, a 30 pedidos/día:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">€</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Precio medio cobrado (bolsa M + 25 % con planchado completo)</td>
+<td align="right">41,90 € IVA inc.</td>
+</tr>
+<tr>
+<td>Ingreso neto sin IVA</td>
+<td align="right">34,63 €</td>
+</tr>
+<tr>
+<td>Coste por pedido</td>
+<td align="right">27,81 €</td>
+</tr>
+<tr>
+<td><strong>Margen por pedido</strong></td>
+<td align="right"><strong>6,82 € (20 %)</strong></td>
+</tr>
+<tr>
+<td>Precio mínimo para un 30 % de margen bruto</td>
+<td align="right">48,07 € IVA inc.</td>
+</tr>
+</tbody></table>
+<p>El margen es ajustado hasta pasar de 40 pedidos/día. Palancas para mejorarlo sin subir el precio de
+lista: suscripciones (ingreso recurrente y rutas predecibles), <strong>B2B de pisos turísticos</strong> (Málaga tiene
+más de 10.000 viviendas turísticas; la ropa de cama es rápida de procesar y llena las máquinas en horas
+valle), y vender el planchado completo y el nórdico como extras de alto margen.</p>
+<h3>5.3 Punto de equilibrio</h3>
+<ul>
+<li>Contribución por pedido (ingreso neto − mano de obra variable − consumibles) ≈ <strong>16,7 €</strong>.</li>
+<li>Costes fijos mensuales (riders + local + resto) ≈ <strong>6.527 €</strong>.</li>
+<li><strong>Punto de equilibrio ≈ 391 pedidos/mes ≈ 18 pedidos/día.</strong></li>
+<li>Con 1,5 riders en vez de 2: ≈ 334 pedidos/mes ≈ 15 pedidos/día.</li>
+</ul>
+<p>Un objetivo realista: 10-15 pedidos/día en el mes 3, 25-30 en el mes 6-9, 50 en el año 2 con un tercer
+rider y un turno más en el hub.</p>
+<h2 class="sec brk">6. Cómo ahorramos en rutas</h2>
+<h3>6.1 Reglas de oro</h3>
+<ol>
+<li><strong>Zonificar por días.</strong> Zona 1 Oeste (Huelin, Carretera de Cádiz, Cruz de Humilladero) lunes y jueves;
+Centro/Soho/Malagueta todos los días (es donde está la densidad); Pedregalejo/El Palo martes y viernes;
+Teatinos/Ciudad Jardín miércoles y sábado. El cliente elige día dentro de los disponibles para su barrio.
+Esto multiplica la densidad de paradas por ruta, que es lo que decide el coste del reparto.</li>
+<li><strong>Franjas de 2 horas, nunca &quot;a la hora que quieras&quot;.</strong> Permite encadenar 10-14 paradas por franja.</li>
+<li><strong>Recogida y entrega en la misma visita</strong> para los suscriptores: el rider deja la bolsa limpia y se lleva
+la sucia. <strong>Una parada en lugar de dos</strong>: reduce el coste de reparto por pedido de 5,76 € a 2,88 €.</li>
+<li><strong>El hub como único origen.</strong> El rider sale cargado con las entregas de la zona, va recogiendo en las
+mismas calles y vuelve con las recogidas. La app ordena las paradas con un algoritmo del vecino más
+cercano mejorado con 2-opt (en una ruta de 15-20 paradas ahorra un 15-30 % de km frente al orden de
+llegada de los pedidos).</li>
+<li><strong>Peso en la caja.</strong> Con el vacío, 6 bolsas M caben en una caja de cargo-bike. Sin vacío, 3-4.</li>
+</ol>
+<h3>6.2 Números</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">Cargo-bike eléctrica</th>
+<th align="right">Furgoneta pequeña</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Inversión</td>
+<td align="right">4.000 €</td>
+<td align="right">18.000-25.000 € (o renting 350-450 €/mes)</td>
+</tr>
+<tr>
+<td>Coste/mes (amortización, energía, mantenimiento, seguro)</td>
+<td align="right"><strong>160 €</strong></td>
+<td align="right">700-900 € (renting + gasóleo 1.800 km + seguro + parking)</td>
+</tr>
+<tr>
+<td>Paradas/hora en el Centro</td>
+<td align="right"><strong>7</strong> (aparca en la puerta)</td>
+<td align="right">4-5 (buscar aparcamiento, zona azul, Centro peatonal)</td>
+</tr>
+<tr>
+<td>Km/día por vehículo</td>
+<td align="right">35-45</td>
+<td align="right">50-70</td>
+</tr>
+<tr>
+<td>Carnet, multas, ZBE</td>
+<td align="right">No</td>
+<td align="right">Sí (Málaga tiene Zona de Bajas Emisiones en el Centro)</td>
+</tr>
+</tbody></table>
+<p>Dos cargo-bikes frente a una furgoneta: <strong>ahorro ≈ 500-700 €/mes</strong> y, sobre todo, un 40 % más de paradas
+por hora en el Centro, que es donde está el cliente. La furgoneta solo tiene sentido para el B2B de
+pisos turísticos (volumen alto, horarios de check-out) a partir del segundo año.</p>
+<h3>6.3 Lo que hace la app</h3>
+<ul>
+<li><code>/mapa</code>: ruta optimizada por rider con km reales estimados, comparativa &quot;sin optimizar vs optimizado&quot;,
+posición GPS en vivo y recorrido del día.</li>
+<li><code>/rider</code>: la misma ruta en el móvil, botón de navegación (Google Maps en modo bici), marcar
+recogido/entregado, GPS automático.</li>
+<li>Pendiente de implementar: franjas horarias como restricción dura y reparto automático de paradas entre
+los dos riders (ahora se asignan desde el panel).</li>
+</ul>
+<h2 class="sec brk">7. ¿Cuánto cuestan las lavadoras industriales?</h2>
+<p>Precios de tiendas online españolas 2025-26, <strong>sin IVA</strong>. Girbau (fabricante catalán, el más extendido en
+lavanderías profesionales) no publica precios: se venden por presupuesto a través de distribuidor y suelen
+estar por encima de Primer y Fagor.</p>
+<h3>7.1 Referencias de precio</h3>
+<table>
+<thead>
+<tr>
+<th>Máquina</th>
+<th>Modelos de referencia</th>
+<th align="right">Precio nuevo (sin IVA)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lavadora profesional 10-11 kg</td>
+<td>Primer LP-10 · Fagor LAP-10</td>
+<td align="right"><strong>3.800-3.950 €</strong></td>
+</tr>
+<tr>
+<td>Lavadora profesional 18-20 kg</td>
+<td>Primer RS-18 (Factor 200) · Primer LS-18 (alta velocidad)</td>
+<td align="right"><strong>6.400 €</strong> en oferta (PVP 8.000 €) · 10.300 € alta velocidad</td>
+</tr>
+<tr>
+<td>Lavadora 15-25 kg (rango general del sector)</td>
+<td>varias marcas</td>
+<td align="right">2.500-5.000 € las sencillas, hasta 10.000 € con centrifugado alto</td>
+</tr>
+<tr>
+<td>Secadora profesional 12-14 kg</td>
+<td>Fagor · Primer</td>
+<td align="right"><strong>2.230-2.705 €</strong></td>
+</tr>
+<tr>
+<td>Secadora 31 kg</td>
+<td>Primer DE-28</td>
+<td align="right">7.300 €</td>
+</tr>
+<tr>
+<td>Girbau HS-6013 (13 kg) / ED340 (secadora 13-19 kg)</td>
+<td>Girbau</td>
+<td align="right">Bajo presupuesto</td>
+</tr>
+<tr>
+<td>Segunda mano (Wallapop, cierres de lavanderías)</td>
+<td>Girbau, Primer, Miele Professional</td>
+<td align="right">40-60 % por debajo del nuevo; comprobar horas y centrifugado</td>
+</tr>
+</tbody></table>
+<h3>7.2 Configuración recomendada para el hub (30-50 pedidos/día)</h3>
+<table>
+<thead>
+<tr>
+<th>Partida</th>
+<th align="right">Ud.</th>
+<th align="right">€/ud.</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lavadoras profesionales 10-11 kg (Primer LP-10 / Fagor LAP-10)</td>
+<td align="right">2</td>
+<td align="right">3.900</td>
+<td align="right">7.800</td>
+</tr>
+<tr>
+<td>Lavadora 18-20 kg para ropa de cama y B2B (Primer RS-18)</td>
+<td align="right">1</td>
+<td align="right">6.400</td>
+<td align="right">6.400</td>
+</tr>
+<tr>
+<td>Secadoras 12-14 kg eléctricas (Fagor / Primer)</td>
+<td align="right">3</td>
+<td align="right">2.700</td>
+<td align="right">8.100</td>
+</tr>
+<tr>
+<td>Mesas de planchado profesionales con caldera y plancha</td>
+<td align="right">2</td>
+<td align="right">900</td>
+<td align="right">1.800</td>
+</tr>
+<tr>
+<td>Envasadora al vacío de campana para textil + consumibles iniciales</td>
+<td align="right">1</td>
+<td align="right">2.500</td>
+<td align="right">2.500</td>
+</tr>
+<tr>
+<td>Instalación eléctrica trifásica, desagües, extracción de secadoras</td>
+<td align="right">1</td>
+<td align="right">4.500</td>
+<td align="right">4.500</td>
+</tr>
+<tr>
+<td>Mobiliario, estanterías, báscula, carros, etiquetadora</td>
+<td align="right">1</td>
+<td align="right">1.500</td>
+<td align="right">1.500</td>
+</tr>
+<tr>
+<td><strong>Subtotal maquinaria e instalación</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"><strong>32.600 €</strong></td>
+</tr>
+<tr>
+<td>Cargo-bikes eléctricas con caja</td>
+<td align="right">2</td>
+<td align="right">4.000</td>
+<td align="right">8.000</td>
+</tr>
+<tr>
+<td>Fianza del local (2 meses) + licencia de actividad y proyecto técnico</td>
+<td align="right">1</td>
+<td align="right">4.500</td>
+<td align="right">4.500</td>
+</tr>
+<tr>
+<td><strong>Total inversión inicial sin IVA</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"><strong>≈ 45.000 €</strong></td>
+</tr>
+<tr>
+<td>Total con IVA (21 %, recuperable al declarar)</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">≈ 54.500 €</td>
+</tr>
+</tbody></table>
+<p>Capacidad teórica de esta configuración: 3 lavadoras × 8 ciclos/día × 10-14 kg ≈ <strong>300 kg/día ≈ 35-40
+pedidos/día</strong> en un turno de 8 h, el doble con dos turnos. Es la configuración correcta para el objetivo del
+primer año; las secadoras son el cuello de botella (el secado dura casi lo mismo que el lavado y hay que
+tener al menos tantas como lavadoras).</p>
+<h3>7.3 Cómo abaratarlo</h3>
+<ul>
+<li><strong>Arranque mínimo (≈ 20.000-25.000 €):</strong> 2 lavadoras de segunda mano de 10-13 kg (≈ 1.800-2.500 €),
+2 secadoras de segunda mano (≈ 1.200-1.500 €), envasadora externa, 1 cargo-bike nueva + 1 bici eléctrica
+normal con remolque, y crecer con la caja. Riesgo: averías y menos capacidad.</li>
+<li><strong>Renting / leasing de maquinaria:</strong> los distribuidores de Girbau, Primer y Fagor ofrecen renting a 60
+meses por <strong>≈ 1,8-2,2 % del valor al mes</strong> (30.000 € → 550-650 €/mes) con mantenimiento incluido.
+Convierte 30.000 € de CAPEX en un coste fijo que entra en el modelo con poco impacto (ya contamos
+357 €/mes de amortización).</li>
+<li><strong>Secadoras de bomba de calor:</strong> cuestan ≈ 1.000 € más cada una pero consumen un 40-50 % menos y no
+necesitan salida de aire. A 30 pedidos/día ahorran ≈ 250 €/mes de luz: se pagan solas en un año.</li>
+<li><strong>Gas en vez de electricidad para las secadoras:</strong> más barato de operar, pero necesita instalación de
+gas e inspecciones. Solo si el local ya tiene gas.</li>
+<li><strong>Subvenciones:</strong> Andalucía Emprende y las líneas ICO/ENISA para jóvenes emprendedores; el Ayuntamiento
+de Málaga (Promálaga) tiene ayudas a la creación de empresas. Pedid cita antes de comprar.</li>
+</ul>
+<h2 class="sec brk">8. Riesgos y cómo los cubrimos</h2>
+<table>
+<thead>
+<tr>
+<th>Riesgo</th>
+<th>Mitigación</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Prendas dañadas o perdidas</td>
+<td>Foto de cada bolsa al recibirla, etiqueta QR por bolsa, seguro de RC con cobertura de prendas (≈ 100 €/mes), condiciones claras (no se lava lo que diga &quot;solo tintorería&quot;).</td>
+</tr>
+<tr>
+<td>Lavanderas: relación laboral</td>
+<td>Contratos a tiempo parcial desde el día uno, convenio de tintorerías y lavanderías de Málaga, prevención de riesgos laborales. Pagar &quot;por lavadora&quot; sin contrato es la vía rápida a una inspección.</td>
+</tr>
+<tr>
+<td>Planchado que se come el margen</td>
+<td>Plancha básica como estándar (solo lo que lo necesita), planchado completo siempre como extra pagado, mesas con caldera, cronometrar y publicar tiempos por lavandera en el hub.</td>
+</tr>
+<tr>
+<td>Baja densidad de pedidos al principio</td>
+<td>Zonificar por días, no abrir Zona 2 hasta tener 15 pedidos/día en Zona 1, empezar con 1,5 riders.</td>
+</tr>
+<tr>
+<td>Competencia en precio (Mr Jeff)</td>
+<td>No competir en lavado básico. Comunicar siempre &quot;planchado, envasado al vacío y aroma&quot;.</td>
+</tr>
+<tr>
+<td>Vacío que arruga la ropa planchada</td>
+<td>Vacío parcial, pruebas antes del lanzamiento, cartón entre camisas.</td>
+</tr>
+<tr>
+<td>Licencia de actividad</td>
+<td>Actividad de lavandería (IAE 971.1) suele requerir licencia con proyecto técnico, insonorización y ventilación. Confirmar con el Ayuntamiento antes de firmar el local; evitar locales bajo viviendas si se puede.</td>
+</tr>
+</tbody></table>
+<h2 class="sec brk">9. Próximos pasos (90 días)</h2>
+<ol>
+<li><strong>Semana 1-2:</strong> Validar demanda: landing (<code>/pedido</code>) + Instagram + 200 flyers en Soho/Malagueta;
+objetivo 30 pre-reservas. Lavar 10 pedidos de conocidos &quot;a mano&quot; para cronometrar tiempos reales y
+probar el vacío con ropa planchada.</li>
+<li><strong>Semana 3-4:</strong> Pedir 3 presupuestos de maquinaria (Girbau Málaga, distribuidor Primer, Fagor
+Industrial) nuevo y renting, y visitar 5 locales en Perchel / Cruz de Humilladero. Consultar licencia.</li>
+<li><strong>Mes 2:</strong> Constituir SL (3.000 € capital), alta IAE 971.1, seguro RC, contratar 2 lavanderas a media
+jornada y 1 rider; comprar/alquilar maquinaria; instalar.</li>
+<li><strong>Mes 3:</strong> Lanzamiento en Zona 1 con objetivo 10 pedidos/día; firmar 3-5 gestores de pisos turísticos
+para llenar las máquinas por la mañana.</li>
+<li><strong>Mes 4-6:</strong> Segundo rider, suscripciones, abrir Zona 2, optimizar tiempos del hub por debajo de 50 min.</li>
+</ol>
+<h2 class="sec brk">10. Escenario simplificado: sin IVA, sin local y sin gestoría</h2>
+<p>Mismo modelo que el resto del documento, con tres cambios: el precio al cliente se queda íntegro (IVA al 0 %),
+el alquiler del local es 0 € y la gestoría es 0 €. Todo lo demás (riders, lavanderas, consumibles, energía,
+bicis, software, seguro, marketing, amortización de maquinaria) se mantiene. La calculadora de la app tiene
+una casilla «Modo simplificado» que aplica exactamente estos tres cambios.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Pedidos/día</th>
+<th align="right">Pedidos/mes</th>
+<th align="right">Coste/pedido</th>
+<th align="right">Coste/kg</th>
+<th align="right">Ingreso/pedido</th>
+<th align="right">Margen/pedido</th>
+<th align="right">Margen/mes</th>
+<th align="right">Margen %</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">10</td>
+<td align="right">220</td>
+<td align="right">41,90 €</td>
+<td align="right">5,24 €</td>
+<td align="right">41,90 €</td>
+<td align="right">0,00 €</td>
+<td align="right">0 €</td>
+<td align="right">0 %</td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td align="right">330</td>
+<td align="right">33,91 €</td>
+<td align="right">4,24 €</td>
+<td align="right">41,90 €</td>
+<td align="right">7,99 €</td>
+<td align="right">2.637 €</td>
+<td align="right">19 %</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="right">440</td>
+<td align="right">29,91 €</td>
+<td align="right">3,74 €</td>
+<td align="right">41,90 €</td>
+<td align="right">11,99 €</td>
+<td align="right">5.275 €</td>
+<td align="right">29 %</td>
+</tr>
+<tr>
+<td align="right"><strong>30</strong></td>
+<td align="right"><strong>660</strong></td>
+<td align="right"><strong>25,91 €</strong></td>
+<td align="right"><strong>3,24 €</strong></td>
+<td align="right"><strong>41,90 €</strong></td>
+<td align="right"><strong>15,99 €</strong></td>
+<td align="right"><strong>10.552 €</strong></td>
+<td align="right"><strong>38 %</strong></td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td align="right">880</td>
+<td align="right">23,91 €</td>
+<td align="right">2,99 €</td>
+<td align="right">41,90 €</td>
+<td align="right">17,99 €</td>
+<td align="right">15.828 €</td>
+<td align="right">43 %</td>
+</tr>
+<tr>
+<td align="right">50</td>
+<td align="right">1.100</td>
+<td align="right">22,71 €</td>
+<td align="right">2,84 €</td>
+<td align="right">41,90 €</td>
+<td align="right">19,19 €</td>
+<td align="right">21.104 €</td>
+<td align="right">46 %</td>
+</tr>
+</tbody></table>
+<p>Ingreso por pedido: bolsa M a 36,90 € más el 25 % de pedidos con planchado completo a 20 € = 41,90 € de media.</p>
+<p>Costes fijos mensuales en este escenario: <strong>1.477 €</strong> (suministros 150, cargo-bikes 320, software 150, seguro 100,
+marketing 400, amortización de maquinaria 357) más <strong>3.800 €</strong> de los dos riders.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">Con IVA, local y gestoría (base)</th>
+<th align="right">Sin IVA, local ni gestoría</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Coste por pedido a 30 pedidos/día</td>
+<td align="right">27,81 €</td>
+<td align="right"><strong>25,91 €</strong></td>
+</tr>
+<tr>
+<td>Ingreso neto por pedido</td>
+<td align="right">34,63 €</td>
+<td align="right"><strong>41,90 €</strong></td>
+</tr>
+<tr>
+<td>Margen mensual a 30 pedidos/día</td>
+<td align="right">4.502 € (20 %)</td>
+<td align="right"><strong>10.552 € (38 %)</strong></td>
+</tr>
+<tr>
+<td>Punto de equilibrio con 2 riders</td>
+<td align="right">17,8 pedidos/día</td>
+<td align="right"><strong>10,0 pedidos/día</strong></td>
+</tr>
+<tr>
+<td>Punto de equilibrio con 1,5 riders</td>
+<td align="right">15,2 pedidos/día</td>
+<td align="right"><strong>8,2 pedidos/día</strong></td>
+</tr>
+<tr>
+<td>Punto de equilibrio con 1 rider</td>
+<td align="right">12,5 pedidos/día</td>
+<td align="right"><strong>6,4 pedidos/día</strong></td>
+</tr>
+</tbody></table>
+<p><strong>De dónde sale la diferencia.</strong> A 30 pedidos/día el margen sube 6.050 € al mes: 4.800 € vienen del IVA
+(7,27 € por pedido que en el escenario base se entregan a Hacienda), 1.100 € del alquiler y 150 € de la gestoría.
+Es decir, el IVA pesa cuatro veces más que el local. Conviene tenerlo claro: si se factura con IVA, ese dinero no es
+del negocio aunque entre en la cuenta. Las cifras de esta sección describen el caso en que no se repercute.</p>
+<p><strong>Lo que no cambia.</strong> La mano de obra del hub sigue siendo 14,38 € por pedido (el 55 % del coste en este
+escenario) y el reparto 5,76 €. Las palancas siguen siendo las mismas: minutos por pedido en el hub y densidad de
+paradas por ruta.</p>
+<p><strong>Lectura práctica.</strong> Sin esos tres costes el negocio cubre gastos con 10 pedidos al día y con 2 riders a jornada
+completa; con un solo rider, con 6-7. A 15 pedidos/día ya deja unos 2.600 € al mes, y a 30 pedidos/día unos
+10.500 €. La inversión inicial baja a unos 40.600 € sin la fianza del local, o a 15.000-20.000 € con
+maquinaria de segunda mano.</p>
+<h2 class="sec brk">11. Fuentes consultadas</h2>
+<ul>
+<li>Precios de lavadoras profesionales (Primer LP-10, Fagor LAP-10, Primer RS-18 / LS-18): <a href="https://hostelearte.com/lavadoras-industriales-y-profesionales?q=Marca-Primer">Hostelearte</a>, <a href="https://hosteleria10.com/lavado/lavadoras/">Hosteleria10</a>, <a href="https://donbar.es/tienda/lavado-e-higiene/lavadoras/lavadora-profesional-baja-velocidad-20-kg-factor-200-gama-rs-719x840x1158h-mm-rs-18-t2-hw-primer/">Donbar</a>, <a href="https://gavinox.es/blog/lavado/lavadora-industrial-precio-guia-de-costes-y-opciones-disponibles">guía Gavinox</a>, <a href="https://es.wallapop.com/electrodomesticos/lavadora-industrial">segunda mano en Wallapop</a>.</li>
+<li>Secadoras: <a href="https://hosteleria10.com/recursos/catalogos/catalogo-secadoras-hosteleria10.pdf">catálogo Hosteleria10</a>, <a href="https://donbar.es/tienda/lavado-e-higiene/secadoras/secadora-industrial-electrica-31-kg-gama-excellence-985x1054x1975h-mm-de-28-e-t2-primer">Primer DE-28 en Donbar</a>, <a href="https://www.girbau.com/es-mx/wp-content/uploads/sites/6/2025/12/ED-Series_Brochure_ES_.pdf">Girbau serie ED</a>.</li>
+<li>Competencia: <a href="https://mrjeffapp.com/precios">Mr Jeff precios</a>, <a href="https://cleancloudapp.com/w/29124/">Mr Jeff Murcia (CleanCloud)</a>, <a href="https://mrjeffbilbao.com/">Mr Jeff Bilbao</a>, <a href="https://washrocks.com/lavanderia/bolsa-hasta-5-kg">Washrocks 5 kg</a>, <a href="https://lavanderiaindustrialmalaga.com/servicios-lavanderia-industrial-malaga/">Lavandería Industrial Málaga</a>, <a href="https://lavanderiaautoservicionevados.es/autoservicio/lavanderia-autoservicio-en-malaga/">autoservicio en Málaga</a>.</li>
+<li>Costes laborales: <a href="https://www.cuatrecasas.com/es/spain/laboral/art/smi-nuevas-cotizaciones-seguridad-social">SMI 2026 y cotizaciones (Cuatrecasas)</a>, <a href="https://copilotgestoria.com/blog/smi-2026-1221-euros-sin-irpf-nominas-cotizaciones-guia-gestorias">guía SMI 2026 (Copilot Gestoría)</a>, <a href="https://www.billeo.es/blog/salario-minimo-espana-smi">coste total empresa (Billeo)</a>.</li>
+<li>Locales en Málaga: <a href="https://www.fotocasa.es/en/rental/industrial-buildings/poi/cercanias-los-prados-malaga/l">Fotocasa naves Málaga</a>, <a href="https://www.companyspace.com/rent/commercial-properties/malaga">CompanySpace Málaga</a>.</li>
+<li>Cargo-bikes: <a href="https://hitway.eu/es/products/bk6s-plus-cargo-electric-bike">Hitway BK6S Plus</a>, <a href="https://www.interempresas.net/Ciclismo/629925-Mas-valor-pero-menos-unidades-Las-Grandes-Cifras-del-Sector-Bike-2025.html">sector bici España 2025</a>.</li>
+<li>Agua y luz: <a href="https://www.malaga.eu/visorcontenido/ANUDocumentDisplayer/171678/NOTAINFORMATIVA.pdf">tarifas Emasa 2024 (Ayuntamiento de Málaga)</a>, <a href="https://www.globalpetrolprices.com/Spain/electricity_prices/">precios electricidad España</a>.</li>
+</ul>
+
+</body></html>

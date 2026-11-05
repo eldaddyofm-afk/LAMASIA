@@ -1,0 +1,95 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mapa · Costa Clean</title>
+<link rel="stylesheet" href="/common.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  #map { height: calc(100vh - 170px); min-height: 420px; border-radius: var(--radius); box-shadow: var(--shadow); }
+  .legend { font-size: 12px; } .legend i { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:4px; vertical-align:middle; }
+  .layout { display:grid; grid-template-columns: 1fr 340px; gap: 12px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } #map { height: 60vh; } }
+  .stoplist li { padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .seq { display:inline-block; width:22px; height:22px; border-radius:50%; background:var(--sea); color:#fff; text-align:center; line-height:22px; font-size:12px; font-weight:700; margin-right:6px; }
+  .seq.pick { background: var(--warn); }
+</style></head>
+<body>
+<main>
+  <div class="row" style="justify-content:space-between;margin-bottom:8px">
+    <h1 style="margin:0">Mapa, GPS y rutas</h1>
+    <div class="row legend"><span><i style="background:#0b7a8a"></i>Hub</span><span><i style="background:#e2a300"></i>Recogida</span><span><i style="background:#2e9e5b"></i>Entrega</span><span><i style="background:#d64545"></i>Rider (GPS)</span></div>
+  </div>
+  <div class="layout">
+    <div id="map"></div>
+    <aside>
+      <div class="card" style="margin-bottom:10px"><h2>Riders en vivo</h2><div id="riderList"></div></div>
+      <div class="card"><h2>Ruta optimizada</h2>
+        <div class="field"><select id="riderSel" onchange="loadRoute()"></select></div>
+        <div id="routeStats" class="small muted"></div>
+        <ol class="stoplist" id="stops" style="padding-left:0;list-style:none;margin:8px 0 0"></ol>
+      </div>
+    </aside>
+  </div>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="/common.js"></script>
+<script>
+CC.nav('mapa');
+let map, meta, riders = [], riderMarkers = {}, routeLayer, stopLayer, trackLayer;
+const icon = (color, txt='') => L.divIcon({ className:'', html:`<div style="width:26px;height:26px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);color:#fff;font-size:11px;font-weight:700;text-align:center;line-height:22px">${txt}</div>`, iconSize:[26,26], iconAnchor:[13,13] });
+const bikeIcon = L.divIcon({ className:'', html:`<div style="font-size:26px;line-height:26px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))">🚲</div>`, iconSize:[26,26], iconAnchor:[13,13] });
+
+async function init() {
+  meta = await CC.loadMeta();
+  map = L.map('map').setView([meta.hub.lat, meta.hub.lng], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
+  L.marker([meta.hub.lat, meta.hub.lng], { icon: icon('#0b7a8a', 'H') }).addTo(map).bindPopup(`<b>${meta.hub.name}</b>`);
+  routeLayer = L.layerGroup().addTo(map); stopLayer = L.layerGroup().addTo(map); trackLayer = L.layerGroup().addTo(map);
+  riders = await CC.api('/api/riders');
+  document.getElementById('riderSel').innerHTML = riders.map(r => `<option value="${r.id}">${CC.esc(r.name)}</option>`).join('');
+  riders.forEach(updateRiderMarker); renderRiderList();
+  await loadRoute();
+  await drawAllStops();
+  CC.live({ rider: (r) => { const i = riders.findIndex(x => x.id === r.id); if (i >= 0) riders[i] = { ...riders[i], ...r }; else riders.push(r); updateRiderMarker(r); renderRiderList(); }, order: () => { loadRoute(); drawAllStops(); } });
+}
+
+function updateRiderMarker(r) {
+  if (!r.lat) return;
+  if (riderMarkers[r.id]) riderMarkers[r.id].setLatLng([r.lat, r.lng]);
+  else riderMarkers[r.id] = L.marker([r.lat, r.lng], { icon: bikeIcon, zIndexOffset: 1000 }).addTo(map);
+  riderMarkers[r.id].bindPopup(`<b>${CC.esc(r.name)}</b><br>${CC.ago(r.last_seen)}${r.speed ? `<br>${(r.speed*3.6).toFixed(0)} km/h` : ''}`);
+}
+function renderRiderList() {
+  document.getElementById('riderList').innerHTML = riders.map(r => `<div class="row" style="justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)">
+    <div><b>${CC.esc(r.name)}</b><div class="small muted">${r.last_seen ? CC.ago(r.last_seen) : 'sin señal GPS'} ${r.speed ? `· ${(r.speed*3.6).toFixed(0)} km/h` : ''}</div></div>
+    <div class="row"><button class="ghost" onclick="centerRider(${r.id})">Centrar</button><button class="ghost" onclick="showTrack(${r.id})">Recorrido</button></div></div>`).join('');
+}
+function centerRider(id) { const m = riderMarkers[id]; if (m) { map.setView(m.getLatLng(), 15); m.openPopup(); } else CC.toast('Ese rider aún no ha enviado GPS'); }
+async function showTrack(id) {
+  const t = await CC.api(`/api/riders/${id}/track`); trackLayer.clearLayers();
+  if (t.length < 2) return CC.toast('Sin recorrido registrado todavía');
+  L.polyline(t.map(p => [p.lat, p.lng]), { color: '#d64545', weight: 3, opacity: .7, dashArray: '4 6' }).addTo(trackLayer);
+}
+
+async function loadRoute() {
+  const id = document.getElementById('riderSel').value; if (!id) return;
+  const r = await CC.api(`/api/riders/${id}/route`);
+  routeLayer.clearLayers();
+  if (r.stops.length) {
+    const pts = [[r.start.lat, r.start.lng], ...r.stops.map(s => [s.lat, s.lng]), [r.start.lat, r.start.lng]];
+    L.polyline(pts, { color: '#0b7a8a', weight: 4, opacity: .8 }).addTo(routeLayer);
+    r.stops.forEach(s => L.marker([s.lat, s.lng], { icon: icon(s.type === 'recogida' ? '#e2a300' : '#2e9e5b', s.seq) }).addTo(routeLayer)
+      .bindPopup(`<b>${s.seq}. ${s.type === 'recogida' ? 'Recoger' : 'Entregar'} ${s.code}</b><br>${CC.esc(s.customer_name)}<br>${CC.esc(s.address)}<br>${s.kg} kg · ${CC.scentLabel(s.scent)}<br><span style="color:#6b7a82">${CC.esc(s.slot||'')}</span>`));
+  }
+  document.getElementById('routeStats').innerHTML = r.stops.length ? `<b>${r.stops.length} paradas</b> · ${r.km} km · ~${r.minutes} min<br>Sin optimizar serían ${r.baselineKm} km → <b style="color:var(--ok)">ahorras ${r.savedKm} km (${r.savedPct}%)</b>` : 'Este rider no tiene paradas pendientes.';
+  document.getElementById('stops').innerHTML = r.stops.map(s => `<li><span class="seq ${s.type==='recogida'?'pick':''}">${s.seq}</span><b>${s.type === 'recogida' ? 'Recoger' : 'Entregar'}</b> ${s.code} · ${CC.esc(s.customer_name)}<div class="small muted" style="margin-left:28px">${CC.esc(s.address)} · ${s.kg} kg · ${CC.esc(s.slot||'')}</div></li>`).join('');
+}
+
+// Todas las paradas pendientes (de cualquier rider) en gris claro para ver la demanda global.
+async function drawAllStops() {
+  const orders = await CC.api('/api/orders'); stopLayer.clearLayers();
+  orders.filter(o => o.lat && ['pendiente_recogida','listo','en_reparto','en_hub','lavando','secando','planchando','envasando','recogido'].includes(o.status)).forEach(o => {
+    L.circleMarker([o.lat, o.lng], { radius: 5, color: '#6b7a82', fillColor: '#6b7a82', fillOpacity: .5, weight: 1 }).addTo(stopLayer)
+      .bindTooltip(`${o.code} · ${CC.STATUS_LABEL[o.status]} · ${CC.esc(o.customer_name)}`);
+  });
+}
+init();
+</script>
+</body></html>

@@ -1,0 +1,237 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="favicon.svg">
+<title>Costa Clean</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: página de una columna, texto alineado a la izquierda, bandas alternas arena/sal, un único acento coral para la acción. */
+:root {
+  --mar: #0B7A8A; --mar-oscuro: #075B67; --arena: #F6EFE4; --arena-oscura: #EADFCB; --sal: #FFFFFF;
+  --sol: #F6C66B; --coral: #F26B4E; --coral-oscuro: #D5553B; --tinta: #1D2A30; --bruma: #5F6E76; --linea: #E3DACB;
+  --bg: var(--arena); --fg: var(--tinta); --card: var(--sal);
+  --display: "Outfit", "Poppins", "Segoe UI", system-ui, sans-serif;
+  --body: "Nunito Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #10191D; --fg: #F1EDE4; --card: #18252B; --arena-oscura: #1F2F36; --linea: #2B3B43; --bruma: #A4B0B6; --mar: #2FA6B8; --mar-oscuro: #0B7A8A; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #10191D; --fg: #F1EDE4; --card: #18252B; --arena-oscura: #1F2F36; --linea: #2B3B43; --bruma: #A4B0B6; --mar: #2FA6B8; --mar-oscuro: #0B7A8A; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; margin: 0; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; line-height: 1.1; margin: 0; }
+h1 { font-size: clamp(34px, 6vw, 60px); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 700; letter-spacing: -0.015em; }
+h3 { font-size: 20px; font-weight: 600; }
+p { margin: 0; max-width: 62ch; }
+a { color: var(--mar); }
+.eyebrow { font-family: var(--display); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mar); font-weight: 600; }
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--bg); border-bottom: 1px solid var(--linea); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg); font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: 0.14em; }
+.logo svg { width: 46px; height: 46px; flex: none; margin: -6px 0; }
+.logo b { color: var(--mar); font-weight: 700; }
+nav { display: flex; gap: 18px; font-size: 15px; }
+nav a { color: var(--bruma); text-decoration: none; }
+nav a:hover, nav a:focus-visible { color: var(--mar); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 22px; border-radius: 999px; background: var(--coral); color: #fff; font-family: var(--display); font-weight: 600; font-size: 17px; text-decoration: none; border: 0; cursor: pointer; }
+.btn:hover, .btn:focus-visible { background: var(--coral-oscuro); }
+.btn.ghost { background: transparent; color: var(--mar); border: 2px solid var(--mar); }
+.btn.sm { padding: 10px 16px; font-size: 15px; }
+section { padding-block: 64px; }
+section.sal { background: var(--card); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; }
+.hero p.lead { font-size: 20px; color: var(--bruma); margin-top: 18px; }
+.hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; align-items: center; }
+.hero .desde { font-family: var(--display); color: var(--bruma); font-size: 15px; }
+.hero .desde b { color: var(--fg); font-size: 22px; }
+.bolsa { background: var(--card); border-radius: 28px; padding: 28px; border: 1px solid var(--linea); box-shadow: 0 20px 50px rgba(11,122,138,.12); min-width: 0; }
+.bolsa .tag { display: inline-block; background: var(--arena-oscura); color: var(--fg); border-radius: 999px; padding: 4px 12px; font-size: 13px; font-family: var(--display); font-weight: 600; }
+.bolsa ol { margin: 14px 0 0; padding-left: 0; list-style: none; display: grid; gap: 12px; }
+.bolsa li { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; }
+.bolsa li .n { width: 40px; height: 40px; border-radius: 12px; background: var(--mar); color: #fff; display: grid; place-items: center; font-family: var(--display); font-weight: 700; }
+.bolsa li small { color: var(--bruma); display: block; }
+.grid { display: grid; gap: 20px; margin-top: 32px; }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.item { min-width: 0; }
+.item .ico { width: 52px; height: 52px; border-radius: 16px; background: var(--arena-oscura); display: grid; place-items: center; margin-bottom: 14px; }
+.item .ico svg { width: 28px; height: 28px; stroke: var(--mar); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.item p { color: var(--bruma); font-size: 16px; margin-top: 6px; }
+.aromas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.aroma { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--linea); background: var(--card); font-size: 15px; font-family: var(--display); font-weight: 500; }
+.precios { margin-top: 32px; }
+.precio { background: var(--card); border: 1px solid var(--linea); border-radius: 24px; padding: 26px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.precio.destacado { border: 2px solid var(--mar); position: relative; }
+.precio.destacado::after { content: "La más pedida"; position: absolute; top: -13px; left: 22px; background: var(--mar); color: #fff; font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+.precio .kg { font-family: var(--display); color: var(--bruma); font-weight: 600; }
+.precio .eur { font-family: var(--display); font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.precio .eur small { font-size: 16px; font-weight: 500; color: var(--bruma); letter-spacing: 0; }
+.precio ul { margin: 8px 0 0; padding-left: 18px; color: var(--bruma); font-size: 15px; }
+.extras { margin-top: 18px; color: var(--bruma); font-size: 15px; }
+.zonas { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+.zona { background: var(--card); border: 1px solid var(--linea); border-radius: 20px; padding: 22px; min-width: 0; }
+.zona ul { margin: 8px 0 0; padding-left: 18px; color: var(--bruma); }
+.faq { margin-top: 28px; display: grid; gap: 10px; }
+details { background: var(--card); border: 1px solid var(--linea); border-radius: 16px; padding: 14px 18px; }
+summary { font-family: var(--display); font-weight: 600; cursor: pointer; font-size: 17px; }
+details p { margin-top: 8px; color: var(--bruma); }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; max-width: 720px; }
+label { display: grid; gap: 6px; font-size: 14px; color: var(--bruma); font-family: var(--display); font-weight: 500; min-width: 0; }
+input, select, textarea { font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--linea); background: var(--card); color: var(--fg); width: 100%; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, .btn:focus-visible, summary:focus-visible { outline: 3px solid var(--sol); outline-offset: 2px; }
+.full { grid-column: 1 / -1; }
+.total { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-top: 6px; }
+.total .eur { font-family: var(--display); font-size: 30px; font-weight: 800; }
+.total .eur small { font-size: 14px; color: var(--bruma); font-weight: 500; }
+.msg { grid-column: 1 / -1; background: var(--arena-oscura); border-radius: 16px; padding: 16px; font-size: 15px; white-space: pre-wrap; word-break: break-word; }
+.msg b { font-family: var(--display); }
+.msg .acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.num { font-family: var(--display); font-weight: 700; user-select: all; }
+footer { padding-block: 36px; border-top: 1px solid var(--linea); color: var(--bruma); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--tinta); color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 15px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.on { opacity: 1; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } .g3, .g4, .g2, .zonas { grid-template-columns: 1fr 1fr; } nav { display: none; } section { padding-block: 48px; } }
+@media (max-width: 560px) { .g3, .g4, .g2, .zonas, form { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+</style>
+
+<header><div class="wrap">
+  <a class="logo" href="#inicio" aria-label="Costa Clean, inicio">
+    <svg viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="var(--mar)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M100 80 V68 A13 13 0 1 1 113 60"/><path d="M100 80 L26 134 C45 134 45 118 63 118 S82 134 100 134 S118 150 137 150 S156 134 174 134 Z"/></g></svg>
+    <span>COSTA CLEAN</span>
+  </a>
+  <nav><a href="#como">Cómo funciona</a><a href="#precios">Precios</a><a href="#zonas">Zonas</a><a href="#faq">Preguntas</a></nav>
+  <a class="btn sm" href="#pedir">Pedir recogida</a>
+</div></header>
+
+<section class="hero" id="inicio"><div class="wrap">
+  <div>
+    <div class="eyebrow">Lavandería a domicilio · Málaga</div>
+    <h1 style="margin-top:12px">Tu ropa vuelve planchada, doblada y envasada al vacío. Con el olor que tú elijas.</h1>
+    <p class="lead">Pasamos en bici a recogerla, la lavamos en nuestro hub de Málaga y te la devolvemos en 24-48 h. Tú solo dejas la bolsa en la puerta.</p>
+    <div class="cta">
+      <a class="btn" href="#pedir">Pedir recogida</a>
+      <a class="btn ghost" href="#como">Ver cómo funciona</a>
+      <span class="desde">Desde <b>22,90 €</b> con recogida y entrega</span>
+    </div>
+  </div>
+  <div class="bolsa">
+    <span class="tag">Así de fácil</span>
+    <ol>
+      <li><span class="n">1</span><div>Pides por WhatsApp o aquí abajo<small>Eliges bolsa, aroma y franja de dos horas.</small></div></li>
+      <li><span class="n">2</span><div>Pasa el rider en bici<small>Pesa la bolsa delante de ti. No hace falta separar colores.</small></div></li>
+      <li><span class="n">3</span><div>Lavamos, secamos y planchamos<small>En nuestro hub, con tu aroma en el último aclarado.</small></div></li>
+      <li><span class="n">4</span><div>Te la devolvemos al vacío<small>Compacta, protegida y lista para guardar en el armario.</small></div></li>
+    </ol>
+  </div>
+</div></section>
+
+<section class="sal" id="como"><div class="wrap">
+  <div class="eyebrow">Lo que te llevas</div>
+  <h2 style="margin-top:10px">No es una lavandería. Es la ropa como te gustaría que estuviera siempre.</h2>
+  <div class="grid g4">
+    <div class="item"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="3"/><path d="M3 12h18M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div><h3>Envasada al vacío</h3><p>Ocupa un 60 % menos, no coge olores ni humedad y llega protegida. Ideal para el armario de temporada y los nórdicos.</p></div>
+    <div class="item"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c-3 4-6 7-6 11a6 6 0 0 0 12 0c0-4-3-7-6-11z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg></div><h3>Tu aroma</h3><p>Seis aromas con perfumante textil profesional. También sin perfume para pieles sensibles y bebés.</p></div>
+    <div class="item"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 16h13a4 4 0 0 0 0-8H9a5 5 0 0 0-5 5v3z"/><path d="M4 19h16"/></svg></div><h3>Planchada y doblada</h3><p>Camisas, pantalones y lo que lo necesite, planchado a vapor y doblado a mano. Planchado completo como extra.</p></div>
+    <div class="item"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-8h5l3 8M10 9l-2-4h3"/></svg></div><h3>En bici, en tu franja</h3><p>Recogida y entrega en una franja de dos horas que eliges tú. Sin furgonetas ni dobles filas en el Centro.</p></div>
+  </div>
+  <div class="aromas" aria-label="Aromas disponibles">
+    <span class="aroma">Brisa marina</span><span class="aroma">Lavanda</span><span class="aroma">Algodón limpio</span><span class="aroma">Cítrico mediterráneo</span><span class="aroma">Jazmín de Málaga</span><span class="aroma">Sin perfume</span>
+  </div>
+</div></section>
+
+<section id="precios"><div class="wrap">
+  <div class="eyebrow">Precios</div>
+  <h2 style="margin-top:10px">Por bolsa, sin sorpresas. Recogida y entrega incluidas.</h2>
+  <div class="grid g3 precios">
+    <div class="precio"><span class="kg">Bolsa S · hasta 5 kg</span><span class="eur">22,90 €</span><span class="kg" style="font-weight:500">Una persona, una semana</span><ul><li>Lavado, secado y doblado</li><li>Plancha básica</li><li>Aroma a elegir</li><li>Envasado al vacío</li></ul></div>
+    <div class="precio destacado"><span class="kg">Bolsa M · hasta 10 kg</span><span class="eur">36,90 €</span><span class="kg" style="font-weight:500">Pareja o una semana larga</span><ul><li>Todo lo de la S</li><li>3,69 € el kilo</li><li>Suscripción 4 bolsas al mes: 129 €</li></ul></div>
+    <div class="precio"><span class="kg">Bolsa L · hasta 15 kg</span><span class="eur">49,90 €</span><span class="kg" style="font-weight:500">Familia o ropa de cama</span><ul><li>Todo lo de la S</li><li>3,33 € el kilo</li><li>Cabe un juego de cama completo</li></ul></div>
+  </div>
+  <p class="extras">Planchado completo de todas las prendas: +12 € (S), +20 € (M), +28 € (L). Nórdico o edredón: 19,90 € lavado y envasado al vacío. El Palo y Teatinos: +2,90 €. Precios con IVA. Si la bolsa pesa menos de lo que pediste, te cobramos la menor.</p>
+</div></section>
+
+<section class="sal" id="zonas"><div class="wrap">
+  <div class="eyebrow">Dónde y cuándo</div>
+  <h2 style="margin-top:10px">Empezamos por la Málaga que se recorre en bici.</h2>
+  <div class="zonas">
+    <div class="zona"><h3>Zona 1 · incluida en el precio</h3><ul><li>Centro, Soho y La Malagueta: todos los días</li><li>Huelin, Carretera de Cádiz y Cruz de Humilladero: lunes y jueves</li><li>Pedregalejo: martes y viernes</li><li>Ciudad Jardín: miércoles y sábado</li></ul></div>
+    <div class="zona"><h3>Zona 2 · +2,90 €</h3><ul><li>El Palo: martes y viernes</li><li>Teatinos: miércoles y sábado</li></ul><p style="margin-top:10px;color:var(--bruma)">Franjas de recogida y entrega: 9-11 h, 13-15 h, 17-19 h y 19-21 h. Entrega en 24 h si recogemos por la mañana, 48 h si es por la tarde.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="eyebrow">Preguntas frecuentes</div>
+  <h2 style="margin-top:10px">Lo que nos pregunta todo el mundo</h2>
+  <div class="faq">
+    <details><summary>¿Tengo que separar la ropa o estar en casa?</summary><p>No. Mete todo en una bolsa cerrada. Nosotros separamos por color y tejido. Solo necesitamos que alguien abra en la franja elegida, o un portero o vecino de confianza.</p></details>
+    <details><summary>¿El vacío arruga la ropa planchada?</summary><p>Hacemos un vacío parcial y doblamos con separadores de papel. Las camisas van en la parte de arriba. Si prefieres que no la envasemos, dínoslo al pedir.</p></details>
+    <details><summary>¿Qué no laváis?</summary><p>Prendas con etiqueta de solo tintorería, cuero, ante, trajes y vestidos de ceremonia. Si va algo así en la bolsa, te lo devolvemos aparte sin lavar y sin cobrar.</p></details>
+    <details><summary>¿Y si una prenda se estropea?</summary><p>Fotografiamos cada bolsa al recibirla. Estamos asegurados y respondemos por el valor de la prenda según nuestras condiciones.</p></details>
+    <details><summary>¿Cómo pago?</summary><p>Con tarjeta o Bizum cuando te entregamos la ropa. Las suscripciones se pagan a principio de mes.</p></details>
+  </div>
+</div></section>
+
+<section class="sal" id="pedir"><div class="wrap">
+  <div class="eyebrow">Pedir recogida</div>
+  <h2 style="margin-top:10px">Cuéntanos qué tienes y te lo confirmamos por WhatsApp.</h2>
+  <p style="margin-top:10px;color:var(--bruma)">Rellena esto y te preparamos el mensaje. También puedes escribirnos directamente al <span class="num">600 000 000</span>.</p>
+  <form id="f">
+    <label>Bolsa<select id="bolsa"><option value="S">S · hasta 5 kg · 22,90 €</option><option value="M" selected>M · hasta 10 kg · 36,90 €</option><option value="L">L · hasta 15 kg · 49,90 €</option></select></label>
+    <label>Aroma<select id="aroma"><option>Brisa marina</option><option>Lavanda</option><option>Algodón limpio</option><option>Cítrico mediterráneo</option><option>Jazmín de Málaga</option><option>Sin perfume</option></select></label>
+    <label>Planchado<select id="plancha"><option value="basico">Plancha básica (incluida)</option><option value="completo">Planchado completo (+12/20/28 €)</option><option value="ninguno">Sin plancha</option></select></label>
+    <label>Barrio<select id="barrio"><option>Centro</option><option>Soho</option><option>La Malagueta</option><option>Huelin</option><option>Carretera de Cádiz</option><option>Cruz de Humilladero</option><option>Pedregalejo</option><option>Ciudad Jardín</option><option value="El Palo (zona 2)">El Palo</option><option value="Teatinos (zona 2)">Teatinos</option></select></label>
+    <label class="full">Dirección<input id="dir" placeholder="Calle, número, piso y puerta" autocomplete="street-address"></label>
+    <label>Franja de recogida<select id="franja"><option>9-11 h</option><option>13-15 h</option><option selected>17-19 h</option><option>19-21 h</option></select></label>
+    <label>Tu nombre<input id="nombre" placeholder="Para saber a quién llamamos" autocomplete="name"></label>
+    <div class="total"><div class="eur" id="total">36,90 € <small>IVA incluido</small></div><button class="btn" type="submit">Preparar mensaje</button></div>
+    <div class="msg" id="msg" hidden><b>Tu mensaje:</b>
+<span id="txt"></span>
+<div class="acciones"><a class="btn sm" id="wa" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a><button class="btn sm ghost" type="button" id="copiar">Copiar mensaje</button></div></div>
+  </form>
+</div></section>
+
+<footer><div class="wrap">
+  <div><b style="font-family:var(--display)">Costa Clean</b> · Lavandería a domicilio en Málaga<br>WhatsApp <span class="num">600 000 000</span> · hola@costaclean.es</div>
+  <div>Lunes a sábado, 9 a 21 h<br>Hub en Málaga capital</div>
+</div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  var P = { S: 22.9, M: 36.9, L: 49.9 }, X = { S: 12, M: 20, L: 28 };
+  var $ = function (id) { return document.getElementById(id); };
+  var eur = function (n) { return n.toFixed(2).replace('.', ',') + ' €'; };
+  function total() {
+    var b = $('bolsa').value, t = P[b];
+    if ($('plancha').value === 'completo') t += X[b];
+    if (/zona 2/.test($('barrio').value)) t += 2.9;
+    return t;
+  }
+  function paint() { $('total').innerHTML = eur(total()) + ' <small>IVA incluido</small>'; }
+  ['bolsa', 'plancha', 'barrio'].forEach(function (id) { $(id).addEventListener('change', paint); });
+  $('f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var txt = 'Hola Costa Clean, quiero pedir una recogida.\n' +
+      'Bolsa ' + $('bolsa').value + ' · aroma ' + $('aroma').value + ' · ' + $('plancha').options[$('plancha').selectedIndex].text.replace(/ \(.*\)/, '') + '\n' +
+      'Dirección: ' + ($('dir').value || '(pendiente)') + ', ' + $('barrio').value + '\n' +
+      'Franja: ' + $('franja').value + '\n' +
+      'Nombre: ' + ($('nombre').value || '(pendiente)') + '\n' +
+      'Total estimado: ' + eur(total());
+    $('txt').textContent = txt;
+    $('wa').href = 'https://wa.me/34600000000?text=' + encodeURIComponent(txt);
+    $('msg').hidden = false;
+    $('msg').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  $('copiar').addEventListener('click', function () {
+    var t = $('txt').textContent;
+    function sel() { var r = document.createRange(); r.selectNodeContents($('txt')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); toast('Selecciona y copia el texto'); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { toast('Mensaje copiado'); }, sel); else sel();
+  });
+  var tm; function toast(m) { var el = $('toast'); el.textContent = m; el.classList.add('on'); clearTimeout(tm); tm = setTimeout(function () { el.classList.remove('on'); }, 2000); }
+  paint();
+})();
+</script>
+</html>

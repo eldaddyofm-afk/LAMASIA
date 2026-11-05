@@ -1,0 +1,126 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Calculadora · Costa Clean</title><link rel="stylesheet" href="/common.css">
+<style> .inputs label { display:flex; justify-content:space-between; color:var(--ink); font-size:13px; } .inputs input[type=range] { width:100%; padding:0 } .inputs .field { margin-bottom:8px } .two { display:grid; grid-template-columns: 360px 1fr; gap:14px } @media (max-width:900px){ .two { grid-template-columns:1fr } } .neg { color: var(--bad) } .pos { color: var(--ok) } </style></head>
+<body>
+<main>
+  <h1>Calculadora de costes, precios y punto de equilibrio</h1>
+  <p class="small muted">Mueve los controles y todo se recalcula. Los valores por defecto son los del plan de negocio (<code>docs/plan-negocio.md</code>). Importes sin IVA salvo que se indique.</p>
+  <div class="two">
+    <aside class="card inputs"><label style="display:flex;gap:8px;align-items:center;background:#fff4d6;border-radius:9px;padding:8px 10px;margin-bottom:10px;cursor:pointer;color:var(--ink)"><input type="checkbox" id="simpl" onchange="simplificado(this.checked)" style="width:auto"><span><b>Modo simplificado</b>: sin IVA, sin alquiler de local y sin gestoría</span></label><div id="inputs"></div></aside>
+    <div class="grid">
+      <div class="kpis" id="kpis"></div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <section class="card"><h2>Coste mensual</h2><table id="tMes"></table></section>
+        <section class="card"><h2>Coste por pedido (8 kg) y precio</h2><table id="tPedido"></table></section>
+        <section class="card"><h2>Escenarios de volumen</h2><table id="tEsc"></table><p class="small muted">Con la plantilla de riders fija, el margen depende casi solo del volumen. Por debajo del punto de equilibrio conviene 1 rider a jornada completa + 1 a media jornada.</p></section>
+        <section class="card"><h2>Tarifa recomendada (IVA incluido)</h2>
+          <table><tr><th>Bolsa</th><th>Hasta</th><th class="num">Precio</th><th class="num">€/kg</th><th class="num">Planchado completo</th></tr>
+            <tr><td>S</td><td>5 kg</td><td class="num">22,90 €</td><td class="num">4,58</td><td class="num">+12 €</td></tr>
+            <tr><td>M</td><td>10 kg</td><td class="num">36,90 €</td><td class="num">3,69</td><td class="num">+20 €</td></tr>
+            <tr><td>L</td><td>15 kg</td><td class="num">49,90 €</td><td class="num">3,33</td><td class="num">+28 €</td></tr>
+            <tr><td colspan="5" class="small muted">Incluye recogida y entrega en Zona 1, aroma a elegir, plancha básica y envasado al vacío. Zona 2: +2,90 €. Suscripción 4 bolsas M/mes: 129 € (32,25 €/bolsa). B2B apartamentos turísticos: kit cama+baño ≈ 4 kg desde 14,90 € + IVA.</td></tr></table>
+          <p class="small">Competencia: Mr Jeff 8 kg = 17 € y 15 kg = 24 € (solo lavado+doblado, sin plancha ni vacío); Washrocks 5 kg = 20,95 €; lavandería industrial local 1,80 €/kg con reparto. Costa Clean se posiciona como <b>premium</b>: no puede competir en €/kg con el lavado básico, sí en acabado.</p>
+        </section>
+      </div>
+      <section class="card"><h2>Inversión en maquinaria (CAPEX hub, sin IVA)</h2><table id="tCapex"></table></section>
+    </div>
+  </div>
+</main>
+<script src="/common.js"></script><script src="/modelo.js"></script>
+<script>
+CC.nav('calculadora'); CC.live({});
+const FIELDS = [
+  ['Demanda', [
+    ['pedidosDia', 'Pedidos por día', 5, 80, 1, ''],
+    ['kgPedido', 'Kg medios por pedido', 4, 15, 0.5, ' kg'],
+    ['pctPlanchadoCompleto', '% con planchado completo', 0, 1, 0.05, '%'],
+    ['ticketMedioIva', 'Ticket medio bolsa (IVA inc.)', 15, 60, 0.1, ' €'],
+    ['iva', 'IVA aplicado', 0, 0.21, 0.21, '%'],
+    ['extraPlanchadoIva', 'Extra planchado completo (IVA inc.)', 0, 40, 1, ' €'],
+  ]],
+  ['Personal', [
+    ['costeHoraLavandera', 'Coste empresa lavandera', 8, 20, 0.5, ' €/h'],
+    ['riders', 'Riders a jornada completa', 1, 4, 1, ''],
+    ['costeRiderMes', 'Coste empresa rider/mes', 1200, 2600, 50, ' €'],
+    ['paradasHoraRider', 'Paradas por hora en bici', 3, 12, 1, ''],
+  ]],
+  ['Tiempos en el hub (min por pedido)', [
+    ['minClasificarCargar', 'Clasificar y cargar', 2, 20, 1, ' min'],
+    ['minDoblar', 'Doblar', 5, 40, 1, ' min'],
+    ['minPlanchaBasica', 'Plancha básica', 0, 40, 1, ' min'],
+    ['minPlanchadoCompleto', 'Planchado completo (extra)', 20, 120, 5, ' min'],
+    ['minEnvasar', 'Envasar al vacío', 2, 20, 1, ' min'],
+  ]],
+  ['Consumibles y energía', [
+    ['kwhSecado', 'kWh secadora por ciclo', 1.5, 8, 0.5, ' kWh'],
+    ['precioKwh', 'Precio electricidad', 0.1, 0.35, 0.01, ' €/kWh'],
+    ['bolsasVacioPedido', 'Bolsas de vacío por pedido', 0, 4, 0.1, ' €'],
+  ]],
+  ['Fijos mensuales', [
+    ['alquilerLocal', 'Alquiler local', 0, 3000, 50, ' €'],
+    ['gestoria', 'Gestoría', 0, 400, 10, ' €'],
+    ['marketing', 'Marketing', 0, 2000, 50, ' €'],
+    ['bicisMes', 'Cargo-bikes (amort.+mant.)', 0, 800, 10, ' €'],
+    ['inversionMaquinaria', 'Inversión maquinaria', 5000, 80000, 1000, ' €'],
+  ]],
+];
+const p = { ...Modelo.DEFAULTS };
+const fmt = (k, v, suf) => suf === '%' ? Math.round(v*100) + ' %' : (k.startsWith('precio') ? v.toFixed(2) : CC.num(v, Number.isInteger(v) ? 0 : 1)) + suf;
+document.getElementById('inputs').innerHTML = FIELDS.map(([g, fs]) => `<h2>${g}</h2>` + fs.map(([k, l, min, max, step, suf]) => `<div class="field"><label>${l}<b id="v_${k}">${fmt(k, p[k], suf)}</b></label><input type="range" min="${min}" max="${max}" step="${step}" value="${p[k]}" oninput="upd('${k}', this.value, '${suf}')"></div>`).join('')).join('');
+function simplificado(on) {
+  const vals = on ? { iva: 0, alquilerLocal: 0, gestoria: 0 } : { iva: Modelo.DEFAULTS.iva, alquilerLocal: Modelo.DEFAULTS.alquilerLocal, gestoria: Modelo.DEFAULTS.gestoria };
+  Object.assign(p, vals);
+  document.querySelectorAll('#inputs input[type=range]').forEach((el) => { const k = el.getAttribute('oninput').match(/upd\('(\w+)'/)[1]; if (k in vals) { el.value = p[k]; document.getElementById('v_' + k).textContent = fmt(k, p[k], el.getAttribute('oninput').match(/, '([^']*)'\)/)[1]); } });
+  render();
+}
+function upd(k, v, suf) { p[k] = Number(v); document.getElementById('v_'+k).textContent = fmt(k, p[k], suf); render(); }
+
+const CAPEX = [
+  ['2 lavadoras profesionales 10-11 kg (Primer LP-10 / Fagor LAP-10)', 2, 3900, 'Precio de tienda online 2026 ≈ 3.900 € c/u'],
+  ['1 lavadora 18-20 kg (Primer RS-18 / Factor 200) para ropa de cama B2B', 1, 6400, 'Oferta vista a 6.400 € (PVP 8.000 €)'],
+  ['3 secadoras 12-14 kg (Fagor / Primer, eléctricas)', 3, 2700, 'Catálogo 2.230-2.705 €; bomba de calor +1.000 € c/u pero -45 % consumo'],
+  ['Mesa de planchado profesional con caldera + plancha', 2, 900, '600-1.200 € c/u'],
+  ['Envasadora al vacío de campana (textil) + consumibles iniciales', 1, 2500, 'Alternativa económica: envasadora externa 300-600 €'],
+  ['Instalación eléctrica trifásica, desagües, extracción secadoras', 1, 4500, 'Presupuesto de instalador 3.000-6.000 € según local'],
+  ['Mobiliario, estanterías, báscula, carros, etiquetado', 1, 1500, ''],
+  ['2 cargo-bikes eléctricas con caja (Urban Arrow Cargo / Yuba / Tern GSD)', 2, 4000, '1.100 € (gama baja Hitway) a 6.500 € (Urban Arrow)'],
+  ['Fianza local (2 meses) + licencia de actividad y proyecto', 1, 4500, ''],
+];
+document.getElementById('tCapex').innerHTML = `<tr><th>Partida</th><th class="num">Ud.</th><th class="num">€/ud.</th><th class="num">Total</th><th>Referencia</th></tr>` +
+  CAPEX.map(([n,u,c,ref]) => `<tr><td>${n}</td><td class="num">${u}</td><td class="num">${CC.num(c)}</td><td class="num">${CC.num(u*c)}</td><td class="small muted">${ref}</td></tr>`).join('') +
+  `<tr class="total"><td colspan="3">Total inversión inicial (sin IVA)</td><td class="num">${CC.num(CAPEX.reduce((a,[,u,c])=>a+u*c,0))} €</td><td class="small muted">Con IVA ≈ ${CC.num(CAPEX.reduce((a,[,u,c])=>a+u*c,0)*1.21)} €. Renting a 60 meses ≈ 2 %/mes del valor financiado.</td></tr>`;
+
+function render() {
+  const r = Modelo.calcular(p);
+  const cls = r.margenMes >= 0 ? 'pos' : 'neg';
+  document.getElementById('kpis').innerHTML = [
+    ['Pedidos / mes', CC.num(r.pedidosMes)], ['Kg / mes', CC.num(r.kgMes)],
+    ['Coste por pedido', CC.eur(r.costePedido)], ['Coste por kg', CC.eur(r.costeKg)],
+    ['Ingreso neto / pedido', CC.eur(r.ingresoPedidoNeto)],
+    ['Margen mensual', `<span class="${cls}">${CC.eur(r.margenMes)}</span>`], ['Margen %', `<span class="${cls}">${Math.round(r.margenPct*100)} %</span>`],
+    ['Punto de equilibrio', `${CC.num(r.breakEvenPedidosDia,1)} ped/día`],
+    ['Ocupación riders', `<span class="${r.ocupacionRiders>1?'neg':''}">${Math.round(r.ocupacionRiders*100)} %</span>`],
+    ['Lavanderas (media jornada)', CC.num(r.lavanderasEquivalentes,1)],
+  ].map(([l,v]) => `<div class="kpi"><div class="v" style="font-size:20px">${v}</div><div class="l">${l}</div></div>`).join('');
+
+  document.getElementById('tMes').innerHTML = `<tr><th>Concepto</th><th class="num">€/mes</th><th class="num">%</th></tr>` + [
+    ['Mano de obra hub (lavar, doblar, planchar, envasar)', r.costeHubMes], ['Riders (reparto en bici)', r.ridersMes], ['Consumibles, energía y agua', r.consumMes],
+    ['Alquiler local', p.alquilerLocal], ['Amortización maquinaria', r.amortizacion], ['Cargo-bikes', p.bicisMes], ['Marketing', p.marketing], ['Software, seguros, gestoría, suministros', p.software+p.seguros+p.gestoria+p.suministrosFijos],
+  ].map(([l,v]) => `<tr><td>${l}</td><td class="num">${CC.num(v)}</td><td class="num">${Math.round(v/r.costeTotalMes*100)} %</td></tr>`).join('') +
+  `<tr class="total"><td>Total costes</td><td class="num">${CC.num(r.costeTotalMes)}</td><td></td></tr><tr><td>Ingresos netos (sin IVA)</td><td class="num">${CC.num(r.ingresosMes)}</td><td></td></tr><tr class="total"><td>Resultado</td><td class="num ${cls}">${CC.num(r.margenMes)}</td><td class="num ${cls}">${Math.round(r.margenPct*100)} %</td></tr>`;
+
+  const d = r.desglosePedido;
+  document.getElementById('tPedido').innerHTML = `<tr><th>Concepto</th><th class="num">€/pedido</th></tr>` + [
+    [`Mano de obra hub (${r.minMedio.toFixed(0)} min)`, d.hub], ['Reparto (recogida + entrega)', d.reparto], ['Consumibles y energía', d.consumibles], ['Fijos repercutidos', d.fijos],
+  ].map(([l,v]) => `<tr><td>${l}</td><td class="num">${CC.num(v,2)}</td></tr>`).join('') +
+  `<tr class="total"><td>Coste total por pedido</td><td class="num">${CC.num(r.costePedido,2)}</td></tr>
+   <tr><td>Precio al cliente (IVA inc., con extras ponderados)</td><td class="num">${CC.num(p.ticketMedioIva + p.pctPlanchadoCompleto*p.extraPlanchadoIva,2)}</td></tr>
+   <tr><td>Ingreso neto sin IVA</td><td class="num">${CC.num(r.ingresoPedidoNeto,2)}</td></tr>
+   <tr class="total"><td>Margen por pedido</td><td class="num ${cls}">${CC.num(r.ingresoPedidoNeto - r.costePedido,2)}</td></tr>
+   <tr><td class="small muted" colspan="2">Precio mínimo para un 30 % de margen bruto: <b>${CC.eur(r.costePedido/0.7*(1+p.iva))}</b> IVA incluido.</td></tr>`;
+
+  document.getElementById('tEsc').innerHTML = `<tr><th>Pedidos/día</th><th class="num">Coste/pedido</th><th class="num">Coste/kg</th><th class="num">Margen/mes</th><th class="num">Margen %</th><th class="num">Riders</th></tr>` +
+    [10, 15, 20, 30, 40, 50, 60].map(n => { const s = Modelo.calcular({ ...p, pedidosDia: n }); return `<tr ${n===p.pedidosDia?'style="font-weight:700"':''}><td>${n}</td><td class="num">${CC.num(s.costePedido,2)}</td><td class="num">${CC.num(s.costeKg,2)}</td><td class="num ${s.margenMes>=0?'pos':'neg'}">${CC.num(s.margenMes)}</td><td class="num">${Math.round(s.margenPct*100)} %</td><td class="num ${s.ocupacionRiders>1?'neg':''}">${Math.round(s.ocupacionRiders*100)} %</td></tr>`; }).join('');
+}
+render();
+</script>
+</body></html>
