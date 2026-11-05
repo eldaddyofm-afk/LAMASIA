@@ -1,0 +1,287 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Costa Clean · Brand and launch kit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+@page { size: A4; margin: 0; }
+:root { --mar:#0B7A8A; --maro:#075B67; --arena:#F6EFE4; --arenao:#EADFCB; --sol:#F6C66B; --coral:#F26B4E; --tinta:#1D2A30; --bruma:#5F6E76; --linea:#E3DACB; }
+* { box-sizing: border-box; }
+body { margin:0; font-family:"Nunito Sans", system-ui, sans-serif; color:var(--tinta); font-size:11.5pt; line-height:1.5; }
+.page { width:210mm; height:297mm; padding:18mm 18mm 16mm; page-break-after:always; position:relative; overflow:hidden; background:#fff; }
+.page.mar { background:var(--mar); color:#fff; }
+.page.arena { background:var(--arena); }
+h1,h2,h3,h4 { font-family:Outfit, sans-serif; margin:0; line-height:1.1; letter-spacing:-0.01em; }
+h1 { font-size:34pt; font-weight:800; }
+h2 { font-size:22pt; font-weight:700; color:var(--maro); margin-bottom:6mm; }
+.page.mar h2 { color:#fff; }
+h3 { font-size:13pt; font-weight:600; margin:5mm 0 2mm; }
+p { margin:0 0 3mm; max-width:160mm; }
+.eyebrow { font-family:Outfit; font-size:9pt; letter-spacing:.16em; text-transform:uppercase; color:var(--mar); font-weight:600; margin-bottom:3mm; }
+.page.mar .eyebrow { color:var(--sol); }
+.foot { position:absolute; bottom:9mm; left:18mm; right:18mm; display:flex; justify-content:space-between; font-family:Outfit; font-size:8.5pt; color:var(--bruma); letter-spacing:.08em; text-transform:uppercase; }
+.page.mar .foot { color:rgba(255,255,255,.75); }
+.grid { display:grid; gap:5mm; }
+.g2 { grid-template-columns:1fr 1fr; } .g3 { grid-template-columns:1fr 1fr 1fr; } .g4 { grid-template-columns:repeat(4,1fr); }
+.card { border:1px solid var(--linea); border-radius:4mm; padding:5mm; background:#fff; }
+.sw { border-radius:4mm; padding:4mm; min-height:34mm; display:flex; flex-direction:column; justify-content:flex-end; font-family:Outfit; }
+.sw b { font-size:12pt; } .sw span { font-size:8.5pt; opacity:.85; }
+.mono { font-family:"Nunito Sans"; font-variant-numeric:tabular-nums; }
+table { width:100%; border-collapse:collapse; font-size:10pt; }
+th,td { text-align:left; padding:2mm 2.5mm; border-bottom:1px solid var(--linea); vertical-align:top; }
+th { font-family:Outfit; font-size:8.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--bruma); font-weight:600; }
+td.n { text-align:right; font-variant-numeric:tabular-nums; }
+.ok, .no { padding:3mm 4mm; border-radius:3mm; font-size:10pt; }
+.ok { background:#E6F5EC; } .no { background:#FDE8E4; }
+.ok b, .no b { font-family:Outfit; display:block; margin-bottom:1mm; }
+img { max-width:100%; display:block; }
+.shot { border:1px solid var(--linea); border-radius:3mm; overflow:hidden; background:#fff; }
+.url { font-family:Outfit; font-weight:600; color:var(--mar); word-break:break-all; }
+.page.mar .url { color:#fff; }
+/* tarjetas a tamaño real 85x55 mm */
+.tarjeta { width:85mm; height:55mm; border-radius:3mm; overflow:hidden; position:relative; box-shadow:0 3mm 8mm rgba(0,0,0,.12); }
+.tarjeta.front { background:var(--mar); color:#fff; padding:7mm; }
+.tarjeta.front .logo { width:46mm; }
+.tarjeta.front .claim { position:absolute; left:7mm; bottom:7mm; font-family:Outfit; font-size:9pt; line-height:1.25; width:60mm; }
+.tarjeta.front .mark { position:absolute; right:-6mm; bottom:-6mm; width:30mm; opacity:.18; }
+.tarjeta.back { background:var(--arena); color:var(--tinta); padding:6mm 7mm; display:grid; grid-template-columns:1fr 30mm; gap:4mm; align-items:center; }
+.tarjeta.back .qr { width:30mm; height:30mm; background:#fff; border-radius:2mm; padding:1.5mm; }
+.tarjeta.back h4 { font-size:11pt; color:var(--maro); margin-bottom:1.5mm; }
+.tarjeta.back p { font-size:8pt; margin:0 0 1mm; line-height:1.35; color:var(--bruma); }
+.tarjeta.back .tel { font-family:Outfit; font-weight:700; font-size:10pt; color:var(--tinta); white-space:nowrap; }
+.etiqueta { width:100mm; height:60mm; background:#fff; border:1px solid var(--linea); border-radius:2mm; padding:5mm; display:grid; grid-template-columns:1fr 22mm; gap:3mm; font-size:8pt; }
+.etiqueta .big { font-family:Outfit; font-weight:700; font-size:12.5pt; white-space:nowrap; color:var(--maro); }
+.etiqueta .row { display:flex; justify-content:space-between; gap:2mm; white-space:nowrap; border-bottom:1px dashed var(--linea); padding:1mm 0; }
+.chat { background:#E7F6EC; border-radius:3mm; padding:3mm 4mm; font-size:9.5pt; margin-bottom:3mm; max-width:120mm; }
+.chat b { font-family:Outfit; color:var(--maro); display:block; font-size:8.5pt; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1mm; }
+.kpi { border-left:1.2mm solid var(--mar); padding-left:4mm; }
+.kpi b { font-family:Outfit; font-size:20pt; font-weight:800; display:block; color:var(--maro); line-height:1; }
+.kpi span { font-size:9pt; color:var(--bruma); }
+.type-sample { font-size:30pt; line-height:1.05; }
+</style></head><body>
+
+
+<!-- 1 COVER -->
+<div class="page mar">
+  <img src="logo-horizontal-blanco.png" style="width:120mm;margin-top:40mm">
+  <h1 style="margin-top:34mm;font-size:40pt;max-width:160mm">Brand and<br>launch kit</h1>
+  <p style="margin-top:8mm;font-size:14pt;max-width:150mm;color:rgba(255,255,255,.9)">Identity, QR business cards, labels, landing page and operations app beta. Málaga, November 2026.</p>
+  <div class="foot"><span>Costa Clean</span><span>Version 1.0 · internal use</span></div>
+</div>
+
+<!-- 2 WHAT'S INSIDE -->
+<div class="page">
+  <div class="eyebrow">Contents</div>
+  <h2>What is in this kit and where to find it</h2>
+  <table>
+    <tr><th style="width:52mm">Item</th><th>Where</th><th style="width:48mm">Status</th></tr>
+    <tr><td>English landing page</td><td class="url">__LANDING_EN_URL__</td><td>Published. Share it from the Share menu so anyone can open it.</td></tr>
+    <tr><td>Spanish landing page</td><td class="url">https://claude.ai/artifact/XY5qdLNjMMMFZmKzATrpKw</td><td>Published. Share it from the Share menu so anyone can open it.</td></tr>
+    <tr><td>Operations app beta</td><td class="url">https://claude.ai/artifact/4mTka28BJN6Zn84yWCDgqv</td><td>Published. Serverless demo; data is stored in each person's browser.</td></tr>
+    <tr><td>Full app (with server, real GPS)</td><td class="mono">LAMASIA repository · app/ folder</td><td>Ready to deploy on a VPS with HTTPS.</td></tr>
+    <tr><td>Business plan</td><td class="mono">docs/business-plan.md</td><td>Complete, with sources.</td></tr>
+    <tr><td>Logos (SVG and PNG)</td><td class="mono">brand/en/logo-horizontal · logo-vertical · logo-mark · white and black versions · avatar · favicon</td><td>Vector, type converted to outlines, print-ready.</td></tr>
+    <tr><td>QR code to the landing page</td><td class="mono">brand/en/qr-landing.svg · .png</td><td>Points to the landing page. If you change domain, regenerate it.</td></tr>
+    <tr><td>Business cards</td><td class="mono">brand/en/business-cards.pdf (A4, 10 per sheet, front and back)</td><td>Real phone number still missing.</td></tr>
+    <tr><td>Instagram pack</td><td class="mono">brand/en/instagram/</td><td>9 posts, 3 stories, captions and calendar.</td></tr>
+    <tr><td>This document</td><td class="mono">brand/en/brand-kit.pdf</td><td></td></tr>
+  </table>
+  <h3>Three things to change before printing anything</h3>
+  <p>1. The WhatsApp number. Every piece shows <b>+34 600 000 000</b> as a placeholder. Search and replace it in landing.html, brand-kit.html and business-cards.html.</p>
+  <p>2. The domain. The pieces link to the published landing page; once you have costaclean.es (or similar), point the domain to the landing page and regenerate the QR code.</p>
+  <p>3. The email hello@costaclean.es is provisional.</p>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>2</span></div>
+</div>
+
+<!-- 3 THE BRAND -->
+<div class="page arena">
+  <div class="eyebrow">The brand</div>
+  <h2>What Costa Clean is and how it speaks</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">The idea in one sentence</h3><p>Your clothes come home the way you wish they always were: pressed, folded, vacuum-packed and scented the way you like. And they arrive by bike.</p>
+      <h3>Promise</h3><p>Leave a bag at the door and within 24-48 hours your laundry is back, ready for the wardrobe. No sorting, no waiting, no vans.</p>
+      <h3>Who it is for</h3><p>People aged 28 to 50 in the Centro, Soho, Malagueta and the east side of the city who value their time and well-cared-for clothes. Second audience: holiday rental managers.</p></div>
+    <div class="card"><h3 style="margin-top:0">What makes us different</h3><p><b>Vacuum packing.</b> Nobody in Málaga offers it. It is visual, it is understood in a second and it feels like new clothes.</p><p><b>The scent.</b> Six options. It turns a chore into a choice.</p><p><b>The ironing.</b> Mr Jeff and the rest only wash and fold.</p><p><b>The bike.</b> Speed in the Centro and a friendly, local image.</p>
+      <h3>Values</h3><p>Care, closeness, cleanliness (visual too), Mediterranean pace.</p></div>
+  </div>
+  <h3>Tone of voice</h3>
+  <div class="grid g2">
+    <div class="ok"><b>Yes</b>Close and direct, like a neighbour who knows their trade. Short sentences. First names. We talk about the clothes, not the laundry. "Your clothes come back pressed and smelling of sea breeze."</div>
+    <div class="no"><b>No</b>No technical jargon ("textile sanitisation process"), no forced jokes, no strings of exclamation marks, no vague promises ("premium quality guaranteed"). Never "industrial laundry".</div>
+  </div>
+  <h3>Brand lines</h3>
+  <p><b>Main claim:</b> Pressed, vacuum-packed and scented the way you like it. At your door.</p>
+  <p><b>Short:</b> Your clothes the way you wish they always were.</p>
+  <p><b>For the bike and the bag:</b> We take your laundry for a ride.</p>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>3</span></div>
+</div>
+
+<!-- 4 LOGO -->
+<div class="page">
+  <div class="eyebrow">Logo</div>
+  <h2>The hanger and the wave: one line, two ideas</h2>
+  <div class="grid g2" style="align-items:center">
+    <div class="card" style="padding:10mm"><img src="logo-horizontal.png"></div>
+    <div class="card" style="background:var(--mar);padding:10mm"><img src="logo-horizontal-blanco.png"></div>
+    <div class="card"><div style="display:flex;gap:8mm;align-items:center;margin-bottom:4mm"><img src="logo-mark.png" style="width:26mm"><img src="logo-mark.png" style="width:16mm"><img src="logo-mark.png" style="width:9mm"></div><div style="font-size:9.5pt;color:var(--bruma)">Symbol on its own: WhatsApp and Instagram avatar (brand/en/avatar.svg), favicon, small stickers. Minimum size 8 mm / 24 px.</div></div>
+    <div class="card"><h3 style="margin-top:0">Rules</h3><p style="font-size:10pt">The symbol is a hanger whose bar is a wave: cared-for clothes and the coast in a single stroke. One line weight, never filled.<br>Clear space: the height of the hook on every side.<br>Symbol in Sea and type in Ink on light backgrounds; all white on Sea or on a photo with a 70 % Sea overlay.<br>Versions: horizontal (preferred), vertical (squares and social media), symbol only (avatar, favicon, small labels). Type converted to outlines: the printer does not need the font.</p></div>
+  </div>
+  <h3>Incorrect uses</h3>
+  <div class="grid g4" style="font-size:9pt;color:var(--bruma)">
+    <div class="card"><img src="logo-mark.png" style="width:16mm;transform:rotate(-12deg);margin-bottom:3mm">Do not rotate or tilt.</div>
+    <div class="card"><img src="logo-mark.png" style="width:22mm;height:12mm;object-fit:fill;margin-bottom:3mm">Do not stretch.</div>
+    <div class="card"><img src="logo-mark.png" style="width:16mm;filter:hue-rotate(120deg);margin-bottom:3mm">Do not change the colours or fill the hanger.</div>
+    <div class="card" style="background:#f0a">
+      <img src="logo-mark.png" style="width:16mm;margin-bottom:3mm"><span style="color:#fff">Do not place it on colours outside the palette.</span></div>
+  </div>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>4</span></div>
+</div>
+
+<!-- 5 COLOUR -->
+<div class="page">
+  <div class="eyebrow">Colour</div>
+  <h2>Sea, sand, sun and a touch of coral</h2>
+  <div class="grid g3">
+    <div class="sw" style="background:#0B7A8A;color:#fff"><b>Sea</b><span>#0B7A8A · RGB 11 122 138 · CMYK 92 12 36 2<br>Main colour. Logo, headlines, backgrounds.</span></div>
+    <div class="sw" style="background:#075B67;color:#fff"><b>Deep sea</b><span>#075B67 · RGB 7 91 103<br>Text on sand, QR code, hover states.</span></div>
+    <div class="sw" style="background:#F6EFE4;color:#1D2A30;border:1px solid #E3DACB"><b>Sand</b><span>#F6EFE4 · RGB 246 239 228<br>Page backgrounds and card backs. Never for text.</span></div>
+    <div class="sw" style="background:#F6C66B;color:#1D2A30"><b>Sun</b><span>#F6C66B · RGB 246 198 107<br>Small accents: labels, icons, details.</span></div>
+    <div class="sw" style="background:#F26B4E;color:#fff"><b>Coral</b><span>#F26B4E · RGB 242 107 78 · CMYK 0 70 65 0<br>One use only: the booking button. Nothing else.</span></div>
+    <div class="sw" style="background:#1D2A30;color:#fff"><b>Ink</b><span>#1D2A30 · RGB 29 42 48<br>Text and the name in the logo.</span></div>
+  </div>
+  <h3>Proportion</h3>
+  <div style="display:flex;height:12mm;border-radius:3mm;overflow:hidden;font-family:Outfit;font-size:8.5pt;color:#fff">
+    <div style="flex:45;background:#F6EFE4;color:#1D2A30;display:grid;place-items:center">Sand 45 %</div><div style="flex:30;background:#fff;color:#1D2A30;display:grid;place-items:center;border:1px solid #E3DACB">White 30 %</div><div style="flex:18;background:#0B7A8A;display:grid;place-items:center">Sea 18 %</div><div style="flex:4;background:#F6C66B"></div><div style="flex:3;background:#F26B4E"></div>
+  </div>
+  <p style="margin-top:4mm;font-size:10pt;color:var(--bruma)">Backgrounds are light and warm; Sea appears in large blocks but few of them; Sun and Coral are accents. If a piece has more than one coral element, one of them is too many.</p>
+  <h3>Scents: colour labels for the bags</h3>
+  <div class="grid g3" style="font-size:9.5pt">
+    <div class="card" style="border-left:3mm solid #6FB7C4">Sea breeze</div><div class="card" style="border-left:3mm solid #9A8CC9">Lavender</div><div class="card" style="border-left:3mm solid #D9D4C7">Clean cotton</div>
+    <div class="card" style="border-left:3mm solid #F2B33D">Mediterranean citrus</div><div class="card" style="border-left:3mm solid #E8A6B8">Málaga jasmine</div><div class="card" style="border-left:3mm solid #B8C4C9">Fragrance-free</div>
+  </div>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>5</span></div>
+</div>
+
+<!-- 6 TYPOGRAPHY -->
+<div class="page">
+  <div class="eyebrow">Typography</div>
+  <h2>Outfit to speak up, Nunito Sans to read</h2>
+  <div class="grid g2">
+    <div class="card"><div class="eyebrow">Headlines and buttons</div><div class="type-sample" style="font-family:Outfit;font-weight:800">Outfit<br>Pressed and vacuum-packed</div><p style="margin-top:4mm;font-size:10pt;color:var(--bruma)">Weights 600, 700 and 800. Slightly negative letter-spacing at large sizes. Free on Google Fonts.</p></div>
+    <div class="card"><div class="eyebrow">Body text and forms</div><div class="type-sample" style="font-family:'Nunito Sans';font-weight:400;font-size:24pt">Nunito Sans<br>We pick it up by bike and bring it back in 24-48 h with the scent you choose.</div><p style="margin-top:4mm;font-size:10pt;color:var(--bruma)">Weights 400, 600 and 700. Body size 16-17 px on the web, 10-11 pt in print. Free on Google Fonts.</p></div>
+  </div>
+  <h3>Scale</h3>
+  <table>
+    <tr><th>Use</th><th>Font</th><th>Web size</th><th>Example</th></tr>
+    <tr><td>Main headline</td><td>Outfit 800</td><td class="n">48-60 px</td><td style="font-family:Outfit;font-weight:800;font-size:18pt">Your clothes come back pressed.</td></tr>
+    <tr><td>Section title</td><td>Outfit 700</td><td class="n">30-38 px</td><td style="font-family:Outfit;font-weight:700;font-size:14pt">Per bag, no surprises.</td></tr>
+    <tr><td>Label</td><td>Outfit 600, uppercase, +14 % letter-spacing</td><td class="n">13 px</td><td class="eyebrow" style="margin:0">Laundry pickup &amp; delivery · Málaga</td></tr>
+    <tr><td>Body</td><td>Nunito Sans 400</td><td class="n">17 px</td><td>Pickup and delivery in a two-hour window you choose.</td></tr>
+    <tr><td>Price</td><td>Outfit 800, tabular figures</td><td class="n">44 px</td><td style="font-family:Outfit;font-weight:800;font-size:18pt">€36.90</td></tr>
+  </table>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>6</span></div>
+</div>
+
+<!-- 7 BUSINESS CARDS -->
+<div class="page arena">
+  <div class="eyebrow">Business cards · 85 × 55 mm at actual size</div>
+  <h2>The QR code takes you to the landing page to book on the spot</h2>
+  <div style="display:flex;gap:10mm;flex-wrap:wrap;margin-top:6mm">
+    <div class="tarjeta front"><img class="logo" src="logo-horizontal-blanco.png"><div class="claim">Pressed, vacuum-packed<br>and scented your way. At your door.</div><img class="mark" src="logo-mark.png"></div>
+    <div class="tarjeta back"><div><h4>Book a pickup</h4><p>Scan the code or message us.</p><p class="tel">WhatsApp +34 600 000 000</p><p>costaclean.es · hello@costaclean.es</p><p>Málaga · Monday to Saturday, 9 am to 9 pm</p></div><img class="qr" src="qr-landing.svg"></div>
+  </div>
+  <h3>For the printer</h3>
+  <p style="font-size:10pt">File <b>brand/en/business-cards.pdf</b>: A4 sheets with 10 cards per side, fronts and backs facing each other. Ask for 350 g matte card with a soft laminate; solid Sea looks better without gloss. A 3 mm bleed is already included on every card. If the printer asks for the logo separately, it is in SVG in the brand/en folder.</p>
+  <h3>Variant for riders and laundry staff</h3>
+  <p style="font-size:10pt">Same front. On the back, the person's name in Outfit 700 and "Costa Clean rider" instead of "Book a pickup". They are the face of the brand at the customer's door.</p>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>7</span></div>
+</div>
+
+<!-- 8 APPLICATIONS -->
+<div class="page">
+  <div class="eyebrow">Applications</div>
+  <h2>Bag label, bike and messages</h2>
+  <div style="display:flex;gap:8mm;align-items:flex-start">
+    <div class="etiqueta"><div><div class="big">CC-1004 · 9 kg</div><div class="row"><span>Customer</span><b>Tom Becker</b></div><div class="row"><span>Scent</span><b>Mediterranean citrus</b></div><div class="row"><span>Ironing</span><b>Basic</b></div><div class="row"><span>Delivery</span><b>Thu 5-7 pm</b></div><div style="margin-top:2mm;color:var(--bruma);font-size:7.5pt">Vacuum-packed on 5 Nov · Open at the notch and let the clothes breathe for 10 min.</div></div><div><img src="qr-landing.svg" style="width:22mm"><img src="logo-mark.png" style="width:12mm;margin-top:2mm"></div></div>
+    <div style="font-size:10pt;color:var(--bruma)"><b style="color:var(--tinta);font-family:Outfit">Order label</b><br>Printed at the hub (90 × 60 mm, thermal printer) and stuck on the vacuum bag. The customer's QR code leads to the landing page to reorder; the CC code is the same as in the app.<br><br><b style="color:var(--tinta);font-family:Outfit">Bike box</b><br>Sea-coloured vinyl with the white horizontal logo on both sides and "We take your laundry for a ride" in Outfit 700 on the back. Company registration and WhatsApp number on the rear.<br><br><b style="color:var(--tinta);font-family:Outfit">Team clothing</b><br>Sea-coloured T-shirt or polo with the symbol on the chest at 7 cm. Reflective vest on top in winter.</div>
+  </div>
+  <h3>WhatsApp messages (templates)</h3>
+  <div class="chat"><b>Confirmation</b>Hi Tom! Order CC-1004 is confirmed. We will come by Calle Tomás Heredia 9 on Thursday between 5 and 7 pm. Leave your clothes in a closed bag, no need to sort anything. Chosen scent: Mediterranean citrus.</div>
+  <div class="chat"><b>Rider nearby</b>Dani is 5 minutes away with your clothes. The total is €36.90, you can pay by card or Bizum at the door.</div>
+  <div class="chat"><b>Delivered</b>Delivered. The bag is vacuum-packed: open it at the notch and let the clothes breathe for 10 minutes before putting them away. Same again next week? Reply YES and we will book the same slot for you.</div>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>8</span></div>
+</div>
+
+<!-- 9 LANDING PAGE -->
+<div class="page">
+  <div class="eyebrow">Landing page</div>
+  <h2>The website for booking</h2>
+  <p class="url" style="margin-bottom:4mm">__LANDING_EN_URL__</p>
+  <div style="display:flex;gap:8mm;align-items:flex-start">
+    <div class="shot" style="width:118mm;max-height:170mm;overflow:hidden"><img src="landing-desktop.png"></div>
+    <div style="width:46mm"><div class="shot"><img src="landing-movil.png"></div><img src="qr-landing.svg" style="width:30mm;margin-top:5mm"></div>
+  </div>
+  <p style="font-size:10pt;color:var(--bruma);margin-top:4mm">Sections: promise, how it works, the four differentiators with the six scents, prices per bag, areas and days, frequently asked questions and a form that prepares the WhatsApp message with the order and the total. Works on mobile and in dark mode. The source code is in brand/en/landing.html, and the app (route /pedido) has the version connected to the system.</p>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>9</span></div>
+</div>
+
+<!-- 10 APP BETA -->
+<div class="page">
+  <div class="eyebrow">Operations app beta</div>
+  <h2>What is being washed, what is not, where it goes and where the rider is</h2>
+  <p class="url" style="margin-bottom:4mm">https://claude.ai/artifact/4mTka28BJN6Zn84yWCDgqv</p>
+  <div class="grid g2">
+    <div class="shot"><img src="shot-panel.png"></div>
+    <div class="shot"><img src="shot-mapa.png"></div>
+  </div>
+  <table style="margin-top:5mm">
+    <tr><th style="width:34mm">Screen</th><th>Who it is for</th><th>What it does</th></tr>
+    <tr><td>Dashboard</td><td>You</td><td>Board by status, kilos in process, machines with timers, riders and laundry staff. Create orders taken by phone.</td></tr>
+    <tr><td>Map and GPS</td><td>You</td><td>Rider positions, track and optimised route with the kilometres saved.</td></tr>
+    <tr><td>Hub</td><td>Laundry staff</td><td>Queue per person, load a washer or dryer, scent and ironing for each bag, pack, mark as ready.</td></tr>
+    <tr><td>Rider app</td><td>Riders</td><td>Day's route in optimal order, navigation, mark as picked up or delivered, automatic GPS.</td></tr>
+    <tr><td>Customer site</td><td>Customers</td><td>Order form connected to the dashboard.</td></tr>
+    <tr><td>Calculator</td><td>You</td><td>Financial model with sliders: costs, margin, break-even, investment.</td></tr>
+  </table>
+  <p style="font-size:10pt;color:var(--bruma);margin-top:4mm">The beta runs without a server: data is stored in the browser of whoever opens it, and the phone GPS is not active. The full version is in the app folder of the repository and needs a small server with HTTPS (€5-10 a month).</p>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>10</span></div>
+</div>
+
+<!-- 11 KEY FIGURES -->
+<div class="page arena">
+  <div class="eyebrow">The plan in numbers</div>
+  <h2>What to keep in mind</h2>
+  <div class="grid g4" style="margin-bottom:8mm">
+    <div class="kpi"><b>€36.90</b><span>10 kg M bag, VAT included, the most popular</span></div>
+    <div class="kpi"><b>€27.80</b><span>Cost per order at 30 orders a day</span></div>
+    <div class="kpi"><b>18</b><span>Orders a day to cover costs with 2 riders</span></div>
+    <div class="kpi"><b>€45,000</b><span>Initial investment excluding VAT with new machinery</span></div>
+  </div>
+  <table>
+    <tr><th>Orders a day</th><th class="n">Cost per order</th><th class="n">Cost per kg</th><th class="n">Monthly margin</th><th class="n">Margin</th></tr>
+    <tr><td>15</td><td class="n">€37.70</td><td class="n">€4.71</td><td class="n">-€1,012</td><td class="n">-9 %</td></tr>
+    <tr><td>30</td><td class="n">€27.81</td><td class="n">€3.48</td><td class="n">€4,502</td><td class="n">20 %</td></tr>
+    <tr><td>50</td><td class="n">€23.85</td><td class="n">€2.98</td><td class="n">€11,855</td><td class="n">31 %</td></tr>
+  </table>
+  <div class="grid g2" style="margin-top:6mm">
+    <div class="card"><h3 style="margin-top:0">Prices</h3><table><tr><td>S bag · 5 kg</td><td class="n">€22.90</td></tr><tr><td>M bag · 10 kg</td><td class="n">€36.90</td></tr><tr><td>L bag · 15 kg</td><td class="n">€49.90</td></tr><tr><td>Full ironing</td><td class="n">+€12 / 20 / 28</td></tr><tr><td>Subscription, 4 M bags</td><td class="n">€129/month</td></tr><tr><td>Vacuum-packed duvet</td><td class="n">€19.90</td></tr><tr><td>Holiday rental kit</td><td class="n">€14.90 + VAT</td></tr></table></div>
+    <div class="card"><h3 style="margin-top:0">Hub machinery (excluding VAT)</h3><table><tr><td>2 washers, 10-11 kg</td><td class="n">€7,800</td></tr><tr><td>1 washer, 20 kg</td><td class="n">€6,400</td></tr><tr><td>3 dryers, 12-14 kg</td><td class="n">€8,100</td></tr><tr><td>Ironing, vacuum packer, furniture</td><td class="n">€5,800</td></tr><tr><td>Electrical installation and drainage</td><td class="n">€4,500</td></tr><tr><td>2 cargo bikes</td><td class="n">€8,000</td></tr><tr><td>Deposit and licence</td><td class="n">€4,500</td></tr></table></div>
+  </div>
+  <p style="font-size:10pt;color:var(--bruma);margin-top:4mm">All the detail, assumptions and sources are in docs/business-plan.md. The calculator in the app lets you change any number.</p>
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>11</span></div>
+</div>
+
+<!-- 12 NEXT STEPS -->
+<div class="page mar">
+  <div class="eyebrow">This week</div>
+  <h2>Seven things to get started</h2>
+  <div style="font-size:12.5pt;line-height:1.6;max-width:160mm">
+    <p>1. Get a WhatsApp Business line and replace +34 600 000 000 on the landing page, the cards and the kit.</p>
+    <p>2. Register the domain and point it to the landing page. Share the landing page and the beta from the Share menu so they open without an account.</p>
+    <p>3. Create the Instagram account with the symbol as the avatar and post three photos: a vacuum-packed bag, the bike and a pressed shirt.</p>
+    <p>4. Wash ten orders for friends and time everything: folding, ironing, packing. Those minutes are the business.</p>
+    <p>5. Request machinery quotes from three distributors (Girbau Málaga, Primer, Fagor) using the list on page 11, both new and on a rental plan.</p>
+    <p>6. Visit five premises in Perchel and Cruz de Humilladero and ask about the licence before signing.</p>
+    <p>7. Print 250 cards and 200 flyers with the QR code and hand them out in Soho and Malagueta in one afternoon.</p>
+  </div>
+  <img src="logo-horizontal-blanco.png" style="width:70mm;position:absolute;left:18mm;bottom:22mm">
+  <div class="foot"><span>Costa Clean · Brand kit</span><span>12</span></div>
+</div>
+</body></html>
