@@ -1,0 +1,771 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Costa Clean · Operations and financial plan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+@page { size: A4; margin: 20mm 18mm 22mm; }
+:root { --mar:#0B7A8A; --maro:#075B67; --arena:#F6EFE4; --tinta:#1D2A30; --bruma:#5F6E76; --linea:#E3DACB; }
+* { box-sizing:border-box } body { margin:0; font-family:"Nunito Sans",sans-serif; color:var(--tinta); font-size:10.5pt; line-height:1.5; }
+.cover { height:257mm; background:var(--mar); color:#fff; margin:-20mm -18mm 0; padding:28mm 22mm; page-break-after:always; position:relative; }
+.cover svg { width:40mm; } .cover h1 { font-family:Outfit; font-size:36pt; font-weight:800; line-height:1.05; margin:70mm 0 8mm; max-width:150mm; letter-spacing:-.01em; }
+.cover p { font-size:13pt; max-width:140mm; opacity:.92 } .cover .wm { position:absolute; left:22mm; bottom:24mm; font-family:Outfit; font-weight:600; letter-spacing:.2em; font-size:11pt; }
+h2 { font-family:Outfit; font-size:20pt; font-weight:700; color:var(--maro); margin:0 0 5mm; line-height:1.15; letter-spacing:-.01em; }
+h2.brk { page-break-before:always; }
+h3 { font-family:Outfit; font-size:13pt; font-weight:600; margin:7mm 0 2.5mm; color:var(--tinta); }
+p { margin:0 0 3mm; } ul, ol { margin:0 0 3mm; padding-left:5mm; } li { margin-bottom:1mm; }
+strong { font-weight:700 } blockquote { margin:0 0 4mm; padding:3mm 5mm; border-left:1.2mm solid var(--mar); background:var(--arena); border-radius:0 3mm 3mm 0; font-size:10pt; }
+table { width:100%; border-collapse:collapse; font-size:9.3pt; margin:2mm 0 5mm; page-break-inside:auto; }
+th, td { text-align:left; padding:1.8mm 2.2mm; border-bottom:1px solid var(--linea); vertical-align:top; }
+th { font-family:Outfit; font-size:8pt; letter-spacing:.08em; text-transform:uppercase; color:var(--bruma); font-weight:600; background:var(--arena); }
+td[align=right], th[align=right] { text-align:right; font-variant-numeric:tabular-nums; }
+tr { page-break-inside:avoid } tbody tr:nth-child(even) td { background:#FBF8F2 }
+pre { background:var(--arena); border-radius:3mm; padding:4mm; font-size:9pt; line-height:1.4; overflow:hidden; white-space:pre-wrap; }
+code { font-family:"Nunito Sans"; font-size:9.5pt; background:var(--arena); padding:0 1mm; border-radius:1mm; }
+a { color:var(--mar); text-decoration:none; word-break:break-all; }
+hr { border:0; border-top:1px solid var(--linea); margin:6mm 0; }
+h2#10-fuentes-consultadas + ul, h2[id^="10-"] + ul { font-size:8.5pt; color:var(--bruma); }
+</style></head><body>
+<div class="cover"><svg viewBox="0 0 200 200"><g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M100 80 V68 A13 13 0 1 1 113 60"/><path d="M100 80 L26 134 C45 134 45 118 63 118 S82 134 100 134 S118 150 137 150 S156 134 174 134 Z"/></g></svg><h1>Operations and financial plan</h1><p>How the system works, what it costs, what to charge, how to save on routes, which machines to buy and when it starts making money. Málaga, November 2026.</p><div class="wm">COSTA CLEAN · WORKING DOCUMENT</div></div>
+<h2 class="sec brk">1. Executive summary</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Proposition</strong></td>
+<td>The customer leaves a bag, we collect it by bike and return it within 24-48 h washed, dried, ironed, folded, vacuum packed and with the scent they chose.</td>
+</tr>
+<tr>
+<td><strong>Where</strong></td>
+<td>Málaga city, starting with Centro, Soho, Malagueta, Huelin, Carretera de Cádiz, Cruz de Humilladero, Ciudad Jardín and Pedregalejo (Zone 1). El Palo and Teatinos as Zone 2 with a surcharge.</td>
+</tr>
+<tr>
+<td><strong>Initial team</strong></td>
+<td>2 riders on electric cargo-bikes + 3-5 part-time laundry staff in a micro-hub + you (operations, customer service, B2B sales).</td>
+</tr>
+<tr>
+<td><strong>Initial investment</strong></td>
+<td><strong>≈ €45,000 excl. VAT</strong> (≈ €54,500 incl. VAT) setting up the hub with new machinery. <strong>≈ €20,000-25,000</strong> starting with second-hand machines and a single new cargo-bike.</td>
+</tr>
+<tr>
+<td><strong>Selling price</strong></td>
+<td>5 kg bag €22.90 · 10 kg €36.90 · 15 kg €49.90 (VAT included, pickup and delivery included). Full ironing +€12/20/28.</td>
+</tr>
+<tr>
+<td><strong>Cost per order</strong></td>
+<td>€37.70 at 15 orders/day · <strong>€27.80 at 30 orders/day</strong> · €23.85 at 50 orders/day (average order 8 kg).</td>
+</tr>
+<tr>
+<td><strong>Break-even</strong></td>
+<td><strong>≈ 18 orders/day (≈ 390/month)</strong> with 2 full-time riders.</td>
+</tr>
+<tr>
+<td><strong>Margin</strong></td>
+<td>20 % at 30 orders/day (≈ €4,500/month) · 31 % at 50 orders/day (≈ €11,900/month).</td>
+</tr>
+<tr>
+<td><strong>Main risk</strong></td>
+<td>Hub labour is half the cost. If ironing gets out of control or the laundry staff are not hired properly, the business does not add up.</td>
+</tr>
+</tbody></table>
+<h2 class="sec brk">2. How the system works (operations)</h2>
+<h3>2.1 Order flow</h3>
+<pre><code> Customer orders (web/WhatsApp)  →  Awaiting pickup
+        ↓ rider collects in a 2 h slot, weighs the bag in front of the customer
+ Collected (on the bike)  →  At the hub (weighed, sorted, QR-labelled, scent noted)
+        ↓ laundry staff assign it to a free washer (app /hub)
+ Washing (45 min)  →  Drying (40 min)  →  Ironing  →  Vacuum packing  →  Ready
+        ↓ the optimiser groups ready deliveries by zone and assigns them to a rider
+ Out for delivery  →  Delivered (photo + confirmation in the rider app)
+</code></pre>
+<p>Every status is logged with time and person in the app, so at any moment you know <strong>what is being
+washed, what is sitting idle waiting for a machine, what is ready and where it has to be delivered</strong>,
+and the customer can receive an automatic WhatsApp at each step.</p>
+<h3>2.2 Where the washing happens: at the staff&#39;s homes or in a hub?</h3>
+<p>Your starting idea is that several local women run the washing machines and do the packing. There are
+two ways to do this and it is worth deciding before buying anything:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>A. Home network</strong> (each person washes at home)</th>
+<th><strong>B. Micro-hub</strong> (premises with machines, staff work in shifts)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Investment</td>
+<td>Minimal (bags, small vacuum sealers, scents)</td>
+<td>€25,000-45,000 in machines and installation</td>
+</tr>
+<tr>
+<td>Capacity</td>
+<td>Domestic 8 kg washer, cycle + drying ≈ 2.5-3 h → 2-3 orders/day per person</td>
+<td>Professional 11-20 kg washer, 45 min cycle → 8-10 orders/day per machine</td>
+</tr>
+<tr>
+<td>Energy cost</td>
+<td>Domestic dryer: very inefficient, and the worker pays for it (legal and motivation problem)</td>
+<td>Professional dryers, industrial tariff</td>
+</tr>
+<tr>
+<td>Quality and traceability</td>
+<td>Hard to standardise (household smells, pets, customers&#39; loads mixed up)</td>
+<td>Uniform process, scent control, scales, labels</td>
+</tr>
+<tr>
+<td>Vacuum packing and ironing</td>
+<td>Slow domestic sealer; domestic iron</td>
+<td>Chamber vacuum sealer, steam ironing table with boiler (3x faster)</td>
+</tr>
+<tr>
+<td>Legal</td>
+<td><strong>Home-based work = employment relationship</strong>. Paying someone &quot;per load&quot; without a contract is a bogus self-employed arrangement: fine + back contributions.</td>
+<td>Normal part-time contracts (dry-cleaning and laundry collective agreement)</td>
+</tr>
+<tr>
+<td>Routes</td>
+<td>The rider has to visit N homes on top of the customers: more km</td>
+<td>A single loading and unloading point</td>
+</tr>
+</tbody></table>
+<p><strong>Recommendation: micro-hub (B), with the same women as part-time employees.</strong> It is more investment,
+but it is the only way to offer uniform ironing and vacuum packing and to scale to 30-50 orders/day.
+The home network (A) only makes sense as a 1-2 month proof of concept with 10-15 trusted customers to
+validate demand before signing a lease; even then the people must be registered as employees, however
+few hours they work.</p>
+<h3>2.3 The hub</h3>
+<ul>
+<li>Premises of <strong>100-120 m²</strong> with three-phase power (or the option to install it), drains and an air
+outlet for the dryers. Ideal location: <strong>Perchel / Cruz de Humilladero / around María Zambrano station</strong>:
+10-15 minutes by bike from every Zone 1 neighbourhood and rents are lower than in the Centro.
+Alternative: the San Rafael or Guadalhorce industrial estates (cheaper, but 20-25 min by bike to the
+Centro). Indicative rent: <strong>€900-1,500/month + VAT</strong> (2025-26 listings on Fotocasa / CompanySpace).</li>
+<li>Areas: reception and weighing · 3 washers · 3 dryers · 2 ironing stations · folding and packing table ·
+shelving for ready orders sorted by route.</li>
+<li>Shifts: 7:00-15:00 and 15:00-21:00. Afternoon pickups are washed first thing the next morning;
+morning pickups are delivered in the afternoon (24 h) or the next day (48 h).</li>
+</ul>
+<h3>2.4 Bike delivery</h3>
+<ul>
+<li><strong>2 electric cargo-bikes with a box</strong> (capacity 80-100 kg / 4-6 bags of 10 kg). Málaga city is flat
+along the whole coastal strip; only Ciudad Jardín and Teatinos have gentle hills.</li>
+<li>Each rider makes <strong>≈ 7 stops/hour</strong> in dense areas (4 min per stop + 3-4 min pedalling). With 7 hours
+on the road: <strong>≈ 50 stops/day per rider = 25 orders</strong> (each order is one pickup + one delivery).
+Capacity of the pair: <strong>≈ 50 orders/day</strong>. Above that, a third rider is needed.</li>
+<li>The rider&#39;s phone sends its GPS position to the app every 5 s: you see it on the map and the customer
+can get a &quot;your rider is 5 minutes away&quot; message.</li>
+</ul>
+<h3>2.5 Scents and vacuum packing (the differentiator)</h3>
+<ul>
+<li>6 scents: sea breeze, lavender, clean cotton, Mediterranean citrus, Málaga jasmine and unscented
+(hypoallergenic). Applied with <strong>professional fabric perfume in the final rinse</strong> (≈ €0.03/kg) and a
+final spray before packing. Loads must be washed by scent, or washers with automatic dosing used.</li>
+<li>Vacuum packing: 60-70 litre PA/PE bags (€0.50-0.70 each), 2 per 8 kg order. A <strong>chamber vacuum
+sealer</strong> (€1,500-3,500) takes 30-40 s per bag; external sealers (€300-600) work but take 2-3 min and
+the embossed bags cost twice as much. Vacuum compresses the clothes by ≈ 60 %: more orders fit in the
+bike box and the customer perceives &quot;new clothes&quot;.</li>
+<li>Careful with ironing: a fully compressed vacuum pack creases ironed clothes. Use a <strong>partial vacuum</strong>
+(leave 20-30 % of the air in) and fold with card or tissue paper between shirts. Test it on your own
+clothes before selling it.</li>
+</ul>
+<h2 class="sec brk">3. Assumptions of the financial model</h2>
+<table>
+<thead>
+<tr>
+<th>Assumption</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Average order</td>
+<td>8 kg → M bag (10 kg) at €36.90 incl. VAT</td>
+<td>Expected mix 30 % S, 50 % M, 20 % L</td>
+</tr>
+<tr>
+<td>Orders with full ironing</td>
+<td>25 % (+€20 on average)</td>
+<td>Estimate</td>
+</tr>
+<tr>
+<td>Operating days</td>
+<td>22/month (Monday-Saturday would be 26; prudence)</td>
+<td></td>
+</tr>
+<tr>
+<td>Employer cost of laundry staff</td>
+<td><strong>€12.50/h</strong></td>
+<td>SMI 2026 (minimum wage): €1,221/month × 14 payments = €17,094/year; with ≈ 31.5 % employer social security ≈ €22,500/year ≈ €1,875/month ≈ €11.60/h; €12.50/h leaves room for the collective-agreement supplement</td>
+</tr>
+<tr>
+<td>Employer cost of a full-time rider</td>
+<td><strong>€1,900/month</strong></td>
+<td>Same SMI 2026 calculation</td>
+</tr>
+<tr>
+<td>Labour time per 8 kg order</td>
+<td><strong>54 min</strong> (basic ironing) / <strong>114 min</strong> (full ironing)</td>
+<td>Sort and load 8 · move to dryer 5 · fold 18 (≈ 35 garments × 30 s) · basic ironing 15 (6-8 garments) · pack 8 · full ironing +60</td>
+</tr>
+<tr>
+<td>Consumables per order</td>
+<td><strong>€3.54</strong></td>
+<td>Detergent + softener + perfume €0.12/kg → 0.96 · 2 vacuum bags 1.20 · 6.7 kWh × €0.18/kWh = 1.21 · 80 L of water × €2.20/m³ = 0.18</td>
+</tr>
+<tr>
+<td>Electricity</td>
+<td>€0.18/kWh</td>
+<td>SMEs on indexed tariffs in 2025-26 pay between €0.13 and €0.20/kWh depending on contracted power</td>
+</tr>
+<tr>
+<td>Rent</td>
+<td>€1,100/month</td>
+<td>See 2.3</td>
+</tr>
+<tr>
+<td>Cargo-bikes</td>
+<td>€320/month for both</td>
+<td>€4,000 each amortised over 36 months (≈ €110) + maintenance €35 + insurance €15</td>
+</tr>
+<tr>
+<td>Software, insurance, accountant, fixed utilities, marketing</td>
+<td>150 + 100 + 150 + 150 + 400 = <strong>€950/month</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Machinery depreciation</td>
+<td>€30,000 over 7 years = <strong>€357/month</strong></td>
+<td>See section 7</td>
+</tr>
+</tbody></table>
+<h2 class="sec brk">4. What does it cost us? Monthly and per-order costs</h2>
+<table>
+<thead>
+<tr>
+<th>Orders/day</th>
+<th align="right">15</th>
+<th align="right"><strong>30</strong></th>
+<th align="right">50</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Orders/month · kg/month</td>
+<td align="right">330 · 2,640</td>
+<td align="right"><strong>660 · 5,280</strong></td>
+<td align="right">1,100 · 8,800</td>
+</tr>
+<tr>
+<td>Hub labour</td>
+<td align="right">€4,744</td>
+<td align="right"><strong>€9,488</strong></td>
+<td align="right">€15,813</td>
+</tr>
+<tr>
+<td>Riders (2 full-time)</td>
+<td align="right">€3,800</td>
+<td align="right"><strong>€3,800</strong></td>
+<td align="right">€3,800</td>
+</tr>
+<tr>
+<td>Consumables and energy</td>
+<td align="right">€1,169</td>
+<td align="right"><strong>€2,338</strong></td>
+<td align="right">€3,896</td>
+</tr>
+<tr>
+<td>Fixed costs (rent, bikes, depreciation, software, insurance, accountant, marketing)</td>
+<td align="right">€2,727</td>
+<td align="right"><strong>€2,727</strong></td>
+<td align="right">€2,727</td>
+</tr>
+<tr>
+<td><strong>Total cost/month</strong></td>
+<td align="right"><strong>€12,440</strong></td>
+<td align="right"><strong>€18,352</strong></td>
+<td align="right"><strong>€26,236</strong></td>
+</tr>
+<tr>
+<td><strong>Cost per order (8 kg)</strong></td>
+<td align="right"><strong>€37.70</strong></td>
+<td align="right"><strong>€27.81</strong></td>
+<td align="right"><strong>€23.85</strong></td>
+</tr>
+<tr>
+<td>Cost per kg</td>
+<td align="right">€4.71</td>
+<td align="right"><strong>€3.48</strong></td>
+<td align="right">€2.98</td>
+</tr>
+<tr>
+<td>Rider utilisation</td>
+<td align="right">31 %</td>
+<td align="right"><strong>61 %</strong></td>
+<td align="right">102 %</td>
+</tr>
+<tr>
+<td>Part-time laundry staff needed</td>
+<td align="right">4.3</td>
+<td align="right"><strong>8.6</strong></td>
+<td align="right">14.4</td>
+</tr>
+</tbody></table>
+<p>Cost per order breakdown at 30 orders/day:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th align="right">€/order</th>
+<th align="right">%</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hub labour (69 min on average)</td>
+<td align="right">14.38</td>
+<td align="right">52 %</td>
+</tr>
+<tr>
+<td>Delivery (pickup + drop-off)</td>
+<td align="right">5.76</td>
+<td align="right">21 %</td>
+</tr>
+<tr>
+<td>Consumables, energy and water</td>
+<td align="right">3.54</td>
+<td align="right">13 %</td>
+</tr>
+<tr>
+<td>Allocated fixed costs</td>
+<td align="right">4.13</td>
+<td align="right">15 %</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td align="right"><strong>27.81</strong></td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<p><strong>Key takeaways:</strong></p>
+<ol>
+<li><strong>Hub labour rules everything.</strong> €14.40 of every order is laundry staff hours. Every 5 minutes shaved
+off the process (standardised folding, boiler iron, chamber vacuum sealer) saves ≈ €1/order =
+€660/month at 30 orders/day. That is why a home network with slow machines does not add up.</li>
+<li><strong>Riders are an almost fixed cost.</strong> At 15 orders/day they are 31 % utilised: starting with <strong>1 full-time
+rider + 1 part-time</strong> saves €950/month until you pass 25 orders/day.</li>
+<li><strong>The kg mix matters little for cost, a lot for revenue.</strong> Washing 15 kg costs only €2-3 more than
+washing 8 kg (almost the same labour), but it brings in €13 more. Push the L bag and bed-linen packs.</li>
+</ol>
+<h2 class="sec brk">5. What price do we sell at?</h2>
+<h3>5.1 What the competition charges</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>What it includes</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mr Jeff (national, also in Málaga)</td>
+<td>30º wash, dry and fold. Free pickup and delivery. No ironing.</td>
+<td>5 kg €13 · 8 kg €17 · 15 kg €24 · subscription 4 bags/month €60-64</td>
+</tr>
+<tr>
+<td>Washrocks (national)</td>
+<td>Wash and fold</td>
+<td>5 kg €20.95</td>
+</tr>
+<tr>
+<td>Lavandería Industrial Málaga / Bago</td>
+<td>Per kilo, business-oriented, with delivery</td>
+<td>€1.50-1.80/kg</td>
+</tr>
+<tr>
+<td>Self-service laundrettes in Málaga</td>
+<td>Machine only</td>
+<td>€3-5.50 per 8-10 kg wash</td>
+</tr>
+</tbody></table>
+<p>Conclusion: <strong>you cannot compete on €/kg with basic washing</strong> (Mr Jeff sells 8 kg for €17, and our cost at
+30 orders/day is €27.80). Costa Clean is a different product: ironing, vacuum, scent, bike delivery in a
+2 h slot. The target customer is the one who today pays €20-25 for an hourly ironing service or takes
+shirts to the dry cleaner (€3-4 per shirt).</p>
+<h3>5.2 Recommended price list (VAT included)</h3>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th align="right">Price</th>
+<th align="right">€/kg</th>
+<th>What it includes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>S bag · up to 5 kg</strong></td>
+<td align="right"><strong>€22.90</strong></td>
+<td align="right">4.58</td>
+<td>Zone 1 pickup and delivery, scent, basic ironing, vacuum packing</td>
+</tr>
+<tr>
+<td><strong>M bag · up to 10 kg</strong></td>
+<td align="right"><strong>€36.90</strong></td>
+<td align="right">3.69</td>
+<td>Same</td>
+</tr>
+<tr>
+<td><strong>L bag · up to 15 kg</strong></td>
+<td align="right"><strong>€49.90</strong></td>
+<td align="right">3.33</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Full ironing</td>
+<td align="right">+€12 / +€20 / +€28</td>
+<td align="right"></td>
+<td>Every garment ironed (S/M/L)</td>
+</tr>
+<tr>
+<td>Zone 2 surcharge (El Palo, Teatinos)</td>
+<td align="right">+€2.90</td>
+<td align="right"></td>
+<td></td>
+</tr>
+<tr>
+<td>&quot;Always clean&quot; subscription</td>
+<td align="right">€129/month</td>
+<td align="right"></td>
+<td>4 M bags a month (€32.25/bag, -13 %), fixed day, simultaneous pickup and delivery</td>
+</tr>
+<tr>
+<td>Duvet / comforter</td>
+<td align="right">€19.90</td>
+<td align="right"></td>
+<td>Washed, dried, vacuum packed (sells on its own; vacuum is a huge value here)</td>
+</tr>
+<tr>
+<td><strong>B2B holiday rental</strong></td>
+<td align="right"><strong>from €14.90 + VAT</strong></td>
+<td align="right"></td>
+<td>Bed + bath kit (≈ 4 kg: sheet set, 2 towels, 2 hand towels), calender-ironed or folded, delivered by check-out</td>
+</tr>
+</tbody></table>
+<p>With these prices, at 30 orders/day:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">€</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Average price charged (M bag + 25 % with full ironing)</td>
+<td align="right">€41.90 incl. VAT</td>
+</tr>
+<tr>
+<td>Net revenue excl. VAT</td>
+<td align="right">€34.63</td>
+</tr>
+<tr>
+<td>Cost per order</td>
+<td align="right">€27.81</td>
+</tr>
+<tr>
+<td><strong>Margin per order</strong></td>
+<td align="right"><strong>€6.82 (20 %)</strong></td>
+</tr>
+<tr>
+<td>Minimum price for a 30 % gross margin</td>
+<td align="right">€48.07 incl. VAT</td>
+</tr>
+</tbody></table>
+<p>The margin is tight until you pass 40 orders/day. Levers to improve it without raising list prices:
+subscriptions (recurring revenue and predictable routes), <strong>B2B holiday rentals</strong> (Málaga has more than
+10,000 tourist apartments; bed linen is fast to process and fills the machines in off-peak hours), and
+selling full ironing and duvets as high-margin extras.</p>
+<h3>5.3 Break-even</h3>
+<ul>
+<li>Contribution per order (net revenue − variable labour − consumables) ≈ <strong>€16.70</strong>.</li>
+<li>Monthly fixed costs (riders + premises + the rest) ≈ <strong>€6,527</strong>.</li>
+<li><strong>Break-even ≈ 391 orders/month ≈ 18 orders/day.</strong></li>
+<li>With 1.5 riders instead of 2: ≈ 334 orders/month ≈ 15 orders/day.</li>
+</ul>
+<p>A realistic target: 10-15 orders/day in month 3, 25-30 in months 6-9, 50 in year 2 with a third rider
+and one more shift at the hub.</p>
+<h2 class="sec brk">6. How we save on routes</h2>
+<h3>6.1 Golden rules</h3>
+<ol>
+<li><strong>Zone by day.</strong> Zone 1 West (Huelin, Carretera de Cádiz, Cruz de Humilladero) Mondays and Thursdays;
+Centro/Soho/Malagueta every day (that is where the density is); Pedregalejo/El Palo Tuesdays and
+Fridays; Teatinos/Ciudad Jardín Wednesdays and Saturdays. The customer picks a day among those
+available for their neighbourhood. This multiplies stop density per route, which is what decides
+delivery cost.</li>
+<li><strong>2-hour slots, never &quot;whenever you like&quot;.</strong> It lets you chain 10-14 stops per slot.</li>
+<li><strong>Pickup and delivery in the same visit</strong> for subscribers: the rider drops the clean bag and takes the
+dirty one. <strong>One stop instead of two</strong>: it cuts delivery cost per order from €5.76 to €2.88.</li>
+<li><strong>The hub as the single origin.</strong> The rider leaves loaded with the zone&#39;s deliveries, picks up along
+the same streets and comes back with the collections. The app orders the stops with a nearest-neighbour
+algorithm improved with 2-opt (on a 15-20 stop route it saves 15-30 % of km versus the order in which
+orders arrived).</li>
+<li><strong>Weight in the box.</strong> With vacuum, 6 M bags fit in a cargo-bike box. Without it, 3-4.</li>
+</ol>
+<h3>6.2 Numbers</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="right">Electric cargo-bike</th>
+<th align="right">Small van</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Investment</td>
+<td align="right">€4,000</td>
+<td align="right">€18,000-25,000 (or leasing €350-450/month)</td>
+</tr>
+<tr>
+<td>Cost/month (depreciation, energy, maintenance, insurance)</td>
+<td align="right"><strong>€160</strong></td>
+<td align="right">€700-900 (leasing + diesel for 1,800 km + insurance + parking)</td>
+</tr>
+<tr>
+<td>Stops/hour in the Centro</td>
+<td align="right"><strong>7</strong> (parks at the door)</td>
+<td align="right">4-5 (finding parking, blue zone, pedestrian Centro)</td>
+</tr>
+<tr>
+<td>Km/day per vehicle</td>
+<td align="right">35-45</td>
+<td align="right">50-70</td>
+</tr>
+<tr>
+<td>Licence, fines, low-emission zone</td>
+<td align="right">No</td>
+<td align="right">Yes (Málaga has a Low Emission Zone in the Centro)</td>
+</tr>
+</tbody></table>
+<p>Two cargo-bikes versus one van: <strong>saving ≈ €500-700/month</strong> and, above all, 40 % more stops per hour in
+the Centro, which is where the customer is. A van only makes sense for the holiday-rental B2B business
+(high volume, check-out times) from the second year onwards.</p>
+<h3>6.3 What the app does</h3>
+<ul>
+<li><code>/mapa</code>: optimised route per rider with estimated real km, &quot;unoptimised vs optimised&quot; comparison,
+live GPS position and the day&#39;s track.</li>
+<li><code>/rider</code>: the same route on the phone, navigation button (Google Maps in bike mode), mark as
+collected/delivered, automatic GPS.</li>
+<li>Still to implement: time slots as a hard constraint and automatic splitting of stops between the two
+riders (currently assigned from the panel).</li>
+</ul>
+<h2 class="sec brk">7. How much do industrial washing machines cost?</h2>
+<p>Prices from Spanish online shops 2025-26, <strong>excl. VAT</strong>. Girbau (the Catalan manufacturer, the most
+widespread in professional laundries) does not publish prices: they are sold on quotation through
+dealers and usually sit above Primer and Fagor.</p>
+<h3>7.1 Price references</h3>
+<table>
+<thead>
+<tr>
+<th>Machine</th>
+<th>Reference models</th>
+<th align="right">New price (excl. VAT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Professional washer 10-11 kg</td>
+<td>Primer LP-10 · Fagor LAP-10</td>
+<td align="right"><strong>€3,800-3,950</strong></td>
+</tr>
+<tr>
+<td>Professional washer 18-20 kg</td>
+<td>Primer RS-18 (Factor 200) · Primer LS-18 (high spin)</td>
+<td align="right"><strong>€6,400</strong> on offer (list €8,000) · €10,300 high spin</td>
+</tr>
+<tr>
+<td>Washer 15-25 kg (general sector range)</td>
+<td>various brands</td>
+<td align="right">€2,500-5,000 for basic units, up to €10,000 with high spin</td>
+</tr>
+<tr>
+<td>Professional dryer 12-14 kg</td>
+<td>Fagor · Primer</td>
+<td align="right"><strong>€2,230-2,705</strong></td>
+</tr>
+<tr>
+<td>Dryer 31 kg</td>
+<td>Primer DE-28</td>
+<td align="right">€7,300</td>
+</tr>
+<tr>
+<td>Girbau HS-6013 (13 kg) / ED340 (dryer 13-19 kg)</td>
+<td>Girbau</td>
+<td align="right">On quotation</td>
+</tr>
+<tr>
+<td>Second-hand (Wallapop, laundry closures)</td>
+<td>Girbau, Primer, Miele Professional</td>
+<td align="right">40-60 % below new; check hours and spin speed</td>
+</tr>
+</tbody></table>
+<h3>7.2 Recommended configuration for the hub (30-50 orders/day)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th align="right">Qty</th>
+<th align="right">€/unit</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Professional washers 10-11 kg (Primer LP-10 / Fagor LAP-10)</td>
+<td align="right">2</td>
+<td align="right">3,900</td>
+<td align="right">7,800</td>
+</tr>
+<tr>
+<td>Washer 18-20 kg for bed linen and B2B (Primer RS-18)</td>
+<td align="right">1</td>
+<td align="right">6,400</td>
+<td align="right">6,400</td>
+</tr>
+<tr>
+<td>Electric dryers 12-14 kg (Fagor / Primer)</td>
+<td align="right">3</td>
+<td align="right">2,700</td>
+<td align="right">8,100</td>
+</tr>
+<tr>
+<td>Professional ironing tables with boiler and iron</td>
+<td align="right">2</td>
+<td align="right">900</td>
+<td align="right">1,800</td>
+</tr>
+<tr>
+<td>Chamber vacuum sealer for textiles + initial consumables</td>
+<td align="right">1</td>
+<td align="right">2,500</td>
+<td align="right">2,500</td>
+</tr>
+<tr>
+<td>Three-phase electrical installation, drains, dryer extraction</td>
+<td align="right">1</td>
+<td align="right">4,500</td>
+<td align="right">4,500</td>
+</tr>
+<tr>
+<td>Furniture, shelving, scales, trolleys, label printer</td>
+<td align="right">1</td>
+<td align="right">1,500</td>
+<td align="right">1,500</td>
+</tr>
+<tr>
+<td><strong>Subtotal machinery and installation</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"><strong>€32,600</strong></td>
+</tr>
+<tr>
+<td>Electric cargo-bikes with box</td>
+<td align="right">2</td>
+<td align="right">4,000</td>
+<td align="right">8,000</td>
+</tr>
+<tr>
+<td>Deposit on premises (2 months) + activity licence and technical project</td>
+<td align="right">1</td>
+<td align="right">4,500</td>
+<td align="right">4,500</td>
+</tr>
+<tr>
+<td><strong>Total initial investment excl. VAT</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"><strong>≈ €45,000</strong></td>
+</tr>
+<tr>
+<td>Total incl. VAT (21 %, recoverable on the tax return)</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right">≈ €54,500</td>
+</tr>
+</tbody></table>
+<p>Theoretical capacity of this configuration: 3 washers × 8 cycles/day × 10-14 kg ≈ <strong>300 kg/day ≈ 35-40
+orders/day</strong> in one 8 h shift, double with two shifts. It is the right configuration for the first-year
+target; the dryers are the bottleneck (drying takes almost as long as washing and you need at least as
+many dryers as washers).</p>
+<h3>7.3 How to make it cheaper</h3>
+<ul>
+<li><strong>Minimum start (≈ €20,000-25,000):</strong> 2 second-hand washers of 10-13 kg (≈ €1,800-2,500), 2 second-hand
+dryers (≈ €1,200-1,500), external vacuum sealer, 1 new cargo-bike + 1 regular e-bike with a trailer,
+and grow from cash flow. Risk: breakdowns and less capacity.</li>
+<li><strong>Machinery renting / leasing:</strong> Girbau, Primer and Fagor dealers offer 60-month renting at
+<strong>≈ 1.8-2.2 % of the value per month</strong> (€30,000 → €550-650/month) with maintenance included. It turns
+€30,000 of capex into a fixed cost that enters the model with little impact (we already count
+€357/month of depreciation).</li>
+<li><strong>Heat-pump dryers:</strong> cost ≈ €1,000 more each but use 40-50 % less energy and need no air outlet. At
+30 orders/day they save ≈ €250/month in electricity: they pay for themselves in a year.</li>
+<li><strong>Gas instead of electricity for the dryers:</strong> cheaper to run, but needs a gas installation and
+inspections. Only if the premises already have gas.</li>
+<li><strong>Grants:</strong> Andalucía Emprende and the ICO/ENISA lines for young entrepreneurs; Málaga City Council
+(Promálaga) has start-up grants. Book an appointment before buying.</li>
+</ul>
+<h2 class="sec brk">8. Risks and how we cover them</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Damaged or lost garments</td>
+<td>Photo of every bag on receipt, QR label per bag, liability insurance covering garments (≈ €100/month), clear terms (we do not wash anything labelled &quot;dry clean only&quot;).</td>
+</tr>
+<tr>
+<td>Laundry staff: employment relationship</td>
+<td>Part-time contracts from day one, Málaga dry-cleaning and laundry collective agreement, occupational risk prevention. Paying &quot;per load&quot; without a contract is the fast track to an inspection.</td>
+</tr>
+<tr>
+<td>Ironing eating the margin</td>
+<td>Basic ironing as standard (only what needs it), full ironing always as a paid extra, boiler tables, time the work and post times per staff member in the hub.</td>
+</tr>
+<tr>
+<td>Low order density at the start</td>
+<td>Zone by day, do not open Zone 2 until Zone 1 has 15 orders/day, start with 1.5 riders.</td>
+</tr>
+<tr>
+<td>Price competition (Mr Jeff)</td>
+<td>Do not compete on basic washing. Always communicate &quot;ironed, vacuum packed and scented&quot;.</td>
+</tr>
+<tr>
+<td>Vacuum creasing ironed clothes</td>
+<td>Partial vacuum, tests before launch, card between shirts.</td>
+</tr>
+<tr>
+<td>Activity licence</td>
+<td>Laundry activity (IAE 971.1) usually requires a licence with a technical project, soundproofing and ventilation. Confirm with the City Council before signing a lease; avoid premises under homes if possible.</td>
+</tr>
+</tbody></table>
+<h2 class="sec brk">9. Next steps (90 days)</h2>
+<ol>
+<li><strong>Weeks 1-2:</strong> Validate demand: landing page (<code>/pedido</code>) + Instagram + 200 flyers in Soho/Malagueta;
+target 30 pre-bookings. Wash 10 orders from friends &quot;by hand&quot; to time the real process and test the
+vacuum with ironed clothes.</li>
+<li><strong>Weeks 3-4:</strong> Request 3 machinery quotes (Girbau Málaga, Primer dealer, Fagor Industrial), new and
+renting, and visit 5 premises in Perchel / Cruz de Humilladero. Check the licence.</li>
+<li><strong>Month 2:</strong> Incorporate an SL (€3,000 share capital), register under IAE 971.1, liability insurance,
+hire 2 part-time laundry staff and 1 rider; buy/rent machinery; install.</li>
+<li><strong>Month 3:</strong> Launch in Zone 1 targeting 10 orders/day; sign 3-5 holiday-rental managers to fill the
+machines in the morning.</li>
+<li><strong>Months 4-6:</strong> Second rider, subscriptions, open Zone 2, get hub times below 50 min.</li>
+</ol>
+<h2 class="sec brk">10. Sources consulted</h2>
+<ul>
+<li>Professional washer prices (Primer LP-10, Fagor LAP-10, Primer RS-18 / LS-18): <a href="https://hostelearte.com/lavadoras-industriales-y-profesionales?q=Marca-Primer">Hostelearte</a>, <a href="https://hosteleria10.com/lavado/lavadoras/">Hosteleria10</a>, <a href="https://donbar.es/tienda/lavado-e-higiene/lavadoras/lavadora-profesional-baja-velocidad-20-kg-factor-200-gama-rs-719x840x1158h-mm-rs-18-t2-hw-primer/">Donbar</a>, <a href="https://gavinox.es/blog/lavado/lavadora-industrial-precio-guia-de-costes-y-opciones-disponibles">Gavinox guide</a>, <a href="https://es.wallapop.com/electrodomesticos/lavadora-industrial">second-hand on Wallapop</a>.</li>
+<li>Dryers: <a href="https://hosteleria10.com/recursos/catalogos/catalogo-secadoras-hosteleria10.pdf">Hosteleria10 catalogue</a>, <a href="https://donbar.es/tienda/lavado-e-higiene/secadoras/secadora-industrial-electrica-31-kg-gama-excellence-985x1054x1975h-mm-de-28-e-t2-primer">Primer DE-28 at Donbar</a>, <a href="https://www.girbau.com/es-mx/wp-content/uploads/sites/6/2025/12/ED-Series_Brochure_ES_.pdf">Girbau ED series</a>.</li>
+<li>Competition: <a href="https://mrjeffapp.com/precios">Mr Jeff prices</a>, <a href="https://cleancloudapp.com/w/29124/">Mr Jeff Murcia (CleanCloud)</a>, <a href="https://mrjeffbilbao.com/">Mr Jeff Bilbao</a>, <a href="https://washrocks.com/lavanderia/bolsa-hasta-5-kg">Washrocks 5 kg</a>, <a href="https://lavanderiaindustrialmalaga.com/servicios-lavanderia-industrial-malaga/">Lavandería Industrial Málaga</a>, <a href="https://lavanderiaautoservicionevados.es/autoservicio/lavanderia-autoservicio-en-malaga/">self-service laundrettes in Málaga</a>.</li>
+<li>Labour costs: <a href="https://www.cuatrecasas.com/es/spain/laboral/art/smi-nuevas-cotizaciones-seguridad-social">SMI 2026 and contributions (Cuatrecasas)</a>, <a href="https://copilotgestoria.com/blog/smi-2026-1221-euros-sin-irpf-nominas-cotizaciones-guia-gestorias">SMI 2026 guide (Copilot Gestoría)</a>, <a href="https://www.billeo.es/blog/salario-minimo-espana-smi">total employer cost (Billeo)</a>.</li>
+<li>Premises in Málaga: <a href="https://www.fotocasa.es/en/rental/industrial-buildings/poi/cercanias-los-prados-malaga/l">Fotocasa industrial units Málaga</a>, <a href="https://www.companyspace.com/rent/commercial-properties/malaga">CompanySpace Málaga</a>.</li>
+<li>Cargo-bikes: <a href="https://hitway.eu/es/products/bk6s-plus-cargo-electric-bike">Hitway BK6S Plus</a>, <a href="https://www.interempresas.net/Ciclismo/629925-Mas-valor-pero-menos-unidades-Las-Grandes-Cifras-del-Sector-Bike-2025.html">Spanish bike sector 2025</a>.</li>
+<li>Water and electricity: <a href="https://www.malaga.eu/visorcontenido/ANUDocumentDisplayer/171678/NOTAINFORMATIVA.pdf">Emasa 2024 tariffs (Málaga City Council)</a>, <a href="https://www.globalpetrolprices.com/Spain/electricity_prices/">electricity prices Spain</a>.</li>
+</ul>
+
+</body></html>
