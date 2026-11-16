@@ -1,0 +1,9 @@
+:root { --mar:#0B7A8A; --maro:#075B67; --arena:#F6EFE4; --arenao:#EADFCB; --sol:#F6C66B; --coral:#F26B4E; --tinta:#1D2A30; --bruma:#5F6E76; --linea:#E3DACB; }
+* { box-sizing:border-box } body { margin:0; font-family:"Nunito Sans",system-ui,sans-serif; color:var(--tinta); font-size:10.5pt; line-height:1.45; }
+h1,h2,h3,h4 { font-family:Outfit,sans-serif; margin:0; line-height:1.1; letter-spacing:-.01em }
+.eyebrow { font-family:Outfit; font-size:9pt; letter-spacing:.16em; text-transform:uppercase; color:var(--mar); font-weight:600; margin-bottom:3mm }
+table { width:100%; border-collapse:collapse; font-size:9.3pt; margin:1.5mm 0 4mm }
+th,td { text-align:left; padding:1.6mm 2mm; border-bottom:1px solid var(--linea); vertical-align:top }
+th { font-family:Outfit; font-size:8pt; letter-spacing:.08em; text-transform:uppercase; color:var(--bruma); background:var(--arena); font-weight:600 }
+td.n,th.n { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap } tr.tot td { font-weight:700; border-top:1.5px solid var(--mar); background:#FBF8F2 }
+.mono { font-variant-numeric:tabular-nums }

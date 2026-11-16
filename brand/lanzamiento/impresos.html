@@ -1,0 +1,145 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Costa Clean · impresos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="_comun.css">
+<style>
+body { background:#888 }
+.sheet { background:#fff; position:relative; overflow:hidden; margin:0 }
+/* FLYER A5 con sangrado 3 mm: 154 x 216 */
+.flyer { width:154mm; height:216mm; padding:11mm 11mm 10mm }
+.flyer.a { background:var(--mar); color:#fff }
+.flyer.b { background:var(--arena) }
+.flyer .logo { width:62mm; display:block }
+.flyer h1 { font-size:26pt; font-weight:800; line-height:1.04; margin-top:9mm; max-width:100mm }
+.flyer .lead { font-size:11.5pt; margin-top:4mm; color:rgba(255,255,255,.92); max-width:118mm }
+.flyer .bul { margin:6mm 0 0; padding:0; list-style:none; display:grid; gap:2.4mm; font-size:10.5pt }
+.flyer .bul li { display:flex; gap:3mm; align-items:flex-start } .flyer .bul b { font-family:Outfit; font-weight:600 }
+.flyer .ico { width:7mm; height:7mm; border-radius:2mm; background:rgba(255,255,255,.18); display:grid; place-items:center; font-size:10pt; flex:none }
+.flyer .cta { position:absolute; left:11mm; right:11mm; bottom:10mm; display:grid; grid-template-columns:1fr 30mm; gap:5mm; align-items:end }
+.flyer .cta .qr { width:30mm; height:30mm; background:#fff; border-radius:3mm; padding:1.5mm }
+.flyer .precio { font-family:Outfit; font-size:10pt } .flyer .precio b { font-size:22pt; font-weight:800; display:block; line-height:1 }
+.flyer .tel { font-family:Outfit; font-weight:700; font-size:12.5pt; margin-top:2mm }
+.flyer .oferta { position:absolute; right:10mm; top:24mm; width:34mm; height:34mm; border-radius:50%; background:var(--coral); color:#fff; display:grid; place-items:center; text-align:center; font-family:Outfit; font-weight:700; font-size:9pt; line-height:1.15; transform:rotate(8deg); padding:3mm }
+.flyer .oferta b { font-size:17pt; display:block; font-weight:800 }
+.b h2 { font-size:17pt; font-weight:700; color:var(--maro) } .b .ey { font-family:Outfit; font-size:8pt; letter-spacing:.16em; text-transform:uppercase; color:var(--mar); font-weight:600; margin:5mm 0 1.5mm }
+.pasos { display:grid; gap:2mm; margin:0; padding:0; list-style:none; font-size:9.6pt } .pasos li { display:grid; grid-template-columns:7mm 1fr; gap:2.5mm; align-items:start } .pasos i { width:7mm; height:7mm; border-radius:2mm; background:var(--mar); color:#fff; display:grid; place-items:center; font-style:normal; font-family:Outfit; font-weight:700; font-size:10pt } .pasos small { display:block; color:var(--bruma); font-size:8.6pt }
+.pr { display:grid; grid-template-columns:repeat(3,1fr); gap:2.5mm } .pr div { background:#fff; border:1px solid var(--linea); border-radius:3mm; padding:3mm; text-align:center } .pr b { font-family:Outfit; font-size:15pt; font-weight:800; display:block; color:var(--maro) } .pr span { font-size:8.3pt; color:var(--bruma); display:block }
+.pr div.hi { border:1.5px solid var(--mar) }
+.zonas { font-size:9pt; display:grid; gap:1.2mm } .zonas div { display:flex; justify-content:space-between; gap:3mm; border-bottom:1px dashed var(--linea); padding-bottom:1mm } .zonas b { font-family:Outfit; font-weight:600; color:var(--mar); white-space:nowrap }
+.b .cta2 { position:absolute; left:11mm; right:11mm; bottom:10mm; display:flex; gap:4mm; align-items:center; background:#fff; border-radius:3mm; padding:3mm 4mm; border:1px solid var(--linea) }
+.b .cta2 .qr { width:22mm; height:22mm; flex:none } .b .cta2 .t { font-size:9.3pt } .b .cta2 .t b { font-family:Outfit; font-size:12pt; display:block; color:var(--maro) }
+.cod { display:inline-block; background:var(--coral); color:#fff; font-family:Outfit; font-weight:700; padding:.5mm 2.5mm; border-radius:2mm; letter-spacing:.08em }
+/* CARTA A4 */
+.carta { width:210mm; height:297mm; padding:20mm 22mm 18mm; font-size:11pt; line-height:1.55 }
+.carta .cab { display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1.5px solid var(--mar); padding-bottom:5mm; margin-bottom:8mm }
+.carta .cab img { width:60mm } .carta .cab .d { text-align:right; font-size:9pt; color:var(--bruma); font-family:Outfit }
+.carta h1 { font-size:17pt; font-weight:700; color:var(--maro); margin-bottom:5mm; line-height:1.2 }
+.carta p { margin:0 0 3.5mm; max-width:160mm } .carta .box { background:var(--arena); border-radius:3mm; padding:4mm 5mm; margin:4mm 0 5mm; font-size:10.3pt }
+.carta .box ul { margin:0; padding-left:4.5mm } .carta .box li { margin-bottom:1mm }
+.carta .firma { margin-top:9mm; display:grid; grid-template-columns:1fr 34mm; gap:6mm; align-items:end }
+.carta .firma .l { border-top:1px solid var(--linea); padding-top:3mm; font-size:9.5pt } .carta .firma .l b { font-family:Outfit; display:block; font-size:11pt; color:var(--tinta) }
+.carta .firma img { width:34mm }
+.carta .pie { position:absolute; bottom:12mm; left:22mm; right:22mm; font-family:Outfit; font-size:8.5pt; color:var(--bruma); letter-spacing:.06em; display:flex; justify-content:space-between }
+/* TARJETA 85x55 con sangrado: 91 x 61 */
+.tarj { width:91mm; height:61mm; padding:7mm 8mm; position:relative }
+.tarj.a { background:var(--mar); color:#fff } .tarj.a img { width:46mm } .tarj.a .cl { position:absolute; left:8mm; bottom:7mm; font-family:Outfit; font-weight:600; font-size:9pt; line-height:1.25 } .tarj.a .mk { position:absolute; right:-6mm; bottom:-6mm; width:30mm; opacity:.18 }
+.tarj.b { background:var(--arena); font-size:7.6pt; line-height:1.38; padding:6mm 8mm } .tarj.b h4 { font-family:Outfit; font-size:10pt; color:var(--maro); margin-bottom:1.5mm } .tarj.b .ar { display:flex; flex-wrap:wrap; gap:1.2mm; align-items:center; margin:1.5mm 0 } .tarj.b .ar b { white-space:nowrap; font-family:Outfit; font-weight:600; margin-right:.5mm } .tarj.b .ar span { border:1px solid var(--linea); border-radius:1.5mm; padding:.3mm 1.6mm; font-size:6.6pt; font-family:Outfit; background:#fff } .tarj.b .tel { font-family:Outfit; font-weight:700; font-size:8.6pt; margin-top:1.5mm; color:var(--tinta) }
+.gridtar { display:grid; grid-template-columns:91mm 91mm; gap:0; padding:12mm 14mm } .gridtar > div { outline:.2mm dashed #bbb }
+/* PEGATINA 50 mm, hoja A4 20 ud */
+.pegs { display:grid; grid-template-columns:repeat(4,50mm); gap:3mm; padding:14mm 0 0 15mm; width:210mm; height:297mm; align-content:start }
+.peg { width:50mm; height:50mm; border-radius:50%; background:#fff; border:.25mm dashed #bbb; display:grid; place-items:center; position:relative }
+.peg svg { width:30mm } .peg span { position:absolute; bottom:5.5mm; left:0; right:0; text-align:center; font-family:Outfit; font-weight:700; font-size:7.5pt; letter-spacing:.14em; color:var(--maro) }
+/* ETIQUETA 62x100 (vista previa) */
+.etq { width:100mm; height:62mm; background:#fff; border:1px solid #ccc; padding:4mm 5mm; display:grid; grid-template-columns:1fr 24mm; gap:3mm; font-size:8.5pt }
+.etq .big { font-family:Outfit; font-weight:800; font-size:16pt; color:var(--tinta); line-height:1 } .etq .row { display:flex; justify-content:space-between; border-bottom:1px dotted #bbb; padding:1mm 0; gap:2mm; white-space:nowrap } .etq .row b { font-family:Outfit; font-weight:600 }
+</style></head><body>
+
+<!-- FLYER ANVERSO -->
+<div class="sheet flyer a" id="flyer-a">
+  <img class="logo" src="logo-horizontal-blanco.svg">
+  <div class="oferta"><b>-5 €</b>en tu primera bolsa con el código VECINO</div>
+  <h1>Tu ropa vuelve planchada, al vacío y con tu aroma.</h1>
+  <p class="lead">Pasamos en bici a recogerla, la lavamos en nuestro hub de Málaga y te la devolvemos en 24-48 h. Tú solo dejas la bolsa en la puerta.</p>
+  <ul class="bul">
+    <li><span class="ico">🧺</span><div><b>Planchada y doblada a mano.</b> Camisas a vapor, pantalones con raya.</div></li>
+    <li><span class="ico">📦</span><div><b>Envasada al vacío.</b> Ocupa un 60 % menos y llega protegida.</div></li>
+    <li><span class="ico">🌿</span><div><b>Seis aromas a elegir.</b> Brisa marina, lavanda, algodón, cítrico, jazmín o sin perfume.</div></li>
+    <li><span class="ico">🚲</span><div><b>En bici, en tu franja de 2 horas.</b> Sin furgonetas ni esperas.</div></li>
+  </ul>
+  <div class="cta"><div><div class="precio">Desde<b>22,90 €</b>recogida y entrega incluidas</div><div class="tel">WhatsApp 600 000 000</div><div style="font-size:8.5pt;opacity:.85">costaclean.es · escanea para pedir</div></div><img class="qr" src="qr-landing.svg"></div>
+</div>
+
+<!-- FLYER REVERSO -->
+<div class="sheet flyer b" id="flyer-b">
+  <div class="ey">Así funciona</div>
+  <h2>Cuatro pasos. Cero esfuerzo.</h2>
+  <ol class="pasos" style="margin-top:2.5mm">
+    <li><i>1</i><div>Pides por WhatsApp o en costaclean.es<small>Eliges bolsa, aroma y una franja de dos horas.</small></div></li>
+    <li><i>2</i><div>Pasa el rider en bici<small>Pesa la bolsa delante de ti. No hace falta separar nada.</small></div></li>
+    <li><i>3</i><div>Lavamos, secamos y planchamos<small>Con tu aroma en el último aclarado.</small></div></li>
+    <li><i>4</i><div>Te la devolvemos al vacío<small>Lista para el armario. Pagas al recibirla, con tarjeta o Bizum.</small></div></li>
+  </ol>
+  <div class="ey">Precios · IVA, recogida y entrega incluidos</div>
+  <div class="pr"><div><span>Bolsa S · 5 kg</span><b>22,90 €</b><span>una persona</span></div><div class="hi"><span>Bolsa M · 10 kg</span><b>36,90 €</b><span>pareja · la más pedida</span></div><div><span>Bolsa L · 15 kg</span><b>49,90 €</b><span>familia o cama</span></div></div>
+  <p style="font-size:8.3pt;color:var(--bruma);margin:2mm 0 0">Planchado completo +12/20/28 €. Nórdico al vacío 19,90 €. Suscripción 4 bolsas M al mes: 129 €.</p>
+  <div class="ey">Pasamos por tu barrio</div>
+  <div class="zonas"><div><span>Centro, Soho y Malagueta</span><b>todos los días</b></div><div><span>Huelin, Ctra. de Cádiz, Cruz de Humilladero</span><b>lunes y jueves</b></div><div><span>Pedregalejo y El Palo</span><b>martes y viernes</b></div><div><span>Ciudad Jardín y Teatinos</span><b>miércoles y sábado</b></div></div>
+  <div class="cta2"><img class="qr" src="qr-landing.svg"><div class="t"><b>Pide tu primera bolsa con 5 € de descuento</b>Escanea o escribe <span class="cod">VECINO</span> al WhatsApp <b style="display:inline;font-size:10.5pt">600 000 000</b><br>Válido hasta el 31 de diciembre. Zona 2 (El Palo, Teatinos) +2,90 €.</div></div>
+</div>
+
+<!-- CARTA 1: porteros y comunidades -->
+<div class="sheet carta" id="carta-1">
+  <div class="cab"><img src="logo-horizontal.svg"><div class="d">Málaga, ____ de ____________ de 2026<br>Lavandería a domicilio · costaclean.es</div></div>
+  <h1>Hola, somos Costa Clean. Nos gustaría cuidar la ropa de los vecinos de este edificio.</h1>
+  <p>Somos una lavandería nueva de Málaga. Recogemos la ropa en bicicleta, la lavamos, la planchamos, la doblamos y la devolvemos envasada al vacío y con el aroma que elija cada cliente, en 24-48 horas y en una franja de dos horas que escoge él. Trabajamos en el Centro, Soho, la Malagueta, Pedregalejo y la zona oeste.</p>
+  <p>Le escribimos porque usted conoce a los vecinos mejor que nadie, y porque un portal con portería es el sitio ideal para que el servicio funcione bien: si un vecino no está en casa, podemos dejar o recoger su bolsa con usted.</p>
+  <div class="box"><b>Lo que le pedimos</b><ul><li>Dejar unos veinte folletos en la portería o el tablón de la comunidad.</li><li>Recibir o entregar las bolsas de los vecinos que lo autoricen, siempre cerradas y etiquetadas.</li></ul><b style="display:block;margin-top:2.5mm">Lo que le damos</b><ul><li>Una bolsa M (10 kg) gratis al mes para usted, planchada y al vacío, mientras dure la colaboración.</li><li>Un teléfono directo para cualquier incidencia: la resolvemos el mismo día.</li></ul></div>
+  <p>Si le parece bien, lo dejamos apuntado hoy mismo y le traemos los folletos y una bolsa de muestra. Y si prefiere consultarlo con la comunidad, aquí tiene nuestros datos.</p>
+  <div class="firma"><div class="l"><b>________________________</b>Costa Clean · WhatsApp 600 000 000 · hola@costaclean.es</div><img src="qr-landing.svg"></div>
+  <div class="pie"><span>Costa Clean · Lavandería a domicilio · Málaga</span><span>costaclean.es</span></div>
+</div>
+
+<!-- CARTA 2: gestores de apartamentos turísticos -->
+<div class="sheet carta" id="carta-2">
+  <div class="cab"><img src="logo-horizontal.svg"><div class="d">Málaga, ____ de ____________ de 2026<br>Lavandería para apartamentos turísticos</div></div>
+  <h1>Sábanas y toallas planchadas y listas para el check-in, sin que usted toque una lavadora.</h1>
+  <p>Somos Costa Clean, una lavandería de Málaga especializada en ropa bien acabada: lavada, planchada y envasada al vacío. Para apartamentos turísticos ofrecemos un servicio pensado para el ritmo de los check-outs: recogemos la ropa usada cuando sale el huésped y entregamos el kit limpio antes de que entre el siguiente, en bicicleta y en la franja que usted nos diga.</p>
+  <div class="box"><b>Kit cama y baño</b> (juego de sábanas, funda nórdica, 2 toallas de baño y 2 de mano, unos 4 kg): <b>desde 14,90 € + IVA</b>, planchado en calandra o doblado, envasado al vacío por habitación y etiquetado con el nombre del apartamento.<ul style="margin-top:2mm"><li>Recogida y entrega incluidas en Centro, Soho, Malagueta y Pedregalejo.</li><li>Sin permanencia ni mínimo mensual durante los tres primeros meses.</li><li>Stock de seguridad: podemos guardar un juego limpio por apartamento en nuestro hub.</li><li>Factura mensual con el detalle por apartamento.</li></ul></div>
+  <p>Le proponemos una prueba sin compromiso con cinco kits. Si el acabado y la puntualidad no son lo que espera, no le cobramos nada.</p>
+  <div class="firma"><div class="l"><b>________________________</b>Costa Clean · WhatsApp 600 000 000 · hola@costaclean.es</div><img src="qr-landing.svg"></div>
+  <div class="pie"><span>Costa Clean · Lavandería a domicilio · Málaga</span><span>costaclean.es</span></div>
+</div>
+
+<!-- CARTA 3: negocios -->
+<div class="sheet carta" id="carta-3">
+  <div class="cab"><img src="logo-horizontal.svg"><div class="d">Málaga, ____ de ____________ de 2026<br>Propuesta de colaboración</div></div>
+  <h1>Un descuento para sus clientes y una bolsa de ropa gratis para usted.</h1>
+  <p>Somos Costa Clean, la lavandería de Málaga que recoge en bici y devuelve la ropa planchada, envasada al vacío y con el aroma que cada cliente elige. Buscamos negocios de confianza del barrio (gimnasios, coworkings, peluquerías, clínicas, cafeterías) donde la gente que valora su tiempo pueda descubrirnos.</p>
+  <div class="box"><b>Lo que le pedimos</b><ul><li>Un hueco para 30 folletos y una pegatina con código QR en recepción o junto a la caja.</li></ul><b style="display:block;margin-top:2.5mm">Lo que le damos</b><ul><li>Un código propio de su negocio con 5 € de descuento en la primera bolsa para sus clientes.</li><li>Una bolsa M gratis cada mes para el local (toallas, uniformes, lo que necesite) mientras tengamos los folletos.</li><li>Mención en nuestras redes como punto Costa Clean del barrio.</li></ul></div>
+  <p>Sin contratos ni compromisos: si en un mes no le encaja, retiramos los folletos y seguimos tan amigos. Le dejamos una bolsa de muestra para que vea el acabado.</p>
+  <div class="firma"><div class="l"><b>________________________</b>Costa Clean · WhatsApp 600 000 000 · hola@costaclean.es</div><img src="qr-landing.svg"></div>
+  <div class="pie"><span>Costa Clean · Lavandería a domicilio · Málaga</span><span>costaclean.es</span></div>
+</div>
+
+<!-- TARJETA MENSAJE: hoja con 5 anversos + 5 reversos enfrentados -->
+<div class="sheet gridtar" id="tarjetas" style="width:210mm;height:297mm">
+  <div class="tarj a"><img src="logo-horizontal-blanco.svg"><div class="cl">Planchada, envasada al vacío<br>y con tu aroma. En tu puerta.</div><img class="mk" src="logo-mark-blanco.svg"></div>
+  <div class="tarj b"><h4>Tu ropa, como te gustaría que estuviera siempre.</h4>Abre la bolsa por la muesca y deja que la ropa respire 10 minutos antes de guardarla.<div class="ar"><b>Hoy huele a:</b> <span>brisa marina</span><span>lavanda</span><span>algodón</span><span>cítrico</span><span>jazmín</span><span>sin perfume</span></div>¿Repetimos la semana que viene? Escríbenos <b>SÍ</b> por WhatsApp y te apuntamos la misma franja. Si algo no está como esperabas, dínoslo hoy y lo arreglamos.<div class="tel">WhatsApp 600 000 000 · costaclean.es</div></div>
+  <div class="tarj a"><img src="logo-horizontal-blanco.svg"><div class="cl">Planchada, envasada al vacío<br>y con tu aroma. En tu puerta.</div><img class="mk" src="logo-mark-blanco.svg"></div>
+  <div class="tarj b"><h4>Gracias por probarnos.</h4>Esta primera bolsa te la hemos preparado ________________ (lavandera) y ________________ (rider). Abre por la muesca y deja que la ropa respire 10 minutos.<br><br>Si te gusta, cuéntaselo a un vecino: su primera bolsa tiene <b>5 € de descuento</b> con el código <b>VECINO</b>, y tu siguiente bolsa también.<div class="tel">WhatsApp 600 000 000 · costaclean.es</div></div>
+  <div class="tarj a"><img src="logo-horizontal-blanco.svg"><div class="cl">Pressed, vacuum-packed<br>and scented your way.</div><img class="mk" src="logo-mark-blanco.svg"></div>
+  <div class="tarj b"><h4>Fresh linen for your stay.</h4>Washed, pressed and vacuum-packed by Costa Clean, Málaga's bike laundry. Open at the notch and let it breathe for 10 minutes.<br><br>Need laundry while you are in Málaga? We pick up and deliver by bike, from €22.90.<div class="tel">WhatsApp +34 600 000 000 · costaclean.es</div></div>
+  <div class="tarj a"><img src="logo-horizontal-blanco.svg"><div class="cl">Planchada, envasada al vacío<br>y con tu aroma. En tu puerta.</div><img class="mk" src="logo-mark-blanco.svg"></div>
+  <div class="tarj b"><h4>Tu ropa, como te gustaría que estuviera siempre.</h4>Abre la bolsa por la muesca y deja que la ropa respire 10 minutos antes de guardarla.<div class="ar"><b>Hoy huele a:</b> <span>brisa marina</span><span>lavanda</span><span>algodón</span><span>cítrico</span><span>jazmín</span><span>sin perfume</span></div>¿Repetimos la semana que viene? Escríbenos <b>SÍ</b> por WhatsApp y te apuntamos la misma franja. Si algo no está como esperabas, dínoslo hoy y lo arreglamos.<div class="tel">WhatsApp 600 000 000 · costaclean.es</div></div>
+</div>
+
+<!-- PEGATINAS 50 mm, 20 por A4 -->
+<div class="sheet pegs" id="pegatinas">
+  <script>document.write(Array.from({length:20},()=>`<div class="peg"><svg viewBox="0 0 200 200"><g fill="none" stroke="#0B7A8A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M100 80 V68 A13 13 0 1 1 113 60"/><path d="M100 80 L26 134 C45 134 45 118 63 118 S82 134 100 134 S118 150 137 150 S156 134 174 134 Z"/></g></svg><span>COSTA CLEAN</span></div>`).join(''))</script>
+</div>
+
+<!-- ETIQUETA (solo vista previa) -->
+<div class="sheet etq" id="etiqueta">
+  <div><div class="big">CC-1004 · 9 kg</div><div class="row"><span>Cliente</span><b>Tom Becker</b></div><div class="row"><span>Aroma</span><b>Cítrico mediterráneo</b></div><div class="row"><span>Plancha</span><b>Básica</b></div><div class="row"><span>Entrega</span><b>Jue 17-19 h · Soho</b></div><div style="margin-top:1.5mm;font-size:7pt;color:#5F6E76">Envasado el 5/11 · Abre por la muesca y deja que la ropa respire 10 min.</div></div>
+  <div style="display:grid;gap:2mm;align-content:start"><img src="qr-landing.svg" style="width:24mm"><img src="logo-mark.svg" style="width:14mm"></div>
+</div>
+</body></html>
