@@ -7,6 +7,7 @@ Servicio de lavandería a domicilio: recogida y entrega en bicicleta de carga, l
 |---|---|
 | `docs/plan-negocio.md` | Plan operativo y económico: cómo funciona el sistema, costes, precio de venta, rutas, maquinaria industrial, punto de equilibrio, riesgos y siguientes pasos. |
 | `app/` | Aplicación web interna **Costa Clean OPS** (Node.js + Express + SQLite, sin frameworks de frontend). `app/demo/` es la beta sin servidor. |
+| `brand/costa-clean-dossier-completo.pdf` | **Todo en un PDF**: plan, costes sin IVA, kit de marca, material y proveedores en Málaga, aromas e impresos. Versión inglesa en `brand/en/costa-clean-complete-dossier.pdf`. |
 | `brand/` | Marca: logos, kit de marca (PDF), tarjetas, QR, landings, pack de Instagram y PDF de costes. `brand/en/` es la versión en inglés. |
 
 ## La aplicación
