@@ -1,0 +1,22 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Costa Clean · tarjetas de visita</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Nunito+Sans:wght@400;600&display=swap">
+<style>
+@page { size: A4; margin: 0; } * { box-sizing:border-box } body { margin:0; font-family:"Nunito Sans",sans-serif; }
+.sheet { width:210mm; height:297mm; padding:11mm 20mm; display:grid; grid-template-columns:85mm 85mm; grid-auto-rows:55mm; page-break-after:always; }
+.t { width:85mm; height:55mm; position:relative; overflow:hidden; outline:0.2mm dashed #bbb; }
+.front { background:#0B7A8A; color:#fff; padding:7mm; }
+.front img.logo { width:46mm; display:block; }
+.front .claim { position:absolute; left:7mm; bottom:7mm; font-family:Outfit; font-weight:600; font-size:9pt; line-height:1.25; width:60mm; }
+.front img.mark { position:absolute; right:-6mm; bottom:-6mm; width:30mm; opacity:.18; }
+.back { background:#F6EFE4; color:#1D2A30; padding:6mm 7mm; display:grid; grid-template-columns:1fr 30mm; gap:4mm; align-items:center; }
+.back h4 { font-family:Outfit; font-size:11pt; color:#075B67; margin:0 0 1.5mm; }
+.back p { font-size:8pt; margin:0 0 1mm; line-height:1.35; color:#5F6E76; }
+.back .tel { font-family:Outfit; font-weight:700; font-size:10pt; color:#1D2A30; white-space:nowrap; }
+.back img { width:30mm; height:30mm; background:#fff; border-radius:2mm; padding:1.5mm; }
+</style></head><body>
+<div class="sheet" id="f"></div><div class="sheet" id="b"></div>
+<script>
+const front = `<div class="t front"><img class="logo" src="logo-horizontal-blanco.png"><div class="claim">Planchada, envasada al vacío<br>y con tu aroma. En tu puerta.</div><img class="mark" src="logo-mark.png"></div>`;
+const back = `<div class="t back"><div><h4>Pide tu recogida</h4><p>Escanea el código o escríbenos.</p><p class="tel">WhatsApp 600 000 000</p><p>costaclean.es · hola@costaclean.es</p><p>Málaga · lunes a sábado, 9 a 21 h</p></div><img src="qr-landing.svg"></div>`;
+document.getElementById('f').innerHTML = front.repeat(10); document.getElementById('b').innerHTML = back.repeat(10);
+</script></body></html>

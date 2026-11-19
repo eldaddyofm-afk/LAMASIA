@@ -1,0 +1,162 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Panel · Costa Clean</title><link rel="stylesheet" href="common.css"></head>
+<body>
+<div style="background:#F6C66B;color:#1D2A30;font-size:12px;text-align:center;padding:4px 10px;font-family:system-ui,sans-serif">BETA de demostración · los datos se guardan solo en este navegador · <a href="index.html" style="color:#075B67">inicio</a></div>
+
+<main>
+  <div class="row" style="justify-content:space-between;margin-bottom:10px">
+    <h1 style="margin:0">Panel de operaciones</h1>
+    <div class="row"><button class="secondary" onclick="openNew()">+ Nuevo pedido</button><button class="secondary" onclick="load()">↻ Actualizar</button></div>
+  </div>
+  <div class="kpis" id="kpis"></div>
+  <div class="grid" style="grid-template-columns: 1fr; gap:14px">
+    <section class="card">
+      <h2>Tablero de pedidos <span class="small muted">(clic en un pedido para gestionarlo)</span></h2>
+      <div class="board" id="board"></div>
+    </section>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+      <section class="card"><h2>Máquinas</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))" id="machines"></div></section>
+      <section class="card"><h2>Riders</h2><div id="riders"></div></section>
+      <section class="card"><h2>Lavanderas</h2><div id="washers"></div></section>
+    </div>
+  </div>
+</main>
+
+<div class="modal-bg" id="modal"><div class="modal" id="modalBody"></div></div>
+
+<script src="mock-api.js"></script><script src="common.js"></script>
+<script>
+CC.nav('panel');
+const BOARD_COLS = ['pendiente_recogida','recogido','en_hub','lavando','secando','planchando','envasando','listo','en_reparto','entregado'];
+let orders = [], machines = [], riders = [], washers = [], meta;
+
+async function load() {
+  [meta, orders, machines, riders, washers] = await Promise.all([CC.loadMeta(), CC.api('/api/orders'), CC.api('/api/machines'), CC.api('/api/riders'), CC.api('/api/washers')]);
+  render();
+}
+function render() { renderKpis(); renderBoard(); renderMachines(); renderRiders(); renderWashers(); }
+
+function renderKpis() {
+  const c = (s) => orders.filter(o => o.status === s).length;
+  const activeKg = orders.filter(o => !['entregado','cancelado'].includes(o.status)).reduce((a,o)=>a+o.kg,0);
+  const washing = c('lavando') + c('secando');
+  const waiting = c('en_hub');
+  const toDeliver = c('listo') + c('en_reparto');
+  const todayRev = orders.filter(o => o.status !== 'cancelado' && o.created_at.slice(0,10) === new Date().toISOString().slice(0,10)).reduce((a,o)=>a+(o.price_eur||0),0);
+  document.getElementById('kpis').innerHTML = [
+    ['Pedidos activos', orders.filter(o => !['entregado','cancelado'].includes(o.status)).length],
+    ['Kg en proceso', CC.num(activeKg,1)],
+    ['Lavando / secando', washing],
+    ['Esperando máquina', waiting],
+    ['Por recoger', c('pendiente_recogida')],
+    ['Por entregar', toDeliver],
+    ['Facturación hoy (IVA inc.)', CC.eur(todayRev)],
+  ].map(([l,v]) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('');
+}
+
+function renderBoard() {
+  const b = document.getElementById('board');
+  b.innerHTML = BOARD_COLS.map(s => {
+    const list = orders.filter(o => o.status === s);
+    return `<div class="col"><h3>${CC.STATUS_LABEL[s]} <span class="n">${list.length}</span></h3>
+      ${list.map(o => `<div class="ticket ${s==='en_hub' ? 'late':''}" onclick="openOrder(${o.id})">
+        <div class="code">${o.code} <span class="muted">· ${o.kg} kg</span></div>
+        <div>${CC.esc(o.customer_name)}</div>
+        <div class="meta">${CC.esc(o.zone||'')}</div>
+        <div style="margin-top:4px"><span class="chip">${CC.scentLabel(o.scent)}</span>${o.ironing==='completo' ? '<span class="chip warn">Planchado completo</span>' : ''}${o.vacuum ? '<span class="chip ok">Vacío</span>':''}</div>
+        <div class="meta">${o.washer_name ? '👩 ' + CC.esc(o.washer_name) : ''} ${s==='pendiente_recogida' ? '🚲 ' + CC.esc(o.pickup_rider_name||'sin asignar') : ''} ${['listo','en_reparto'].includes(s) ? '🚲 ' + CC.esc(o.delivery_rider_name||'sin asignar') : ''}</div>
+      </div>`).join('')}
+    </div>`;
+  }).join('');
+}
+
+function renderMachines() {
+  const now = Date.now();
+  document.getElementById('machines').innerHTML = machines.map(m => {
+    let pct = 0, left = '';
+    if (m.status === 'ocupada' && m.ends_at) {
+      const total = new Date(m.ends_at) - new Date(m.started_at); const el = now - new Date(m.started_at);
+      pct = Math.min(100, Math.max(0, el/total*100)); const mins = Math.max(0, Math.round((new Date(m.ends_at)-now)/60000));
+      left = mins > 0 ? `quedan ${mins} min` : '<b style="color:var(--bad)">¡terminada, sacar ropa!</b>';
+    }
+    return `<div class="machine ${m.status}"><b>${m.name}</b><div class="small muted">${m.kind} · ${m.capacity_kg} kg</div>
+      <div class="small">${m.status === 'ocupada' ? `${m.order_code} · ${CC.esc(m.customer_name||'')}<br>${left}` : m.status === 'averiada' ? '⚠️ Averiada' : '✅ Libre'}</div>
+      ${m.status==='ocupada' ? `<div class="bar"><i style="width:${pct}%"></i></div>` : ''}</div>`;
+  }).join('');
+}
+
+function renderRiders() {
+  document.getElementById('riders').innerHTML = `<table><tr><th>Rider</th><th>GPS</th><th class="num">Recogidas</th><th class="num">Entregas</th></tr>
+    ${riders.map(r => `<tr><td>${CC.esc(r.name)}</td><td class="small">${r.lat ? `${r.lat.toFixed(4)}, ${r.lng.toFixed(4)}<br><span class="muted">${CC.ago(r.last_seen)}</span>` : 'sin señal'}</td><td class="num">${r.recogidas_pendientes}</td><td class="num">${r.entregas_pendientes}</td></tr>`).join('')}</table>
+    <p class="small"><a href="mapa.html">Ver en el mapa →</a></p>`;
+}
+function renderWashers() {
+  document.getElementById('washers').innerHTML = `<table><tr><th>Lavandera</th><th class="num">Pedidos en curso</th></tr>
+    ${washers.map(w => `<tr><td>${CC.esc(w.name)}</td><td class="num">${w.en_curso}</td></tr>`).join('')}</table>
+    <p class="small muted">Las lavanderas trabajan desde <a href="hub.html">/hub</a>.</p>`;
+}
+
+// ---- Modal de pedido ----
+function openOrder(id) {
+  const o = orders.find(x => x.id === id);
+  const statusIdx = meta.statuses.indexOf(o.status);
+  const next = meta.statuses[statusIdx+1];
+  document.getElementById('modalBody').innerHTML = `
+    <div class="row" style="justify-content:space-between"><h2 style="margin:0">${o.code} · ${CC.esc(o.customer_name)}</h2><button class="ghost" onclick="closeModal()">✕</button></div>
+    <p class="small muted">${CC.esc(o.address)} · ${CC.esc(o.zone||'')} · ${CC.esc(o.phone||'')}</p>
+    <p><span class="chip">${o.kg} kg · bolsa ${o.bag_size}</span><span class="chip">${CC.scentLabel(o.scent)}</span><span class="chip">${CC.IRONING_LABEL[o.ironing]}</span>${o.vacuum?'<span class="chip ok">Envasado al vacío</span>':''}<span class="chip info">${CC.eur(o.price_eur)}</span></p>
+    <p class="small">Recogida: <b>${CC.esc(o.pickup_slot||'—')}</b> · Entrega: <b>${CC.esc(o.delivery_slot||'—')}</b></p>
+    <div class="grid" style="grid-template-columns:1fr 1fr">
+      <div class="field"><label>Estado</label><select id="fStatus">${meta.statuses.map(s=>`<option value="${s}" ${s===o.status?'selected':''}>${CC.STATUS_LABEL[s]}</option>`).join('')}</select></div>
+      <div class="field"><label>Lavandera</label><select id="fWasher"><option value="">—</option>${washers.map(w=>`<option value="${w.id}" ${w.id===o.washer_id?'selected':''}>${CC.esc(w.name)}</option>`).join('')}</select></div>
+      <div class="field"><label>Rider recogida</label><select id="fPR"><option value="">—</option>${riders.map(r=>`<option value="${r.id}" ${r.id===o.pickup_rider_id?'selected':''}>${CC.esc(r.name)}</option>`).join('')}</select></div>
+      <div class="field"><label>Rider entrega</label><select id="fDR"><option value="">—</option>${riders.map(r=>`<option value="${r.id}" ${r.id===o.delivery_rider_id?'selected':''}>${CC.esc(r.name)}</option>`).join('')}</select></div>
+    </div>
+    <div class="field"><label>Notas</label><textarea id="fNotes" rows="2">${CC.esc(o.notes||'')}</textarea></div>
+    <div class="row" style="justify-content:space-between">
+      <div>${next && next!=='cancelado' ? `<button onclick="advance(${o.id},'${next}')">Avanzar a: ${CC.STATUS_LABEL[next]} →</button>` : ''}</div>
+      <div class="row"><button class="danger" onclick="advance(${o.id},'cancelado')">Cancelar pedido</button><button class="secondary" onclick="saveOrder(${o.id})">Guardar</button></div>
+    </div>`;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id==='modal') closeModal(); });
+async function saveOrder(id) {
+  const v = (i) => document.getElementById(i).value;
+  try {
+    await CC.api(`/api/orders/${id}`, { method:'PATCH', body:{ status:v('fStatus'), washer_id:v('fWasher')||null, pickup_rider_id:v('fPR')||null, delivery_rider_id:v('fDR')||null, notes:v('fNotes') } });
+    CC.toast('Pedido guardado'); closeModal(); load();
+  } catch(e){ CC.toast('Error: '+e.message); }
+}
+async function advance(id, status) {
+  try { await CC.api(`/api/orders/${id}`, { method:'PATCH', body:{ status } }); CC.toast('Estado: '+CC.STATUS_LABEL[status]); closeModal(); load(); } catch(e){ CC.toast('Error: '+e.message); }
+}
+
+function openNew() {
+  document.getElementById('modalBody').innerHTML = `
+    <div class="row" style="justify-content:space-between"><h2 style="margin:0">Nuevo pedido (teléfono / WhatsApp)</h2><button class="ghost" onclick="closeModal()">✕</button></div>
+    <div class="grid" style="grid-template-columns:1fr 1fr">
+      <div class="field"><label>Nombre</label><input id="nName"></div><div class="field"><label>Teléfono</label><input id="nPhone"></div>
+      <div class="field" style="grid-column:1/-1"><label>Dirección</label><input id="nAddr" placeholder="Calle, número, piso"></div>
+      <div class="field"><label>Zona</label><select id="nZone"><option>Zona 1 · Centro</option><option>Zona 1 · Soho</option><option>Zona 1 · Malagueta</option><option>Zona 1 · Huelin</option><option>Zona 1 · Carretera de Cádiz</option><option>Zona 1 · Cruz de Humilladero</option><option>Zona 1 · Ciudad Jardín</option><option>Zona 1 · Pedregalejo</option><option>Zona 2 · El Palo</option><option>Zona 2 · Teatinos</option></select></div>
+      <div class="field"><label>Kg estimados</label><input id="nKg" type="number" value="8" min="1" max="30"></div>
+      <div class="field"><label>Aroma</label><select id="nScent">${meta.scents.map(s=>`<option value="${s.id}">${s.label}</option>`).join('')}</select></div>
+      <div class="field"><label>Planchado</label><select id="nIron"><option value="basico">Plancha básica (incluida)</option><option value="completo">Planchado completo (+)</option><option value="ninguno">Sin plancha</option></select></div>
+      <div class="field"><label>Franja recogida</label><input id="nPick" placeholder="2026-11-05 17:00-19:00"></div>
+      <div class="field"><label>Franja entrega</label><input id="nDel" placeholder="2026-11-06 17:00-19:00"></div>
+    </div>
+    <div class="row" style="justify-content:flex-end"><button onclick="createOrder()">Crear pedido</button></div>`;
+  document.getElementById('modal').classList.add('open');
+}
+async function createOrder() {
+  const v = (i) => document.getElementById(i).value;
+  try {
+    await CC.api('/api/orders', { method:'POST', body:{ name:v('nName'), phone:v('nPhone'), address:v('nAddr'), zone:v('nZone'), kg:Number(v('nKg')), scent:v('nScent'), ironing:v('nIron'), pickup_slot:v('nPick'), delivery_slot:v('nDel'), actor:'panel' } });
+    CC.toast('Pedido creado'); closeModal(); load();
+  } catch(e){ CC.toast('Error: '+e.message); }
+}
+
+load();
+CC.live({ order: () => load(), machine: () => load(), rider: (r) => { const i = riders.findIndex(x=>x.id===r.id); if (i>=0) { riders[i] = {...riders[i], ...r}; renderRiders(); } } });
+setInterval(renderMachines, 30000);
+</script>
+</body></html>

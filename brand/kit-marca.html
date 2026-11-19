@@ -1,0 +1,284 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Costa Clean · Kit de marca y lanzamiento</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+@page { size: A4; margin: 0; }
+:root { --mar:#0B7A8A; --maro:#075B67; --arena:#F6EFE4; --arenao:#EADFCB; --sol:#F6C66B; --coral:#F26B4E; --tinta:#1D2A30; --bruma:#5F6E76; --linea:#E3DACB; }
+* { box-sizing: border-box; }
+body { margin:0; font-family:"Nunito Sans", system-ui, sans-serif; color:var(--tinta); font-size:11.5pt; line-height:1.5; }
+.page { width:210mm; height:297mm; padding:18mm 18mm 16mm; page-break-after:always; position:relative; overflow:hidden; background:#fff; }
+.page.mar { background:var(--mar); color:#fff; }
+.page.arena { background:var(--arena); }
+h1,h2,h3,h4 { font-family:Outfit, sans-serif; margin:0; line-height:1.1; letter-spacing:-0.01em; }
+h1 { font-size:34pt; font-weight:800; }
+h2 { font-size:22pt; font-weight:700; color:var(--maro); margin-bottom:6mm; }
+.page.mar h2 { color:#fff; }
+h3 { font-size:13pt; font-weight:600; margin:5mm 0 2mm; }
+p { margin:0 0 3mm; max-width:160mm; }
+.eyebrow { font-family:Outfit; font-size:9pt; letter-spacing:.16em; text-transform:uppercase; color:var(--mar); font-weight:600; margin-bottom:3mm; }
+.page.mar .eyebrow { color:var(--sol); }
+.foot { position:absolute; bottom:9mm; left:18mm; right:18mm; display:flex; justify-content:space-between; font-family:Outfit; font-size:8.5pt; color:var(--bruma); letter-spacing:.08em; text-transform:uppercase; }
+.page.mar .foot { color:rgba(255,255,255,.75); }
+.grid { display:grid; gap:5mm; }
+.g2 { grid-template-columns:1fr 1fr; } .g3 { grid-template-columns:1fr 1fr 1fr; } .g4 { grid-template-columns:repeat(4,1fr); }
+.card { border:1px solid var(--linea); border-radius:4mm; padding:5mm; background:#fff; }
+.sw { border-radius:4mm; padding:4mm; min-height:34mm; display:flex; flex-direction:column; justify-content:flex-end; font-family:Outfit; }
+.sw b { font-size:12pt; } .sw span { font-size:8.5pt; opacity:.85; }
+.mono { font-family:"Nunito Sans"; font-variant-numeric:tabular-nums; }
+table { width:100%; border-collapse:collapse; font-size:10pt; }
+th,td { text-align:left; padding:2mm 2.5mm; border-bottom:1px solid var(--linea); vertical-align:top; }
+th { font-family:Outfit; font-size:8.5pt; letter-spacing:.08em; text-transform:uppercase; color:var(--bruma); font-weight:600; }
+td.n { text-align:right; font-variant-numeric:tabular-nums; }
+.ok, .no { padding:3mm 4mm; border-radius:3mm; font-size:10pt; }
+.ok { background:#E6F5EC; } .no { background:#FDE8E4; }
+.ok b, .no b { font-family:Outfit; display:block; margin-bottom:1mm; }
+img { max-width:100%; display:block; }
+.shot { border:1px solid var(--linea); border-radius:3mm; overflow:hidden; background:#fff; }
+.url { font-family:Outfit; font-weight:600; color:var(--mar); word-break:break-all; }
+.page.mar .url { color:#fff; }
+/* tarjetas a tamaño real 85x55 mm */
+.tarjeta { width:85mm; height:55mm; border-radius:3mm; overflow:hidden; position:relative; box-shadow:0 3mm 8mm rgba(0,0,0,.12); }
+.tarjeta.front { background:var(--mar); color:#fff; padding:7mm; }
+.tarjeta.front .logo { width:46mm; }
+.tarjeta.front .claim { position:absolute; left:7mm; bottom:7mm; font-family:Outfit; font-size:9pt; line-height:1.25; width:60mm; }
+.tarjeta.front .mark { position:absolute; right:-6mm; bottom:-6mm; width:30mm; opacity:.18; }
+.tarjeta.back { background:var(--arena); color:var(--tinta); padding:6mm 7mm; display:grid; grid-template-columns:1fr 30mm; gap:4mm; align-items:center; }
+.tarjeta.back .qr { width:30mm; height:30mm; background:#fff; border-radius:2mm; padding:1.5mm; }
+.tarjeta.back h4 { font-size:11pt; color:var(--maro); margin-bottom:1.5mm; }
+.tarjeta.back p { font-size:8pt; margin:0 0 1mm; line-height:1.35; color:var(--bruma); }
+.tarjeta.back .tel { font-family:Outfit; font-weight:700; font-size:10pt; color:var(--tinta); white-space:nowrap; }
+.etiqueta { width:100mm; height:60mm; background:#fff; border:1px solid var(--linea); border-radius:2mm; padding:5mm; display:grid; grid-template-columns:1fr 22mm; gap:3mm; font-size:8pt; }
+.etiqueta .big { font-family:Outfit; font-weight:700; font-size:12.5pt; white-space:nowrap; color:var(--maro); }
+.etiqueta .row { display:flex; justify-content:space-between; gap:2mm; white-space:nowrap; border-bottom:1px dashed var(--linea); padding:1mm 0; }
+.chat { background:#E7F6EC; border-radius:3mm; padding:3mm 4mm; font-size:9.5pt; margin-bottom:3mm; max-width:120mm; }
+.chat b { font-family:Outfit; color:var(--maro); display:block; font-size:8.5pt; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1mm; }
+.kpi { border-left:1.2mm solid var(--mar); padding-left:4mm; }
+.kpi b { font-family:Outfit; font-size:20pt; font-weight:800; display:block; color:var(--maro); line-height:1; }
+.kpi span { font-size:9pt; color:var(--bruma); }
+.type-sample { font-size:30pt; line-height:1.05; }
+</style></head><body>
+
+<!-- 1 PORTADA -->
+<div class="page mar">
+  <img src="logo-horizontal-blanco.png" style="width:120mm;margin-top:40mm">
+  <h1 style="margin-top:34mm;font-size:40pt;max-width:160mm">Kit de marca<br>y lanzamiento</h1>
+  <p style="margin-top:8mm;font-size:14pt;max-width:150mm;color:rgba(255,255,255,.9)">Identidad, tarjetas con QR, etiquetas, landing y beta de la app de operaciones. Málaga, noviembre de 2026.</p>
+  <div class="foot"><span>Costa Clean</span><span>Versión 1.0 · uso interno</span></div>
+</div>
+
+<!-- 2 QUÉ HAY -->
+<div class="page">
+  <div class="eyebrow">Contenido</div>
+  <h2>Qué hay en este kit y dónde está cada cosa</h2>
+  <table>
+    <tr><th style="width:52mm">Pieza</th><th>Dónde</th><th style="width:48mm">Estado</th></tr>
+    <tr><td>Landing pública</td><td class="url">https://claude.ai/artifact/XY5qdLNjMMMFZmKzATrpKw</td><td>Publicada. Hay que compartirla desde el menú Share para que la vea cualquiera.</td></tr>
+    <tr><td>Beta de la app de operaciones</td><td class="url">https://claude.ai/artifact/4mTka28BJN6Zn84yWCDgqv</td><td>Publicada. Demo sin servidor; los datos se guardan en el navegador de cada uno.</td></tr>
+    <tr><td>App completa (con servidor, GPS real)</td><td class="mono">repositorio LAMASIA · carpeta app/</td><td>Lista para desplegar en un VPS con HTTPS.</td></tr>
+    <tr><td>Plan de negocio</td><td class="mono">docs/plan-negocio.md</td><td>Completo, con fuentes.</td></tr>
+    <tr><td>Logos (SVG y PNG)</td><td class="mono">brand/logo-horizontal · logo-vertical · logo-mark · versiones blanco y negro · avatar · favicon</td><td>Vectorial con texto en trazados, listos para imprenta.</td></tr>
+    <tr><td>QR a la landing</td><td class="mono">brand/qr-landing.svg · .png</td><td>Apunta a la landing. Si cambiáis de dominio, hay que regenerarlo.</td></tr>
+    <tr><td>Tarjetas de visita</td><td class="mono">brand/tarjetas-visita.pdf (A4, 10 por hoja, anverso y reverso)</td><td>Falta poner el teléfono real.</td></tr>
+    <tr><td>Este documento</td><td class="mono">brand/kit-marca.pdf</td><td></td></tr>
+  </table>
+  <h3>Tres cosas que hay que cambiar antes de imprimir nada</h3>
+  <p>1. El número de WhatsApp. En todas las piezas aparece <b>600 000 000</b> como marcador. Buscad y sustituid en landing.html, kit-marca.html y tarjetas.html.</p>
+  <p>2. El dominio. Las piezas enlazan a la landing publicada; cuando tengáis costaclean.es (o similar), apuntad el dominio a la landing y regenerad el QR.</p>
+  <p>3. El correo hola@costaclean.es es provisional.</p>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>2</span></div>
+</div>
+
+<!-- 3 LA MARCA -->
+<div class="page arena">
+  <div class="eyebrow">La marca</div>
+  <h2>Qué es Costa Clean y cómo habla</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">La idea en una frase</h3><p>Tu ropa vuelve a casa como te gustaría que estuviera siempre: planchada, doblada, envasada al vacío y con el olor que tú elijas. Y llega en bici.</p>
+      <h3>Promesa</h3><p>Dejas una bolsa en la puerta y en 24-48 horas tienes la ropa lista para guardar. Sin separar, sin esperar, sin furgonetas.</p>
+      <h3>Para quién</h3><p>Personas de 28 a 50 años en el Centro, Soho, Malagueta y la zona Este que valoran su tiempo y la ropa bien tratada. Segundo público: gestores de apartamentos turísticos.</p></div>
+    <div class="card"><h3 style="margin-top:0">Lo que nos hace distintos</h3><p><b>El vacío.</b> Nadie en Málaga lo ofrece. Es visual, se entiende en un segundo y da sensación de ropa nueva.</p><p><b>El aroma.</b> Seis opciones. Convierte una tarea en algo que se elige.</p><p><b>La plancha.</b> Mr Jeff y los demás solo lavan y doblan.</p><p><b>La bici.</b> Rapidez en el Centro y una imagen amable y local.</p>
+      <h3>Valores</h3><p>Cuidado, cercanía, limpieza (también visual), ritmo mediterráneo.</p></div>
+  </div>
+  <h3>Tono de voz</h3>
+  <div class="grid g2">
+    <div class="ok"><b>Sí</b>Cercano y directo, como un vecino que sabe de lo suyo. Frases cortas. Tuteo. Hablamos de la ropa, no de la lavandería. "Tu ropa vuelve planchada y con olor a brisa marina."</div>
+    <div class="no"><b>No</b>Ni jerga técnica ("proceso de higienización textil"), ni gracietas forzadas, ni exclamaciones en cadena, ni promesas vagas ("calidad premium garantizada"). Nunca "lavandería industrial".</div>
+  </div>
+  <h3>Frases de marca</h3>
+  <p><b>Claim principal:</b> Planchada, envasada al vacío y con tu aroma. En tu puerta.</p>
+  <p><b>Corto:</b> La ropa como te gustaría que estuviera siempre.</p>
+  <p><b>Para la bici y la bolsa:</b> Llevamos tu ropa a dar una vuelta.</p>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>3</span></div>
+</div>
+
+<!-- 4 LOGO -->
+<div class="page">
+  <div class="eyebrow">Logotipo</div>
+  <h2>La percha y la ola: una sola línea, dos ideas</h2>
+  <div class="grid g2" style="align-items:center">
+    <div class="card" style="padding:10mm"><img src="logo-horizontal.png"></div>
+    <div class="card" style="background:var(--mar);padding:10mm"><img src="logo-horizontal-blanco.png"></div>
+    <div class="card"><div style="display:flex;gap:8mm;align-items:center;margin-bottom:4mm"><img src="logo-mark.png" style="width:26mm"><img src="logo-mark.png" style="width:16mm"><img src="logo-mark.png" style="width:9mm"></div><div style="font-size:9.5pt;color:var(--bruma)">Símbolo solo: avatar de WhatsApp e Instagram (brand/avatar.svg), favicon, pegatinas pequeñas. Tamaño mínimo 8 mm / 24 px.</div></div>
+    <div class="card"><h3 style="margin-top:0">Reglas</h3><p style="font-size:10pt">El símbolo es una percha cuya barra es una ola: ropa cuidada y costa en un trazo. Grosor de línea único, nunca relleno.<br>Área de respeto: la altura del gancho por cada lado.<br>Símbolo en Mar y texto en Tinta sobre claros; todo en blanco sobre Mar o sobre foto con capa Mar al 70 %.<br>Versiones: horizontal (preferida), vertical (cuadrados y redes), símbolo solo (avatar, favicon, etiquetas pequeñas). Texto en trazados: la imprenta no necesita la fuente.</p></div>
+  </div>
+  <h3>Usos incorrectos</h3>
+  <div class="grid g4" style="font-size:9pt;color:var(--bruma)">
+    <div class="card"><img src="logo-mark.png" style="width:16mm;transform:rotate(-12deg);margin-bottom:3mm">No girar ni inclinar.</div>
+    <div class="card"><img src="logo-mark.png" style="width:22mm;height:12mm;object-fit:fill;margin-bottom:3mm">No deformar.</div>
+    <div class="card"><img src="logo-mark.png" style="width:16mm;filter:hue-rotate(120deg);margin-bottom:3mm">No cambiar los colores ni rellenar la percha.</div>
+    <div class="card" style="background:#f0a">
+      <img src="logo-mark.png" style="width:16mm;margin-bottom:3mm"><span style="color:#fff">No ponerlo sobre colores fuera de la paleta.</span></div>
+  </div>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>4</span></div>
+</div>
+
+<!-- 5 COLORES -->
+<div class="page">
+  <div class="eyebrow">Color</div>
+  <h2>Mar, arena, sol y un toque de coral</h2>
+  <div class="grid g3">
+    <div class="sw" style="background:#0B7A8A;color:#fff"><b>Mar</b><span>#0B7A8A · RGB 11 122 138 · CMYK 92 12 36 2<br>Color principal. Logo, titulares, fondos.</span></div>
+    <div class="sw" style="background:#075B67;color:#fff"><b>Mar profundo</b><span>#075B67 · RGB 7 91 103<br>Texto sobre arena, QR, hover.</span></div>
+    <div class="sw" style="background:#F6EFE4;color:#1D2A30;border:1px solid #E3DACB"><b>Arena</b><span>#F6EFE4 · RGB 246 239 228<br>Fondo de página y reversos. Nunca para texto.</span></div>
+    <div class="sw" style="background:#F6C66B;color:#1D2A30"><b>Sol</b><span>#F6C66B · RGB 246 198 107<br>Acentos pequeños: etiquetas, iconos, detalles.</span></div>
+    <div class="sw" style="background:#F26B4E;color:#fff"><b>Coral</b><span>#F26B4E · RGB 242 107 78 · CMYK 0 70 65 0<br>Un solo uso: el botón de pedir. Nada más.</span></div>
+    <div class="sw" style="background:#1D2A30;color:#fff"><b>Tinta</b><span>#1D2A30 · RGB 29 42 48<br>Texto y el nombre en el logo.</span></div>
+  </div>
+  <h3>Proporción</h3>
+  <div style="display:flex;height:12mm;border-radius:3mm;overflow:hidden;font-family:Outfit;font-size:8.5pt;color:#fff">
+    <div style="flex:45;background:#F6EFE4;color:#1D2A30;display:grid;place-items:center">Arena 45 %</div><div style="flex:30;background:#fff;color:#1D2A30;display:grid;place-items:center;border:1px solid #E3DACB">Blanco 30 %</div><div style="flex:18;background:#0B7A8A;display:grid;place-items:center">Mar 18 %</div><div style="flex:4;background:#F6C66B"></div><div style="flex:3;background:#F26B4E"></div>
+  </div>
+  <p style="margin-top:4mm;font-size:10pt;color:var(--bruma)">Los fondos son claros y cálidos; el Mar aparece en bloques grandes pero pocos; Sol y Coral son acentos. Si una pieza tiene más de un elemento coral, sobra uno.</p>
+  <h3>Aromas: etiquetas de color para las bolsas</h3>
+  <div class="grid g3" style="font-size:9.5pt">
+    <div class="card" style="border-left:3mm solid #6FB7C4">Brisa marina</div><div class="card" style="border-left:3mm solid #9A8CC9">Lavanda</div><div class="card" style="border-left:3mm solid #D9D4C7">Algodón limpio</div>
+    <div class="card" style="border-left:3mm solid #F2B33D">Cítrico mediterráneo</div><div class="card" style="border-left:3mm solid #E8A6B8">Jazmín de Málaga</div><div class="card" style="border-left:3mm solid #B8C4C9">Sin perfume</div>
+  </div>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>5</span></div>
+</div>
+
+<!-- 6 TIPOGRAFÍA -->
+<div class="page">
+  <div class="eyebrow">Tipografía</div>
+  <h2>Outfit para hablar alto, Nunito Sans para leer</h2>
+  <div class="grid g2">
+    <div class="card"><div class="eyebrow">Titulares y botones</div><div class="type-sample" style="font-family:Outfit;font-weight:800">Outfit<br>Planchada y al vacío</div><p style="margin-top:4mm;font-size:10pt;color:var(--bruma)">Pesos 600, 700 y 800. Espaciado ligeramente negativo en tamaños grandes. Gratuita en Google Fonts.</p></div>
+    <div class="card"><div class="eyebrow">Texto corrido y formularios</div><div class="type-sample" style="font-family:'Nunito Sans';font-weight:400;font-size:24pt">Nunito Sans<br>Pasamos en bici a recogerla y te la devolvemos en 24-48 h con el aroma que elijas.</div><p style="margin-top:4mm;font-size:10pt;color:var(--bruma)">Pesos 400, 600 y 700. Cuerpo 16-17 px en web, 10-11 pt en papel. Gratuita en Google Fonts.</p></div>
+  </div>
+  <h3>Escala</h3>
+  <table>
+    <tr><th>Uso</th><th>Fuente</th><th>Tamaño web</th><th>Ejemplo</th></tr>
+    <tr><td>Titular principal</td><td>Outfit 800</td><td class="n">48-60 px</td><td style="font-family:Outfit;font-weight:800;font-size:18pt">Tu ropa vuelve planchada.</td></tr>
+    <tr><td>Título de sección</td><td>Outfit 700</td><td class="n">30-38 px</td><td style="font-family:Outfit;font-weight:700;font-size:14pt">Por bolsa, sin sorpresas.</td></tr>
+    <tr><td>Etiqueta</td><td>Outfit 600, mayúsculas, +14 % de espaciado</td><td class="n">13 px</td><td class="eyebrow" style="margin:0">Lavandería a domicilio · Málaga</td></tr>
+    <tr><td>Texto</td><td>Nunito Sans 400</td><td class="n">17 px</td><td>Recogida y entrega en una franja de dos horas que eliges tú.</td></tr>
+    <tr><td>Precio</td><td>Outfit 800, números tabulares</td><td class="n">44 px</td><td style="font-family:Outfit;font-weight:800;font-size:18pt">36,90 €</td></tr>
+  </table>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>6</span></div>
+</div>
+
+<!-- 7 TARJETAS -->
+<div class="page arena">
+  <div class="eyebrow">Tarjetas de visita · 85 × 55 mm a tamaño real</div>
+  <h2>El QR lleva a la landing para pedir en el momento</h2>
+  <div style="display:flex;gap:10mm;flex-wrap:wrap;margin-top:6mm">
+    <div class="tarjeta front"><img class="logo" src="logo-horizontal-blanco.png"><div class="claim">Planchada, envasada al vacío<br>y con tu aroma. En tu puerta.</div><img class="mark" src="logo-mark.png"></div>
+    <div class="tarjeta back"><div><h4>Pide tu recogida</h4><p>Escanea el código o escríbenos.</p><p class="tel">WhatsApp 600 000 000</p><p>costaclean.es · hola@costaclean.es</p><p>Málaga · lunes a sábado, 9 a 21 h</p></div><img class="qr" src="qr-landing.svg"></div>
+  </div>
+  <h3>Para la imprenta</h3>
+  <p style="font-size:10pt">Archivo <b>brand/tarjetas-visita.pdf</b>: hojas A4 con 10 tarjetas por cara, anverso y reverso enfrentados. Pedid cartulina de 350 g mate con laminado suave; el Mar en masa luce mejor sin brillo. Sangrado de 3 mm ya incluido en cada tarjeta. Si la imprenta pide el logo aparte, está en SVG en la carpeta brand.</p>
+  <h3>Variante para riders y lavanderas</h3>
+  <p style="font-size:10pt">Mismo anverso. En el reverso, nombre de la persona en Outfit 700 y "Rider de Costa Clean" en lugar de "Pide tu recogida". Son la cara de la marca en la puerta del cliente.</p>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>7</span></div>
+</div>
+
+<!-- 8 APLICACIONES -->
+<div class="page">
+  <div class="eyebrow">Aplicaciones</div>
+  <h2>Etiqueta de bolsa, bici y mensajes</h2>
+  <div style="display:flex;gap:8mm;align-items:flex-start">
+    <div class="etiqueta"><div><div class="big">CC-1004 · 9 kg</div><div class="row"><span>Cliente</span><b>Tom Becker</b></div><div class="row"><span>Aroma</span><b>Cítrico mediterráneo</b></div><div class="row"><span>Plancha</span><b>Básica</b></div><div class="row"><span>Entrega</span><b>Jue 17-19 h</b></div><div style="margin-top:2mm;color:var(--bruma);font-size:7.5pt">Envasado al vacío el 5/11 · Abre por la muesca y deja que la ropa respire 10 min.</div></div><div><img src="qr-landing.svg" style="width:22mm"><img src="logo-mark.png" style="width:12mm;margin-top:2mm"></div></div>
+    <div style="font-size:10pt;color:var(--bruma)"><b style="color:var(--tinta);font-family:Outfit">Etiqueta de pedido</b><br>Se imprime desde el hub (90 × 60 mm, impresora térmica) y va pegada en la bolsa de vacío. El QR del cliente lleva a la landing para repetir pedido; el código CC es el mismo que en la app.<br><br><b style="color:var(--tinta);font-family:Outfit">Caja de la bici</b><br>Vinilo en Mar con el logo blanco horizontal en los dos laterales y "Llevamos tu ropa a dar una vuelta" en Outfit 700 detrás. Matrícula de la empresa y WhatsApp en la parte trasera.<br><br><b style="color:var(--tinta);font-family:Outfit">Ropa del equipo</b><br>Camiseta o polo en Mar con el símbolo en el pecho a 7 cm. Chaleco reflectante encima en invierno.</div>
+  </div>
+  <h3>Mensajes de WhatsApp (plantillas)</h3>
+  <div class="chat"><b>Confirmación</b>¡Hola, Tom! Pedido CC-1004 confirmado. Pasamos el jueves entre 17 y 19 h por Calle Tomás Heredia 9. Deja la ropa en una bolsa cerrada, no hace falta separar nada. Aroma elegido: cítrico mediterráneo.</div>
+  <div class="chat"><b>Rider cerca</b>Dani está a 5 minutos con tu ropa. Son 36,90 €, puedes pagar con tarjeta o Bizum en la puerta.</div>
+  <div class="chat"><b>Entregado</b>Entregado. La bolsa va al vacío: ábrela por la muesca y deja que la ropa respire 10 minutos antes de guardarla. ¿Repetimos la semana que viene? Responde SÍ y te apuntamos la misma franja.</div>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>8</span></div>
+</div>
+
+<!-- 9 LANDING -->
+<div class="page">
+  <div class="eyebrow">Landing</div>
+  <h2>La web para pedir</h2>
+  <p class="url" style="margin-bottom:4mm">https://claude.ai/artifact/XY5qdLNjMMMFZmKzATrpKw</p>
+  <div style="display:flex;gap:8mm;align-items:flex-start">
+    <div class="shot" style="width:118mm;max-height:170mm;overflow:hidden"><img src="landing-desktop.png"></div>
+    <div style="width:46mm"><div class="shot"><img src="landing-movil.png"></div><img src="qr-landing.svg" style="width:30mm;margin-top:5mm"></div>
+  </div>
+  <p style="font-size:10pt;color:var(--bruma);margin-top:4mm">Secciones: promesa, cómo funciona, los cuatro diferenciales con los seis aromas, precios por bolsa, zonas y días, preguntas frecuentes y un formulario que prepara el mensaje de WhatsApp con el pedido y el total. Funciona en móvil y en modo oscuro. El código fuente está en brand/landing.html y en la app (ruta /pedido) hay la versión conectada al sistema.</p>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>9</span></div>
+</div>
+
+<!-- 10 BETA APP -->
+<div class="page">
+  <div class="eyebrow">Beta de la app de operaciones</div>
+  <h2>Qué se lava, qué no, dónde se entrega y por dónde va el rider</h2>
+  <p class="url" style="margin-bottom:4mm">https://claude.ai/artifact/4mTka28BJN6Zn84yWCDgqv</p>
+  <div class="grid g2">
+    <div class="shot"><img src="shot-panel.png"></div>
+    <div class="shot"><img src="shot-mapa.png"></div>
+  </div>
+  <table style="margin-top:5mm">
+    <tr><th style="width:34mm">Pantalla</th><th>Para quién</th><th>Qué hace</th></tr>
+    <tr><td>Panel</td><td>Vosotros</td><td>Tablero por estados, kilos en proceso, máquinas con temporizador, riders y lavanderas. Crear pedidos por teléfono.</td></tr>
+    <tr><td>Mapa y GPS</td><td>Vosotros</td><td>Posición de los riders, recorrido y ruta optimizada con los kilómetros ahorrados.</td></tr>
+    <tr><td>Hub</td><td>Lavanderas</td><td>Cola por persona, meter en lavadora o secadora, aroma y plancha de cada bolsa, envasar, marcar listo.</td></tr>
+    <tr><td>App rider</td><td>Repartidores</td><td>Ruta del día en orden óptimo, navegación, marcar recogido o entregado, GPS automático.</td></tr>
+    <tr><td>Web cliente</td><td>Clientes</td><td>Formulario de pedido conectado al panel.</td></tr>
+    <tr><td>Calculadora</td><td>Vosotros</td><td>Modelo económico con controles: costes, margen, punto de equilibrio, inversión.</td></tr>
+  </table>
+  <p style="font-size:10pt;color:var(--bruma);margin-top:4mm">La beta funciona sin servidor: los datos se guardan en el navegador de quien la abre, y el GPS del móvil no está activo. La versión completa está en la carpeta app del repositorio y necesita un servidor pequeño con HTTPS (5-10 € al mes).</p>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>10</span></div>
+</div>
+
+<!-- 11 CIFRAS -->
+<div class="page arena">
+  <div class="eyebrow">Las cifras del plan</div>
+  <h2>Lo que hay que tener en la cabeza</h2>
+  <div class="grid g4" style="margin-bottom:8mm">
+    <div class="kpi"><b>36,90 €</b><span>Bolsa M de 10 kg, IVA incluido, la más pedida</span></div>
+    <div class="kpi"><b>27,80 €</b><span>Coste por pedido a 30 pedidos al día</span></div>
+    <div class="kpi"><b>18</b><span>Pedidos al día para cubrir costes con 2 riders</span></div>
+    <div class="kpi"><b>45.000 €</b><span>Inversión inicial sin IVA con maquinaria nueva</span></div>
+  </div>
+  <table>
+    <tr><th>Pedidos al día</th><th class="n">Coste por pedido</th><th class="n">Coste por kg</th><th class="n">Margen al mes</th><th class="n">Margen</th></tr>
+    <tr><td>15</td><td class="n">37,70 €</td><td class="n">4,71 €</td><td class="n">-1.012 €</td><td class="n">-9 %</td></tr>
+    <tr><td>30</td><td class="n">27,81 €</td><td class="n">3,48 €</td><td class="n">4.502 €</td><td class="n">20 %</td></tr>
+    <tr><td>50</td><td class="n">23,85 €</td><td class="n">2,98 €</td><td class="n">11.855 €</td><td class="n">31 %</td></tr>
+  </table>
+  <div class="grid g2" style="margin-top:6mm">
+    <div class="card"><h3 style="margin-top:0">Tarifa</h3><table><tr><td>Bolsa S · 5 kg</td><td class="n">22,90 €</td></tr><tr><td>Bolsa M · 10 kg</td><td class="n">36,90 €</td></tr><tr><td>Bolsa L · 15 kg</td><td class="n">49,90 €</td></tr><tr><td>Planchado completo</td><td class="n">+12 / 20 / 28 €</td></tr><tr><td>Suscripción 4 bolsas M</td><td class="n">129 €/mes</td></tr><tr><td>Nórdico al vacío</td><td class="n">19,90 €</td></tr><tr><td>Kit apartamento turístico</td><td class="n">14,90 € + IVA</td></tr></table></div>
+    <div class="card"><h3 style="margin-top:0">Maquinaria del hub (sin IVA)</h3><table><tr><td>2 lavadoras 10-11 kg</td><td class="n">7.800 €</td></tr><tr><td>1 lavadora 20 kg</td><td class="n">6.400 €</td></tr><tr><td>3 secadoras 12-14 kg</td><td class="n">8.100 €</td></tr><tr><td>Plancha, envasadora, mobiliario</td><td class="n">5.800 €</td></tr><tr><td>Instalación eléctrica y desagües</td><td class="n">4.500 €</td></tr><tr><td>2 cargo-bikes</td><td class="n">8.000 €</td></tr><tr><td>Fianza y licencia</td><td class="n">4.500 €</td></tr></table></div>
+  </div>
+  <p style="font-size:10pt;color:var(--bruma);margin-top:4mm">Todo el detalle, los supuestos y las fuentes están en docs/plan-negocio.md. La calculadora de la app permite cambiar cualquier número.</p>
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>11</span></div>
+</div>
+
+<!-- 12 PRÓXIMOS PASOS -->
+<div class="page mar">
+  <div class="eyebrow">Esta semana</div>
+  <h2>Siete cosas para arrancar</h2>
+  <div style="font-size:12.5pt;line-height:1.6;max-width:160mm">
+    <p>1. Contratar una línea de WhatsApp Business y sustituir el 600 000 000 en landing, tarjetas y kit.</p>
+    <p>2. Registrar el dominio y apuntarlo a la landing. Compartir la landing y la beta desde el menú Share para que se abran sin cuenta.</p>
+    <p>3. Crear el Instagram con el símbolo como avatar y publicar tres fotos: una bolsa al vacío, la bici y una camisa planchada.</p>
+    <p>4. Lavar diez pedidos de conocidos y cronometrar: doblar, planchar, envasar. Esos minutos son el negocio.</p>
+    <p>5. Pedir presupuesto de maquinaria a tres distribuidores (Girbau Málaga, Primer, Fagor) con la lista de la página 11, nuevo y en renting.</p>
+    <p>6. Visitar cinco locales en Perchel y Cruz de Humilladero y preguntar por la licencia antes de firmar.</p>
+    <p>7. Imprimir 250 tarjetas y 200 flyers con el QR y repartir en Soho y Malagueta en una tarde.</p>
+  </div>
+  <img src="logo-horizontal-blanco.png" style="width:70mm;position:absolute;left:18mm;bottom:22mm">
+  <div class="foot"><span>Costa Clean · Kit de marca</span><span>12</span></div>
+</div>
+</body></html>

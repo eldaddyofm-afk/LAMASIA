@@ -1,0 +1,85 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Costa Clean · Hoja de gracias</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+:root{--mar:#0B7A8A;--maro:#075B67;--arena:#F6EFE4;--arenao:#EADFCB;--sol:#F6C66B;--coral:#F26B4E;--tinta:#1D2A30;--bruma:#5F6E76;--linea:#E3DACB}
+*{box-sizing:border-box} body{margin:0;font-family:"Nunito Sans",sans-serif;color:var(--tinta);background:#999}
+.sheet{background:#fff;position:relative;overflow:hidden}
+.a4p{width:210mm;height:297mm} .a4l{width:297mm;height:210mm;display:flex}
+.cutline{position:absolute;left:148.5mm;top:0;bottom:0;border-left:.3mm dashed #aaa}
+.cutline span{position:absolute;top:3mm;left:1.5mm;font:7pt Outfit;color:#999}
+/* módulo A5 148 x 210 */
+.mod{width:148mm;height:210mm;position:relative;display:flex;flex-direction:column;background:#fff;flex:none}
+.a4p .mod{transform:scale(1.41892);transform-origin:0 0}
+.hd{background:var(--mar);color:#fff;padding:9mm 10mm 7mm;position:relative;overflow:hidden}
+.hd img.logo{width:62mm;display:block}
+.hd .wave{position:absolute;right:-8mm;top:-6mm;width:42mm;opacity:.16}
+.ink .hd{background:#fff;color:var(--tinta);border-bottom:.6mm solid var(--mar);padding-bottom:5mm}
+.bd{padding:7mm 10mm 0;flex:1;display:flex;flex-direction:column}
+h1{font-family:Outfit;font-weight:800;font-size:30pt;line-height:1;margin:0;color:var(--maro);letter-spacing:-.02em}
+.sub{font-family:Outfit;font-weight:600;font-size:12.5pt;color:var(--tinta);margin:1.5mm 0 4mm}
+.fields{display:grid;grid-template-columns:1.4fr 1fr;gap:2.5mm 5mm;font-size:8.6pt;color:var(--bruma);margin-bottom:4mm}
+.fields div{border-bottom:.3mm solid #B9B2A5;padding-bottom:1mm;white-space:nowrap}
+.lbl{font-family:Outfit;font-size:7.3pt;letter-spacing:.14em;text-transform:uppercase;color:var(--mar);font-weight:600;margin:0 0 1.8mm}
+.aromas{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6mm 3mm;font-size:8.6pt;margin-bottom:4.5mm}
+.aromas span{display:flex;align-items:center;gap:1.8mm;white-space:nowrap}
+.aromas i{width:3.6mm;height:3.6mm;border:.35mm solid var(--tinta);border-radius:1mm;flex:none;position:relative}
+.aromas u{width:2.2mm;height:2.2mm;border-radius:50%;background:var(--c);flex:none;margin-left:-.6mm}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-bottom:4.5mm}
+.steps div{background:var(--arena);border-radius:2.5mm;padding:2.6mm;font-size:8pt;line-height:1.3}
+.ink .steps div{background:#fff;border:.3mm solid var(--linea)}
+.steps b{display:block;font-family:Outfit;font-size:9pt;color:var(--maro);margin-bottom:.8mm}
+.steps em{font-style:normal;display:inline-grid;place-items:center;width:5mm;height:5mm;border-radius:1.4mm;background:var(--mar);color:#fff;font-family:Outfit;font-weight:700;font-size:8pt;margin-bottom:1.2mm}
+.rep{display:grid;grid-template-columns:1fr 24mm;gap:4mm;align-items:center;border:.4mm solid var(--mar);border-radius:3mm;padding:3.2mm 3.5mm;margin-bottom:3.5mm}
+.rep h3{font-family:Outfit;font-weight:700;font-size:11pt;margin:0 0 1mm;color:var(--tinta)}
+.rep p{margin:0;font-size:8.2pt;line-height:1.35}
+.rep img{width:24mm;height:24mm}
+.cod{display:inline-block;background:var(--coral);color:#fff;font-family:Outfit;font-weight:700;padding:0 1.6mm;border-radius:1mm;letter-spacing:.06em}
+.ink .cod{background:#fff;color:var(--coral);border:.3mm solid var(--coral)}
+.nota{margin-top:auto;font-size:7.8pt;color:var(--bruma)} .nota div{border-bottom:.3mm dotted #B9B2A5;height:6.5mm}
+.firma{display:grid;grid-template-columns:1fr 1fr;gap:5mm;font-size:7.8pt;color:var(--bruma);margin:5mm 0 4mm}
+.firma div{border-top:.3mm solid #B9B2A5;padding-top:1mm}
+.ft{background:var(--arena);padding:3.2mm 10mm;display:flex;justify-content:space-between;align-items:center;font-family:Outfit;font-size:7.8pt;color:var(--maro);font-weight:600;letter-spacing:.03em}
+.ink .ft{background:#fff;border-top:.3mm solid var(--linea)}
+.ft img{width:7mm}
+
+/* 2 por folio, con margen de impresora */
+.dos{width:297mm;height:210mm;display:flex;align-items:center;justify-content:space-around;padding:0 4mm;position:relative}
+.dos .slot{width:140mm;height:198mm;position:relative;overflow:hidden;border:.25mm solid #ddd;border-radius:1mm}
+.dos .slot .mod{transform:scale(.9420);transform-origin:0 0}
+.dos .cut{position:absolute;left:148.5mm;top:0;bottom:0;border-left:.3mm dashed #999}
+.dos .cut span{position:absolute;top:1mm;left:-1.6mm;font:9pt Outfit;color:#888;background:#fff;line-height:1}
+</style></head><body>
+<template id="tpl">
+  <div class="hd"><img class="logo" src="LOGO"><img class="wave" src="MARK"></div>
+  <div class="bd">
+    <h1>Gracias.</h1>
+    <div class="sub">Tu ropa vuelve lavada, planchada y envasada al vacío.</div>
+    <div class="fields"><div>Para: </div><div>Pedido: CC-</div><div>Entregado el: </div><div>Bolsa: S · M · L</div></div>
+    <div class="lbl">Hoy huele a</div>
+    <div class="aromas">
+      <span><i></i><u style="--c:#6FB7C4"></u>Brisa marina</span><span><i></i><u style="--c:#9A8CC9"></u>Lavanda</span><span><i></i><u style="--c:#D9D4C7"></u>Algodón limpio</span>
+      <span><i></i><u style="--c:#F2B33D"></u>Cítrico</span><span><i></i><u style="--c:#E8A6B8"></u>Jazmín de Málaga</span><span><i></i><u style="--c:#B8C4C9"></u>Sin perfume</span>
+    </div>
+    <div class="lbl">Cómo abrir tu bolsa</div>
+    <div class="steps">
+      <div><em>1</em><b>Por la muesca</b>Rompe la pegatina y abre por el corte del borde. Sin tijeras.</div>
+      <div><em>2</em><b>10 minutos</b>Deja que la ropa respire antes de guardarla: recupera el volumen.</div>
+      <div><em>3</em><b>A su sitio</b>Lo planchado, colgado. Lo doblado, al cajón tal cual.</div>
+    </div>
+    <div class="rep"><div><h3>¿Repetimos la semana que viene?</h3><p>Escríbenos <b>SÍ</b> por WhatsApp al <b>600 000 000</b> y te apuntamos la misma franja. Si algo no está como esperabas, dínoslo hoy y lo arreglamos.</p><p style="margin-top:1.5mm">Pásale el código <span class="cod">VECINO</span> a quien quieras: 5 € menos en su primera bolsa y en tu siguiente.</p></div><img src="qr-landing.svg"></div>
+    <div class="nota"><div class="lbl" style="margin:0">Una nota para ti</div><div></div><div></div></div>
+    <div class="firma"><div>Lo ha preparado</div><div>Te lo ha traído en bici</div></div>
+  </div>
+  <div class="ft"><span>costaclean.es · WhatsApp 600 000 000 · @costaclean.malaga</span><img src="MARK2"></div>
+</template>
+<div class="sheet a4p" id="a4-color"><div class="mod" data-v="color"></div></div>
+<div class="sheet a4l" id="a5-x2"><div class="mod" data-v="color"></div><div class="mod" data-v="color"></div><div class="cutline"><span>✂ cortar</span></div></div>
+<div class="sheet a4p" id="a4-ink"><div class="mod ink" data-v="ink"></div></div>
+<div class="sheet a4l" id="a5-x2-ink"><div class="mod ink" data-v="ink"></div><div class="mod ink" data-v="ink"></div><div class="cutline"><span>✂ cortar</span></div></div>
+<div class="sheet dos" id="dos-color"><div class="slot"><div class="mod" data-v="color"></div></div><div class="slot"><div class="mod" data-v="color"></div></div><div class="cut"><span>✂</span></div></div>
+<div class="sheet dos" id="dos-ink"><div class="slot"><div class="mod ink" data-v="ink"></div></div><div class="slot"><div class="mod ink" data-v="ink"></div></div><div class="cut"><span>✂</span></div></div>
+<script>
+const t=document.getElementById('tpl').innerHTML;
+document.querySelectorAll('.mod').forEach(m=>{const ink=m.dataset.v==='ink';m.innerHTML=t.replace('LOGO',ink?'logo-horizontal.svg':'logo-horizontal-blanco.svg').replace('MARK2','logo-mark.svg').replace('MARK',ink?'logo-mark.svg':'logo-mark-blanco.svg');});
+</script>
+</body></html>

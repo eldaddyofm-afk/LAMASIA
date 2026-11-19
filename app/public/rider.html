@@ -1,0 +1,73 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rider · Costa Clean</title><link rel="stylesheet" href="/common.css">
+<style>
+  main { max-width: 560px; }
+  .stop { background:#fff; border-radius:12px; padding:12px; margin-bottom:10px; box-shadow:var(--shadow); border-left:5px solid var(--ok); }
+  .stop.recogida { border-left-color: var(--warn); }
+  .stop .big { font-size: 16px; font-weight: 700; }
+  .gps { background:#fff; border-radius:12px; padding:12px; box-shadow:var(--shadow); margin-bottom:12px; font-size:13px; }
+  .actions { display:flex; gap:8px; margin-top:8px; flex-wrap: wrap; } .actions a, .actions button { flex:1; text-align:center; text-decoration:none; padding:10px; }
+</style></head>
+<body>
+<main>
+  <h1>App del repartidor</h1>
+  <div class="field"><label>¿Quién eres?</label><select id="riderSel" onchange="selectRider()"></select></div>
+  <div class="gps">
+    <div class="row" style="justify-content:space-between">
+      <div><b>GPS</b> <span id="gpsState" class="muted">apagado</span><div class="small muted" id="gpsPos">La posición se envía automáticamente al panel cada pocos segundos.</div></div>
+      <button id="gpsBtn" onclick="toggleGps()">Activar GPS</button>
+    </div>
+  </div>
+  <div id="routeStats" class="small muted" style="margin-bottom:8px"></div>
+  <div id="stops"></div>
+</main>
+<script src="/common.js"></script>
+<script>
+CC.nav('rider');
+let riders = [], riderId = Number(localStorage.getItem('cc_rider') || 0), watchId = null, route = null;
+
+async function init() {
+  await CC.loadMeta();
+  riders = await CC.api('/api/riders');
+  const sel = document.getElementById('riderSel');
+  sel.innerHTML = riders.map(r => `<option value="${r.id}" ${r.id===riderId?'selected':''}>${CC.esc(r.name)}</option>`).join('');
+  if (!riderId) riderId = riders[0]?.id; sel.value = riderId;
+  await loadRoute();
+  CC.live({ order: () => loadRoute() });
+}
+function selectRider() { riderId = Number(document.getElementById('riderSel').value); localStorage.setItem('cc_rider', riderId); if (watchId) { stopGps(); } loadRoute(); }
+
+async function loadRoute() {
+  route = await CC.api(`/api/riders/${riderId}/route`);
+  document.getElementById('routeStats').innerHTML = route.stops.length ? `<b>${route.stops.length} paradas</b> · ${route.km} km · ~${route.minutes} min · orden optimizado desde el hub` : 'No tienes paradas pendientes. 🎉';
+  document.getElementById('stops').innerHTML = route.stops.map(s => {
+    const nav = `https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lng}&travelmode=bicycling`;
+    const nextStatus = s.type === 'recogida' ? 'recogido' : (s.status === 'listo' ? 'en_reparto' : 'entregado');
+    const btnTxt = s.type === 'recogida' ? '✅ Recogido' : (s.status === 'listo' ? '🚲 Salgo con él' : '📦 Entregado');
+    return `<div class="stop ${s.type}">
+      <div class="row" style="justify-content:space-between"><div class="big">${s.seq}. ${s.type === 'recogida' ? 'RECOGER' : 'ENTREGAR'} · ${s.code}</div><span class="chip">${s.kg} kg</span></div>
+      <div>${CC.esc(s.customer_name)} · <a href="tel:${CC.esc(s.phone||'')}">${CC.esc(s.phone||'')}</a></div>
+      <div class="small muted">${CC.esc(s.address)}<br>Franja: ${CC.esc(s.slot||'—')} · ${CC.scentLabel(s.scent)}</div>
+      <div class="actions"><a class="btn secondary" target="_blank" href="${nav}">🗺 Navegar</a><button onclick="mark(${s.order_id}, '${nextStatus}')">${btnTxt}</button></div>
+    </div>`; }).join('');
+}
+async function mark(orderId, status) {
+  try { await CC.api(`/api/orders/${orderId}`, { method:'PATCH', body:{ status, actor: `rider:${riderId}` } }); CC.toast(CC.STATUS_LABEL[status]); loadRoute(); } catch(e){ CC.toast('Error: '+e.message); }
+}
+
+// ---- GPS: usa la geolocalización del móvil y la envía al servidor ----
+function toggleGps() { watchId ? stopGps() : startGps(); }
+function startGps() {
+  if (!navigator.geolocation) return CC.toast('Este navegador no tiene GPS');
+  let lastSent = 0;
+  watchId = navigator.geolocation.watchPosition(async (p) => {
+    const { latitude: lat, longitude: lng, speed, heading, accuracy } = p.coords;
+    document.getElementById('gpsPos').textContent = `${lat.toFixed(5)}, ${lng.toFixed(5)} · ±${Math.round(accuracy)} m ${speed ? `· ${(speed*3.6).toFixed(0)} km/h` : ''}`;
+    if (Date.now() - lastSent < 5000) return; lastSent = Date.now();   // una posición cada 5 s como máximo
+    try { await CC.api(`/api/riders/${riderId}/location`, { method:'POST', body:{ lat, lng, speed, heading, accuracy } }); } catch {}
+  }, (err) => { CC.toast('GPS: ' + err.message); stopGps(); }, { enableHighAccuracy: true, maximumAge: 2000, timeout: 15000 });
+  document.getElementById('gpsState').innerHTML = '<span class="dot"></span> enviando'; document.getElementById('gpsBtn').textContent = 'Parar GPS'; document.getElementById('gpsBtn').className = 'danger';
+}
+function stopGps() { if (watchId) navigator.geolocation.clearWatch(watchId); watchId = null; document.getElementById('gpsState').textContent = 'apagado'; document.getElementById('gpsBtn').textContent = 'Activar GPS'; document.getElementById('gpsBtn').className = ''; }
+init();
+</script>
+</body></html>
