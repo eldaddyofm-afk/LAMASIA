@@ -1,0 +1,123 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Costa Clean · Tarjeta para buzones</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+:root{--mar:#0B7A8A;--maro:#075B67;--arena:#F6EFE4;--arenao:#EADFCB;--sol:#F6C66B;--coral:#F26B4E;--tinta:#1D2A30;--bruma:#5F6E76;--linea:#E3DACB}
+*{box-sizing:border-box} body{margin:0;font-family:"Nunito Sans",sans-serif;color:var(--tinta);background:#999}
+/* Tarjeta con sangrado: 91 x 61 mm (corte 85 x 55, zona segura 4 mm dentro del corte) */
+.card{width:91mm;height:61mm;position:relative;overflow:hidden;flex:none}
+.front{background:radial-gradient(120% 120% at 15% 10%,#13909f 0%,var(--mar) 45%,var(--maro) 100%);color:#fff}
+.front .logo{position:absolute;left:7mm;top:7mm;width:38mm}
+.front h1{position:absolute;left:7mm;top:17.5mm;margin:0;font-family:Outfit;font-weight:800;font-size:14.5pt;line-height:1.02;letter-spacing:-.015em;width:52mm}
+.front .sub{position:absolute;left:7mm;top:32.5mm;font-size:6.8pt;line-height:1.3;opacity:.92;width:46mm}
+.front .price{position:absolute;left:7mm;bottom:7mm;font-family:Outfit;line-height:1}
+.front .price small{display:block;font-size:5.6pt;font-weight:500;opacity:.85;letter-spacing:.02em;margin-bottom:.8mm}
+.front .price b{font-size:13pt;font-weight:800}
+.front .price span{font-size:5.6pt;font-weight:500;opacity:.85;margin-left:1mm}
+.badge{position:absolute;right:9mm;top:21mm;width:22mm;height:22mm;border-radius:50%;background:var(--coral);display:grid;place-items:center;text-align:center;transform:rotate(9deg);box-shadow:0 1mm 3mm rgba(0,0,0,.25);font-family:Outfit;color:#fff;line-height:1.05;padding:2mm}
+.badge b{display:block;font-size:13pt;font-weight:800}
+.badge span{display:block;font-size:5.3pt;font-weight:600}
+.badge i{display:inline-block;font-size:7.4pt;font-style:normal;background:#fff;color:var(--coral);border-radius:.8mm;padding:0 .8mm;margin-top:.6mm;font-weight:800;letter-spacing:.04em}
+.front .wm{position:absolute;right:-5mm;bottom:-7mm;width:30mm;opacity:.13}
+.back{background:#fff}
+.back .band{position:absolute;left:0;right:0;bottom:0;height:13mm;background:var(--arena)}
+.back h2{position:absolute;left:7mm;top:6.5mm;margin:0;font-family:Outfit;font-weight:700;font-size:9.6pt;color:var(--maro)}
+.back ul{position:absolute;left:7mm;top:12.3mm;margin:0;padding:0;list-style:none;width:48mm;display:grid;gap:1.15mm}
+.back li{font-size:6.5pt;line-height:1.2;display:flex;gap:1.6mm;align-items:center}
+.back li u{width:3.4mm;height:3.4mm;border-radius:1mm;background:var(--mar);flex:none;display:grid;place-items:center;color:#fff;font-family:Outfit;font-size:5.2pt;font-weight:700;text-decoration:none}
+.back .prices{position:absolute;left:7mm;top:27.4mm;font-family:Outfit;font-size:6.1pt;color:var(--tinta);width:48mm}
+.back .prices b{color:var(--maro)}
+.back .wa{position:absolute;left:7mm;top:32.6mm;font-family:Outfit;font-weight:800;font-size:9.2pt;color:var(--tinta);white-space:nowrap}
+.back .wa small{display:block;font-size:5.5pt;font-weight:600;color:var(--bruma);letter-spacing:.03em}
+.back .qr{position:absolute;right:7mm;top:6.5mm;width:25mm;text-align:center}
+.back .qr img{width:25mm;height:25mm;display:block;border-radius:1.5mm}
+.back .qr span{display:block;font-family:Outfit;font-size:5.6pt;font-weight:700;color:var(--maro);margin-top:.8mm;letter-spacing:.06em;text-transform:uppercase}
+.back .code{position:absolute;right:7mm;top:36mm;width:25mm;text-align:center;background:var(--coral);color:#fff;border-radius:1.3mm;padding:1mm 0;font-family:Outfit;font-size:5.6pt;line-height:1.15}
+.back .code b{display:block;font-size:7.6pt;letter-spacing:.08em}
+.back .calle{position:absolute;left:7mm;right:7mm;bottom:7.2mm;font-size:5.9pt;color:var(--maro);font-family:Outfit;font-weight:600;display:flex;gap:1.5mm;align-items:flex-end;white-space:nowrap}
+.back .calle i{flex:1;border-bottom:.25mm solid var(--maro);height:3mm}
+.back .calle em{font-style:normal;color:var(--bruma);font-weight:500}
+/* hoja A4 10 por cara, corte 85 x 55 */
+.a4{width:210mm;height:297mm;background:#fff;position:relative;padding:11.5mm 0 0 18.5mm}
+.grid{display:grid;grid-template-columns:85mm 85mm;grid-auto-rows:55mm;gap:0 0}
+.trim{width:85mm;height:55mm;overflow:hidden;position:relative}
+.trim .card{position:absolute;left:-3mm;top:-3mm}
+.marks{position:absolute;inset:0;pointer-events:none}
+.marks div{position:absolute;background:#000}
+/* página de presentación */
+.page{width:210mm;height:297mm;background:#fff;padding:15mm 16mm;position:relative}
+.eyebrow{font-family:Outfit;font-size:9pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mar);font-weight:600;margin-bottom:2.5mm}
+.page h1{font-family:Outfit;font-size:23pt;font-weight:800;color:var(--maro);line-height:1.08;margin:0 0 3mm}
+.page h3{font-family:Outfit;font-size:11.5pt;font-weight:600;margin:5mm 0 2mm}
+.page p,.page li{font-size:9.6pt;line-height:1.45}
+.cmp{display:grid;grid-template-columns:28mm 1fr 1fr;gap:3mm 5mm;align-items:center}
+.cmp .t{font-family:Outfit;font-size:8.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--bruma);font-weight:600}
+.cmp img{width:100%;border-radius:2mm;box-shadow:0 .6mm 2.5mm rgba(0,0,0,.18);display:block}
+.cmp .slot{transform-origin:0 0}
+.foot{position:absolute;bottom:8mm;left:16mm;right:16mm;display:flex;justify-content:space-between;font-family:Outfit;font-size:8pt;color:var(--bruma);letter-spacing:.08em;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;font-size:9pt} th,td{text-align:left;padding:1.6mm 2mm;border-bottom:1px solid var(--linea);vertical-align:top}
+th{font-family:Outfit;font-size:7.8pt;letter-spacing:.08em;text-transform:uppercase;color:var(--bruma);background:var(--arena)}
+td.n{text-align:right;white-space:nowrap}
+</style></head><body>
+<template id="front"><div class="card front">
+  <img class="logo" src="logo-horizontal-blanco.svg">
+  <h1>Tu ropa, planchada y al vacío.</h1>
+  <div class="sub">La recogemos en bici en tu portal y vuelve en 24-48 h con el aroma que elijas.</div>
+  <div class="price"><small>DESDE</small><b>22,90 €</b><span>recogida y entrega incluidas</span></div>
+  <div class="badge"><div><b>−5 €</b><span>en tu primera bolsa</span><i>VECINO</i></div></div>
+  <img class="wm" src="logo-mark-blanco.svg">
+</div></template>
+<template id="back"><div class="card back">
+  <div class="band"></div>
+  <h2>Pide en 30 segundos</h2>
+  <ul><li><u>1</u>Lavada, planchada y doblada a mano</li><li><u>2</u>Envasada al vacío con tu aroma</li><li><u>3</u>Recogida y entrega en bici, 24-48 h</li></ul>
+  <div class="prices">Bolsas: <b>S 22,90 €</b> · <b>M 36,90 €</b> · <b>L 49,90 €</b></div>
+  <div class="wa">WhatsApp 600 000 000<small>costaclean.es · lunes a sábado, 9 a 21 h</small></div>
+  <div class="qr"><img src="qr-landing.svg"><span>Escanea y pide</span></div>
+  <div class="code">Di el código<b>VECINO</b>−5 € la 1ª bolsa</div>
+  <div class="calle">Pasamos por tu calle los <i></i><em>Málaga</em></div>
+</div></template>
+
+<!-- 1 · presentación -->
+<div class="page" id="p-intro">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div class="eyebrow">Costa Clean · Tarjeta para buzones</div><h1>La tarjeta nueva,<br>pensada para vender en dos segundos</h1></div><img src="logo-mark.svg" style="width:15mm"></div>
+  <div class="cmp">
+    <div class="t">Antes</div><img src="antes-anverso.png"><img src="antes-reverso.png">
+    <div class="t" style="color:var(--mar)">Ahora</div><img src="ahora-anverso.png"><img src="ahora-reverso.png">
+  </div>
+  <h3>Qué cambia y por qué</h3>
+  <ul>
+    <li><b>Dice qué hacéis y cuánto cuesta.</b> «Tu ropa, planchada y al vacío» y «desde 22,90 €, recogida incluida» en la cara que se ve primero. Antes había que darle la vuelta para saber qué era.</li>
+    <li><b>Una oferta con motivo para pedir ya:</b> −5 € en la primera bolsa con el código VECINO, en las dos caras. Además os dice qué tarjetas funcionan, porque el cliente lo menciona al pedir.</li>
+    <li><b>Las tres ventajas en una línea cada una</b> y los tres precios, para que nadie tenga que entrar en la web para saber si le interesa.</li>
+    <li><b>El QR más grande</b> (25 mm) con «Escanea y pide», y el WhatsApp en grande: son las dos formas de pedir.</li>
+    <li><b>«Pasamos por tu calle los ___».</b> Escribid a mano los días de esa zona antes de echarla al buzón: el vecino sabe que pasáis por su calle y vosotros agrupáis las rutas desde el primer pedido.</li>
+  </ul>
+  <h3>Imprimirla</h3>
+  <table>
+    <tr><th>Archivo</th><th>Para qué</th><th class="n">Coste</th></tr>
+    <tr><td><b>tarjeta-buzon-imprenta.pdf</b></td><td>Subirlo tal cual a Vistaprint, Helloprint o llevarlo a Copicentro: 91×61 mm con 3 mm de sangrado, anverso y reverso. Cartulina de 350 g mate.</td><td class="n">500 ud ≈ 20-30 €</td></tr>
+    <tr><td><b>Páginas 2 y 3 de este PDF</b></td><td>En casa: 10 tarjetas por folio, cartulina A4 de 250-300 g a doble cara (borde largo), cortar por las marcas con guillotina.</td><td class="n">≈ 0,05 €/ud</td></tr>
+  </table>
+  <p style="font-size:8.6pt;color:var(--bruma);margin-top:3mm"><b>Antes de imprimir:</b> cambiad el WhatsApp 600 000 000 por el número real y comprobad que el QR lleva a vuestra web definitiva.</p>
+  <div class="foot"><span>Costa Clean · Tarjeta para buzones</span><span>1 / 3</span></div>
+</div>
+
+<!-- 2-3 · A4 10 por cara -->
+<div class="a4" id="a4-front"><div class="grid" data-t="front"></div><div class="marks"></div></div>
+<div class="a4" id="a4-back"><div class="grid" data-t="back"></div><div class="marks"></div></div>
+
+<!-- imprenta: tarjeta sola con sangrado -->
+<div id="single-front" class="single"></div>
+<div id="single-back" class="single"></div>
+
+<script>
+const F=document.getElementById('front').innerHTML, B=document.getElementById('back').innerHTML;
+document.querySelectorAll('.grid').forEach(g=>{const t=g.dataset.t==='front'?F:B;g.innerHTML=Array.from({length:10},()=>'<div class="trim">'+t+'</div>').join('');});
+// marcas de corte (fuera de las tarjetas)
+document.querySelectorAll('.a4 .marks').forEach(m=>{const mm=v=>v+'mm';const x0=18.5,y0=11.5,xs=[x0,x0+85,x0+170],ys=[0,1,2,3,4,5].map(i=>y0+i*55);let h='';
+ xs.forEach(x=>{h+=`<div style="left:${mm(x-.1)};top:${mm(y0-8)};width:.2mm;height:6mm"></div><div style="left:${mm(x-.1)};top:${mm(y0+275+2)};width:.2mm;height:6mm"></div>`;});
+ ys.forEach(y=>{h+=`<div style="top:${mm(y-.1)};left:${mm(x0-10)};height:.2mm;width:8mm"></div><div style="top:${mm(y-.1)};left:${mm(x0+170+2)};height:.2mm;width:8mm"></div>`;});
+ m.innerHTML=h;});
+document.getElementById('single-front').innerHTML=F; document.getElementById('single-back').innerHTML=B;
+</script>
+</body></html>
