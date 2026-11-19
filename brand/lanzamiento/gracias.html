@@ -41,6 +41,13 @@ h1{font-family:Outfit;font-weight:800;font-size:30pt;line-height:1;margin:0;colo
 .ft{background:var(--arena);padding:3.2mm 10mm;display:flex;justify-content:space-between;align-items:center;font-family:Outfit;font-size:7.8pt;color:var(--maro);font-weight:600;letter-spacing:.03em}
 .ink .ft{background:#fff;border-top:.3mm solid var(--linea)}
 .ft img{width:7mm}
+
+/* 2 por folio, con margen de impresora */
+.dos{width:297mm;height:210mm;display:flex;align-items:center;justify-content:space-around;padding:0 4mm;position:relative}
+.dos .slot{width:140mm;height:198mm;position:relative;overflow:hidden;border:.25mm solid #ddd;border-radius:1mm}
+.dos .slot .mod{transform:scale(.9420);transform-origin:0 0}
+.dos .cut{position:absolute;left:148.5mm;top:0;bottom:0;border-left:.3mm dashed #999}
+.dos .cut span{position:absolute;top:1mm;left:-1.6mm;font:9pt Outfit;color:#888;background:#fff;line-height:1}
 </style></head><body>
 <template id="tpl">
   <div class="hd"><img class="logo" src="LOGO"><img class="wave" src="MARK"></div>
@@ -69,6 +76,8 @@ h1{font-family:Outfit;font-weight:800;font-size:30pt;line-height:1;margin:0;colo
 <div class="sheet a4l" id="a5-x2"><div class="mod" data-v="color"></div><div class="mod" data-v="color"></div><div class="cutline"><span>✂ cortar</span></div></div>
 <div class="sheet a4p" id="a4-ink"><div class="mod ink" data-v="ink"></div></div>
 <div class="sheet a4l" id="a5-x2-ink"><div class="mod ink" data-v="ink"></div><div class="mod ink" data-v="ink"></div><div class="cutline"><span>✂ cortar</span></div></div>
+<div class="sheet dos" id="dos-color"><div class="slot"><div class="mod" data-v="color"></div></div><div class="slot"><div class="mod" data-v="color"></div></div><div class="cut"><span>✂</span></div></div>
+<div class="sheet dos" id="dos-ink"><div class="slot"><div class="mod ink" data-v="ink"></div></div><div class="slot"><div class="mod ink" data-v="ink"></div></div><div class="cut"><span>✂</span></div></div>
 <script>
 const t=document.getElementById('tpl').innerHTML;
 document.querySelectorAll('.mod').forEach(m=>{const ink=m.dataset.v==='ink';m.innerHTML=t.replace('LOGO',ink?'logo-horizontal.svg':'logo-horizontal-blanco.svg').replace('MARK2','logo-mark.svg').replace('MARK',ink?'logo-mark.svg':'logo-mark-blanco.svg');});
